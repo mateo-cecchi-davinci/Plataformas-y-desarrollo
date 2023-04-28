@@ -1,0 +1,2 @@
+1;prod1;prod1;True
+2;prod2;prod2;True
