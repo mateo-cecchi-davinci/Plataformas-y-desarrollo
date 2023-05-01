@@ -13,11 +13,13 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public Form1(string imgName, string nombreUsuario)
         {
             InitializeComponent();
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
+            guna2CirclePictureBox1.Image = Image.FromFile("C:\\Users\\Usuario\\source\\repos\\WindowsFormsApp1\\WindowsFormsApp1\\Resources\\imagenes\\usuarios\\" + imgName + ".jpeg");
+            label2.Text = nombreUsuario;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -63,6 +65,11 @@ namespace WindowsFormsApp1
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

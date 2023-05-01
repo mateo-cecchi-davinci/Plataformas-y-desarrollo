@@ -21,5 +21,16 @@ namespace WindowsFormsApp1.UserControls
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            AgregarProducto formAgregar = new AgregarProducto("ADD");
+            formAgregar.ShowDialog();
+        }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
