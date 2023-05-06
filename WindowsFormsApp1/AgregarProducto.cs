@@ -17,13 +17,12 @@ namespace WindowsFormsApp1
     public partial class AgregarProducto : Form
     {
         Image File;
-
-        Categoria_Controller catController = new Categoria_Controller();
-        Producto_Controller producto_Controller = new Producto_Controller();
-        public AgregarProducto(string situacion)
+        string situacionState = "ADD";
+        long idToEdit = 0;
+        public AgregarProducto(string situacion,long id)
         {
             InitializeComponent();
-            List<Categoria> lista = catController.obtenerTodas();
+            List<Categoria> lista = Categoria_Controller.obtenerTodas();
             foreach (Categoria c in lista)
             {
                 txtCategoria.Items.Add(c.Nombre);
@@ -31,6 +30,27 @@ namespace WindowsFormsApp1
                 {
                     txtCategoria.Items.Add(subcat.Nombre);
                 }
+            }
+            if ( id != 0)
+            {
+                situacionState = situacion;
+                idToEdit = id;
+                label1.Text = "Editar un producto";
+                guna2Button1.Text = "Actualizar";
+                Producto productoToEdit = Producto_Controller.findById(id);
+               txtNombre.Text = productoToEdit.Nombre;
+                txtDescripcion.Text = productoToEdit.Descripcion;
+                foreach (string catName in txtCategoria.Items)
+                {
+                    if (catName == Categoria_Controller.findById(productoToEdit.Categoria).Nombre)
+                    {
+                        txtCategoria.SelectedItem = catName;
+                        break;
+                    }
+                }
+                txtPrecio.Text = productoToEdit.Precio.ToString();
+                txtStock.Value = productoToEdit.Stock;
+                
             }
         }
 
@@ -45,7 +65,7 @@ namespace WindowsFormsApp1
             ofd.Filter = "JPG(*.JPG)|*.jpg|*.jpeg|JPEG(*.JPEG)";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                File  = Image.FromFile(ofd.FileName);
+                File = Image.FromFile(ofd.FileName);
                 imagen.Image = File;
             }
         }
@@ -60,19 +80,48 @@ namespace WindowsFormsApp1
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-
-
-
-
             Producto producto = new Producto();
             producto.Nombre = txtNombre.Text;
             producto.Descripcion = txtDescripcion.Text;
             producto.Stock = Int32.Parse(txtStock.Value.ToString());
-            producto.Precio = Double.Parse(txtPrecio.Text);
-            producto.Imagen = File.ToString();
-            producto.Categoria = txtCategoria.SelectedIndex;
+            producto.Precio = Decimal.Parse(txtPrecio.Text);
+            //producto.Imagen = File.ToString();
+            producto.Categoria = Categoria_Controller.findByName(txtCategoria.SelectedItem.ToString()).Id;
             producto.Activo = true;
-            producto_Controller.addProducto(producto);
+            producto.Image = ConvertirImg();
+            if(situacionState.Equals("EDIT"))
+            {
+                if (Producto_Controller.actualizarProducto(idToEdit,producto))
+                {
+                    MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
+                }
+            }
+            else { 
+            if (Producto_Controller.addProducto(producto))
+            {
+                MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
+                this.DialogResult = DialogResult.OK;
+            } else
+            {
+                MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
+            }
+            }
+        }
+        private byte[] ConvertirImg()
+        {
+            System.IO.MemoryStream ms = new System.IO.MemoryStream();
+            imagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            return ms.GetBuffer();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

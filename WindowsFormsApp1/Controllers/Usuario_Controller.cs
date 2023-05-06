@@ -9,13 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WindowsFormsApp1.Controllers
 {
-    public class Usuario_Controller
+    public static class Usuario_Controller
     {
 
-        public bool crearUsuario(Usuario usuario)
+        public static bool crearUsuario(Usuario usuario)
         {
             //Darlo de alta en la BBDD
             string query = "INSERT INTO dbo.usuario (nombre, apellido, dni, nombre_usuario, contraseña, admin, activo) VALUES " +
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1.Controllers
             return false;
         }
 
-        public Usuario findByUserName(string username)
+        public static Usuario findByUserName(string username)
         {
             string query = "select * from dbo.usuario where dbo.usuario.nombre_usuario = @userName;";
             Usuario usuario = null;
@@ -77,5 +78,110 @@ namespace WindowsFormsApp1.Controllers
 
             return usuario;
         }
+        public static bool editarUsuario(Usuario usuario)
+        {
+            //Darlo de alta en la BBDD
+            string query = "UPDATE dbo.usuario SET nombre=@nombre, apellido=@apellido, dni=@dni, nombre_usuario=@nombre_usuario, contraseña=@contraseña, admin=@admin, activo=@activo;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@nombre", usuario.Name);
+            cmd.Parameters.AddWithValue("@apellido", usuario.Apellido);
+            cmd.Parameters.AddWithValue("@dni", usuario.Dni);
+            cmd.Parameters.AddWithValue("@nombre_usuario", usuario.UserName);
+            cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
+            cmd.Parameters.AddWithValue("@admin", true);
+            cmd.Parameters.AddWithValue("@activo", true);
+
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+            return false;
+        }
+    
+        public static List<Usuario> usuarios()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
+
+            string query = "select * from dbo.usuario";
+            Usuario usuario = null;
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    usuario = new Usuario(reader.GetInt64(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)
+                        , reader.GetString(4), reader.GetString(5), reader.GetBoolean(6), reader.GetBoolean(7));
+                    usuarios.Add(usuario);
+                }
+                reader.Close(); 
+                DB_controller.connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return usuarios;
+
+        }
+
+        public static  bool cambiarContraseña(int dni, string contraseña)
+        {
+
+            string query = "UPDATE dbo.usuario SET dbo.usuario.contraseña=@contraseña WHERE dbo.usuario.dni = @dni;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@dni", dni);
+            cmd.Parameters.AddWithValue("@contraseña", contraseña);
+
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+            return false;
+        }
+
+        public static bool cambiarEstadoUsuario(long id, bool activo )
+        {
+
+            string query = "UPDATE dbo.usuario SET dbo.usuario.activo=@activo WHERE dbo.usuario.id = @id;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@activo", activo ? false : true);
+
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+            return false;
+        }
+
+
+
     }
 }

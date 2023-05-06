@@ -16,7 +16,7 @@ namespace WindowsFormsApp1
     public partial class Form2 : Form
     {
 
-        public Usuario_Controller controller = new Usuario_Controller();
+        
 
         public Form2()
         {
@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             label7.Visible = false;
 
 
-            Usuario u = controller.findByUserName(txtUsername.Text.Trim());
+            Usuario u = Usuario_Controller.findByUserName(txtUsername.Text.Trim());
             if(u != null )
             {
                if( guna2TextBox1.Text.Equals(u.Contraseña)) {
@@ -67,6 +67,11 @@ namespace WindowsFormsApp1
         }
 
         private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
         {
 
         }

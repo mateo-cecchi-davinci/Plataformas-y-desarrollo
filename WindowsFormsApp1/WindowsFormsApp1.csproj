@@ -58,6 +58,12 @@
     <Compile Include="AgregarProducto.Designer.cs">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="AgregarUsuarioForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregarUsuarioForm.Designer.cs">
+      <DependentUpon>AgregarUsuarioForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\Categoria_Controller.cs" />
     <Compile Include="Controllers\DB_Controller.cs" />
     <Compile Include="Controllers\Producto_Controller.cs" />
@@ -106,6 +112,9 @@
     <EmbeddedResource Include="AgregarProducto.resx">
       <DependentUpon>AgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregarUsuarioForm.resx">
+      <DependentUpon>AgregarUsuarioForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,8 +161,12 @@
     <None Include="Resources\LogoAppHardware.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\true-false.png" />
     <None Include="Resources\agregar.png" />
     <None Include="Resources\buscar.png" />
+    <None Include="Resources\eliminar-logo.png" />
+    <Content Include="Resources\editar.png" />
+    <None Include="Resources\editar1.png" />
     <Content Include="Resources\imagenes\iconos\agregar-user.png" />
     <Content Include="Resources\imagenes\iconos\agregar-venta.png" />
     <Content Include="Resources\imagenes\iconos\agregar.png" />

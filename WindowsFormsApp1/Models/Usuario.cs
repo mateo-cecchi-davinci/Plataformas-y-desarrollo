@@ -19,6 +19,21 @@ namespace WindowsFormsApp1.Models
         public bool Activo { get; set; }
 
         public string Img { get; set; }
+
+        public byte[] imagen { get; set; }
+
+        public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo)
+        {
+            _id = id;
+            Name = name;
+            Apellido = apellido;
+            Dni = dni;
+            UserName = userName;
+            Contraseña = contraseña;
+            Admin = admin;
+            Activo = activo;
+        }
+
         public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo, string img)
         {
             _id = id;

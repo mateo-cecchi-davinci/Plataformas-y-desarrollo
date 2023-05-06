@@ -9,7 +9,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WindowsFormsApp1.Controllers
 {
-    public class Categoria_Controller
+    public static class Categoria_Controller
     {
         /*
         public bool crearUsuario(Usuario usuario)
@@ -77,8 +77,65 @@ namespace WindowsFormsApp1.Controllers
          }
          */
 
+        public static Categoria findById(long id)
+        {
+            string query = "select * from dbo.categoria where dbo.categoria.id = @id;";
+            Categoria cat = null;
 
-        public List<Categoria> obtenerTodas()
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cat =new Categoria();
+                    cat.Id = reader.GetInt64(0);
+                    cat.Nombre = reader.GetString(1);
+                    cat.Padre = reader.GetInt64(2);
+                    cat.Activo = reader.GetBoolean(3);
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return cat;
+        }
+        public static Categoria findByName(String nombre)
+        {
+            string query = "select * from dbo.categoria where dbo.categoria.nombre = @nombre;";
+            Categoria cat = null;
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cat = new Categoria();
+                    cat.Id = reader.GetInt64(0);
+                    cat.Nombre = reader.GetString(1);
+                    cat.Padre = reader.GetInt64(2);
+                    cat.Activo = reader.GetBoolean(3);
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return cat;
+        }
+        public static List<Categoria> obtenerTodas()
         {
             List<Categoria> list = new List<Categoria>();
             List<Categoria> listOrdenada = new List<Categoria>();

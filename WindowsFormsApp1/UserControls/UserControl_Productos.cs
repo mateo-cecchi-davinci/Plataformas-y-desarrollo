@@ -7,14 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Controllers;
+using WindowsFormsApp1.Models;
+
 
 namespace WindowsFormsApp1.UserControls
 {
     public partial class UserControl_Productos : UserControl
     {
+
         public UserControl_Productos()
         {
             InitializeComponent();
+            MostrarProductos();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -24,13 +29,85 @@ namespace WindowsFormsApp1.UserControls
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            AgregarProducto formAgregar = new AgregarProducto("ADD");
-            formAgregar.ShowDialog();
-        }
+            AgregarProducto formAgregar = new AgregarProducto("ADD",0);
 
+            DialogResult dialogResult = formAgregar.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                MostrarProductos();
+            }
+        }
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+        public void MostrarProductos()
+        {
+            List<Producto> productos = Producto_Controller.obtenerTodos();
+            List<Categoria> categorias= Categoria_Controller.obtenerTodas();
+
+            tablaProductos.Rows.Clear();
+            foreach (Producto prod in productos)
+            {
+                int rowIndex = tablaProductos.Rows.Add();
+                tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
+                tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
+                tablaProductos.Rows[rowIndex].Cells[2].Value = prod.Descripcion;
+                tablaProductos.Rows[rowIndex].Cells[3].Value = prod.Stock.ToString();
+                tablaProductos.Rows[rowIndex].Cells[4].Value = prod.Precio.ToString();
+                tablaProductos.Rows[rowIndex].Cells[5].Value = prod.Activo.ToString();
+                tablaProductos.Rows[rowIndex].Cells[6].Value = Categoria_Controller.findById(prod.Categoria).Nombre;
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (tablaProductos.SelectedRows.Count > 0)
+            {
+                DataGridViewRow filaSeleccionada = tablaProductos.SelectedRows[0];
+
+                String celdaId = filaSeleccionada.Cells["idProducto"].Value.ToString();
+                String celdaEstado = filaSeleccionada.Cells["estadoProducto"].Value.ToString();
+                long id = Int64.Parse(celdaId);
+                bool activo = Boolean.Parse(celdaEstado);
+                if(Producto_Controller.cambiarEstado(id, activo))
+                {
+                    MessageBox.Show("Estado de producto actualizado correctamente", "Cambio de estado de producto");
+
+                }
+               MostrarProductos();
+            } else
+            {
+                MessageBox.Show("Debes seleccionar un producto en la tabla","Error al querer borrar");
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (tablaProductos.SelectedRows.Count > 0)
+            {
+                DataGridViewRow filaSeleccionada = tablaProductos.SelectedRows[0];
+
+                String celdaId = filaSeleccionada.Cells["idProducto"].Value.ToString();
+
+                long id = Int64.Parse(celdaId);
+
+                AgregarProducto formAgregar = new AgregarProducto("EDIT", id);
+
+                DialogResult dialogResult = formAgregar.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    MostrarProductos();
+                }
+    
+                MostrarProductos();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un producto en la tabla", "Error");
+            }
         }
     }
 }
