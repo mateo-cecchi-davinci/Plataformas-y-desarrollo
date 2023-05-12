@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class AgregarUsuarioForm
+    partial class FormAgregarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.labelAgregarUser = new System.Windows.Forms.Label();
-            this.textAgregarNombreUsuario = new System.Windows.Forms.TextBox();
-            this.textApellido = new System.Windows.Forms.TextBox();
+            this.txtAgregarNombreUsuario = new System.Windows.Forms.TextBox();
+            this.txtApellidoUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textDniUsuario = new System.Windows.Forms.TextBox();
+            this.txtDniUsuario = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textNombreUsuario = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textContraseñaUsuario = new System.Windows.Forms.TextBox();
+            this.txtContraseñaUsuario = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textConfirmarContraseña = new System.Windows.Forms.TextBox();
+            this.txtConfirmarContraseña = new System.Windows.Forms.TextBox();
             this.imagenUsuario = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnCargarImgUsuario = new System.Windows.Forms.Button();
-            this.confirmarUsuarioButton = new System.Windows.Forms.Button();
+            this.confirmarAgregarUsuarioButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imagenUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,19 +59,19 @@
             this.labelAgregarUser.Text = "Agregar Usuario";
             this.labelAgregarUser.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textAgregarNombreUsuario
+            // txtAgregarNombreUsuario
             // 
-            this.textAgregarNombreUsuario.Location = new System.Drawing.Point(240, 121);
-            this.textAgregarNombreUsuario.Name = "textAgregarNombreUsuario";
-            this.textAgregarNombreUsuario.Size = new System.Drawing.Size(208, 26);
-            this.textAgregarNombreUsuario.TabIndex = 1;
+            this.txtAgregarNombreUsuario.Location = new System.Drawing.Point(240, 121);
+            this.txtAgregarNombreUsuario.Name = "txtAgregarNombreUsuario";
+            this.txtAgregarNombreUsuario.Size = new System.Drawing.Size(208, 26);
+            this.txtAgregarNombreUsuario.TabIndex = 1;
             // 
-            // textApellido
+            // txtUsuarioApellido
             // 
-            this.textApellido.Location = new System.Drawing.Point(240, 198);
-            this.textApellido.Name = "textApellido";
-            this.textApellido.Size = new System.Drawing.Size(208, 26);
-            this.textApellido.TabIndex = 2;
+            this.txtApellidoUsuario.Location = new System.Drawing.Point(240, 198);
+            this.txtApellidoUsuario.Name = "txtUsuarioApellido";
+            this.txtApellidoUsuario.Size = new System.Drawing.Size(208, 26);
+            this.txtApellidoUsuario.TabIndex = 2;
             // 
             // label1
             // 
@@ -96,64 +96,64 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(236, 241);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 30);
+            this.label3.Size = new System.Drawing.Size(41, 20);
             this.label3.TabIndex = 9;
             this.label3.Text = "DNI:";
             // 
-            // textDniUsuario
+            // txtDniUsuario
             // 
-            this.textDniUsuario.Location = new System.Drawing.Point(240, 275);
-            this.textDniUsuario.Name = "textDniUsuario";
-            this.textDniUsuario.Size = new System.Drawing.Size(208, 26);
-            this.textDniUsuario.TabIndex = 8;
+            this.txtDniUsuario.Location = new System.Drawing.Point(240, 275);
+            this.txtDniUsuario.Name = "txtDniUsuario";
+            this.txtDniUsuario.Size = new System.Drawing.Size(208, 26);
+            this.txtDniUsuario.TabIndex = 8;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(236, 324);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(192, 30);
+            this.label4.Size = new System.Drawing.Size(128, 20);
             this.label4.TabIndex = 11;
             this.label4.Text = "Nombre Usuario:";
             // 
-            // textNombreUsuario
+            // txtNombreUsuario
             // 
-            this.textNombreUsuario.Location = new System.Drawing.Point(240, 358);
-            this.textNombreUsuario.Name = "textNombreUsuario";
-            this.textNombreUsuario.Size = new System.Drawing.Size(208, 26);
-            this.textNombreUsuario.TabIndex = 10;
+            this.txtUserName.Location = new System.Drawing.Point(240, 358);
+            this.txtUserName.Name = "txtNombreUsuario";
+            this.txtUserName.Size = new System.Drawing.Size(208, 26);
+            this.txtUserName.TabIndex = 10;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(236, 400);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(138, 30);
+            this.label5.Size = new System.Drawing.Size(92, 20);
             this.label5.TabIndex = 13;
             this.label5.Text = "Contraseña";
             // 
-            // textContraseñaUsuario
+            // txtContraseñaUsuario
             // 
-            this.textContraseñaUsuario.Location = new System.Drawing.Point(240, 434);
-            this.textContraseñaUsuario.Name = "textContraseñaUsuario";
-            this.textContraseñaUsuario.Size = new System.Drawing.Size(208, 26);
-            this.textContraseñaUsuario.TabIndex = 12;
+            this.txtContraseñaUsuario.Location = new System.Drawing.Point(240, 434);
+            this.txtContraseñaUsuario.Name = "txtContraseñaUsuario";
+            this.txtContraseñaUsuario.Size = new System.Drawing.Size(208, 26);
+            this.txtContraseñaUsuario.TabIndex = 12;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(236, 486);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(254, 30);
+            this.label6.Size = new System.Drawing.Size(169, 20);
             this.label6.TabIndex = 15;
             this.label6.Text = "Confirmar Contraseña:";
             // 
-            // textConfirmarContraseña
+            // txtConfirmarContraseña
             // 
-            this.textConfirmarContraseña.Location = new System.Drawing.Point(240, 520);
-            this.textConfirmarContraseña.Name = "textConfirmarContraseña";
-            this.textConfirmarContraseña.Size = new System.Drawing.Size(208, 26);
-            this.textConfirmarContraseña.TabIndex = 14;
+            this.txtConfirmarContraseña.Location = new System.Drawing.Point(240, 520);
+            this.txtConfirmarContraseña.Name = "txtConfirmarContraseña";
+            this.txtConfirmarContraseña.Size = new System.Drawing.Size(208, 26);
+            this.txtConfirmarContraseña.TabIndex = 14;
             // 
             // imagenUsuario
             // 
@@ -187,38 +187,39 @@
             this.btnCargarImgUsuario.UseVisualStyleBackColor = true;
             this.btnCargarImgUsuario.Click += new System.EventHandler(this.btnCargarImgUsuario_Click);
             // 
-            // confirmarUsuarioButton
+            // confirmarAgregarUsuarioButton
             // 
-            this.confirmarUsuarioButton.Location = new System.Drawing.Point(240, 890);
-            this.confirmarUsuarioButton.Name = "confirmarUsuarioButton";
-            this.confirmarUsuarioButton.Size = new System.Drawing.Size(212, 77);
-            this.confirmarUsuarioButton.TabIndex = 19;
-            this.confirmarUsuarioButton.Text = "Confirmar";
-            this.confirmarUsuarioButton.UseVisualStyleBackColor = true;
+            this.confirmarAgregarUsuarioButton.Location = new System.Drawing.Point(240, 890);
+            this.confirmarAgregarUsuarioButton.Name = "confirmarAgregarUsuarioButton";
+            this.confirmarAgregarUsuarioButton.Size = new System.Drawing.Size(212, 77);
+            this.confirmarAgregarUsuarioButton.TabIndex = 19;
+            this.confirmarAgregarUsuarioButton.Text = "Confirmar";
+            this.confirmarAgregarUsuarioButton.UseVisualStyleBackColor = true;
+            this.confirmarAgregarUsuarioButton.Click += new System.EventHandler(this.confirmarAgregarUsuarioButton_Click);
             // 
-            // AgregarUsuarioForm
+            // FormAgregarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 1005);
-            this.Controls.Add(this.confirmarUsuarioButton);
+            this.Controls.Add(this.confirmarAgregarUsuarioButton);
             this.Controls.Add(this.btnCargarImgUsuario);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.imagenUsuario);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textConfirmarContraseña);
+            this.Controls.Add(this.txtConfirmarContraseña);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textContraseñaUsuario);
+            this.Controls.Add(this.txtContraseñaUsuario);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textNombreUsuario);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textDniUsuario);
+            this.Controls.Add(this.txtDniUsuario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textApellido);
-            this.Controls.Add(this.textAgregarNombreUsuario);
+            this.Controls.Add(this.txtApellidoUsuario);
+            this.Controls.Add(this.txtAgregarNombreUsuario);
             this.Controls.Add(this.labelAgregarUser);
-            this.Name = "AgregarUsuarioForm";
+            this.Name = "FormAgregarUsuario";
             this.Text = "AgregarUsuarioForm";
             ((System.ComponentModel.ISupportInitialize)(this.imagenUsuario)).EndInit();
             this.ResumeLayout(false);
@@ -229,21 +230,21 @@
         #endregion
 
         private System.Windows.Forms.Label labelAgregarUser;
-        private System.Windows.Forms.TextBox textAgregarNombreUsuario;
-        private System.Windows.Forms.TextBox textApellido;
+        private System.Windows.Forms.TextBox txtAgregarNombreUsuario;
+        private System.Windows.Forms.TextBox txtApellidoUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textDniUsuario;
+        private System.Windows.Forms.TextBox txtDniUsuario;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textNombreUsuario;
+        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textContraseñaUsuario;
+        private System.Windows.Forms.TextBox txtContraseñaUsuario;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textConfirmarContraseña;
+        private System.Windows.Forms.TextBox txtConfirmarContraseña;
         private System.Windows.Forms.PictureBox imagenUsuario;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnCargarImgUsuario;
-        private System.Windows.Forms.Button confirmarUsuarioButton;
+        private System.Windows.Forms.Button confirmarAgregarUsuarioButton;
     }
 }

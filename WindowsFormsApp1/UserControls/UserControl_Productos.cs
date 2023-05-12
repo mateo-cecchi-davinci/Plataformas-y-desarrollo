@@ -15,7 +15,6 @@ namespace WindowsFormsApp1.UserControls
 {
     public partial class UserControl_Productos : UserControl
     {
-
         public UserControl_Productos()
         {
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace WindowsFormsApp1.UserControls
 
         private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
-            AgregarProducto formAgregar = new AgregarProducto("ADD",0);
+            FormAgregarProducto formAgregar = new FormAgregarProducto("ADD",0);
 
             DialogResult dialogResult = formAgregar.ShowDialog();
 
@@ -113,7 +112,7 @@ namespace WindowsFormsApp1.UserControls
 
                 long id = Int64.Parse(celdaId);
 
-                AgregarProducto formAgregar = new AgregarProducto("EDIT", id);
+                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
 
                 DialogResult dialogResult = formAgregar.ShowDialog();
 

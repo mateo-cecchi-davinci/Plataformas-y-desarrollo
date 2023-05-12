@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp1
 {
-    partial class AgregarProducto
+    partial class FormAgregarProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -44,7 +44,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.buttonAgregarProducto = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.txtStock)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenProducto)).BeginInit();
             this.SuspendLayout();
@@ -240,29 +240,29 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "Categoría:";
             // 
-            // guna2Button1
+            // buttonAgregarProducto
             // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(130)))), ((int)(((byte)(67)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(262, 721);
-            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(307, 58);
-            this.guna2Button1.TabIndex = 15;
-            this.guna2Button1.Text = "Agregar";
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.buttonAgregarProducto.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.buttonAgregarProducto.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.buttonAgregarProducto.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.buttonAgregarProducto.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.buttonAgregarProducto.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(130)))), ((int)(((byte)(67)))));
+            this.buttonAgregarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAgregarProducto.ForeColor = System.Drawing.Color.White;
+            this.buttonAgregarProducto.Location = new System.Drawing.Point(262, 721);
+            this.buttonAgregarProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAgregarProducto.Name = "buttonAgregarProducto";
+            this.buttonAgregarProducto.Size = new System.Drawing.Size(307, 58);
+            this.buttonAgregarProducto.TabIndex = 15;
+            this.buttonAgregarProducto.Text = "Agregar";
+            this.buttonAgregarProducto.Click += new System.EventHandler(this.buttonAgregarProducto_Click);
             // 
             // AgregarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(845, 806);
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.buttonAgregarProducto);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -307,6 +307,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button buttonAgregarProducto;
     }
 }

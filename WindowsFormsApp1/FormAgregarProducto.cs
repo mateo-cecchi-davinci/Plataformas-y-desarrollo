@@ -9,22 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
-using WindowsFormsApp1.Helpers;
+using WindowsFormsApp1.Helper;
 using WindowsFormsApp1.Models;
 
 
 namespace WindowsFormsApp1
 {
-    public partial class AgregarProducto : Form
+    public partial class FormAgregarProducto : Form
     {
         string situacionState = "ADD";
         long idToEdit = 0;
-        string photopath;
-        byte[] binaryphoto;
-        public AgregarProducto(string situacion,long id)
+        public FormAgregarProducto(string situacion,long id)
         {
             InitializeComponent();
             List<Categoria> lista = Categoria_Controller.obtenerTodas();
+
             foreach (Categoria c in lista)
             {
                 txtCategoria.Items.Add(c.Nombre);
@@ -33,15 +32,17 @@ namespace WindowsFormsApp1
                     txtCategoria.Items.Add(subcat.Nombre);
                 }
             }
+
             if ( id != 0)
             {
                 situacionState = situacion;
                 idToEdit = id;
                 label1.Text = "Editar un producto";
-                guna2Button1.Text = "Actualizar";
+                buttonAgregarProducto.Text = "Actualizar";
                 Producto productoToEdit = Producto_Controller.findById(id);
-               txtNombre.Text = productoToEdit.Nombre;
+                txtNombre.Text = productoToEdit.Nombre;
                 txtDescripcion.Text = productoToEdit.Descripcion;
+
                 foreach (string catName in txtCategoria.Items)
                 {
                     if (catName == Categoria_Controller.findById(productoToEdit.Categoria).Nombre)
@@ -50,6 +51,7 @@ namespace WindowsFormsApp1
                         break;
                     }
                 }
+
                 txtPrecio.Text = productoToEdit.Precio.ToString();
                 txtStock.Value = productoToEdit.Stock;
                 
@@ -73,7 +75,7 @@ namespace WindowsFormsApp1
 
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
             Producto producto = new Producto();
             producto.Nombre = txtNombre.Text;
@@ -84,6 +86,7 @@ namespace WindowsFormsApp1
             producto.Categoria = Categoria_Controller.findByName(txtCategoria.SelectedItem.ToString()).Id;
             producto.Activo = true;
             producto.Image = ConvertirImg();
+
             if(situacionState.Equals("EDIT"))
             {
                 if (Producto_Controller.actualizarProducto(idToEdit,producto))
@@ -96,15 +99,17 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
                 }
             }
-            else { 
-            if (Producto_Controller.addProducto(producto))
-            {
-                MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
-                this.DialogResult = DialogResult.OK;
-            } else
-            {
-                MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
-            }
+            else 
+            { 
+                if (Producto_Controller.addProducto(producto))
+                {
+                    MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
+                    this.DialogResult = DialogResult.OK;
+                } 
+                else
+                {
+                    MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
+                }
             }
         }
         private byte[] ConvertirImg()

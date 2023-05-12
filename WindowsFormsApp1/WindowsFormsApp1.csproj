@@ -52,17 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgregarProducto.cs">
+    <Compile Include="FormAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarProducto.Designer.cs">
-      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    <Compile Include="FormAgregarProducto.Designer.cs">
+      <DependentUpon>FormAgregarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="AgregarUsuarioForm.cs">
+    <Compile Include="FormAgregarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AgregarUsuarioForm.Designer.cs">
-      <DependentUpon>AgregarUsuarioForm.cs</DependentUpon>
+    <Compile Include="FormAgregarUsuario.Designer.cs">
+      <DependentUpon>FormAgregarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Categoria_Controller.cs" />
     <Compile Include="Controllers\DB_Controller.cs" />
@@ -80,6 +80,7 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ImageCreator.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -109,11 +110,11 @@
     <Compile Include="UserControls\UserControl_Ventas.Designer.cs">
       <DependentUpon>UserControl_Ventas.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AgregarProducto.resx">
-      <DependentUpon>AgregarProducto.cs</DependentUpon>
+    <EmbeddedResource Include="FormAgregarProducto.resx">
+      <DependentUpon>FormAgregarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AgregarUsuarioForm.resx">
-      <DependentUpon>AgregarUsuarioForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormAgregarUsuario.resx">
+      <DependentUpon>FormAgregarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio.resx">
       <DependentUpon>FormInicio.cs</DependentUpon>

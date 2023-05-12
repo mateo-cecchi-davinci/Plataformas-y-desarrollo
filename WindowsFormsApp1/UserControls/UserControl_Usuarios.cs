@@ -86,7 +86,7 @@ namespace WindowsFormsApp1.UserControls
 
         private void buttonAgregarUsuario_Click(object sender, EventArgs e)
         {
-            AgregarUsuarioForm formAgregarUsuario = new AgregarUsuarioForm();
+            FormAgregarUsuario formAgregarUsuario = new FormAgregarUsuario();
 
             DialogResult dialogResult = formAgregarUsuario.ShowDialog();
 
