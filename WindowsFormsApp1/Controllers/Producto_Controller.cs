@@ -48,17 +48,26 @@ namespace WindowsFormsApp1.Controllers
 
         }
 
-        public static List<Producto> obtenerTodos()
+        public static List<Producto> obtenerTodos(string text = null)
         {
             List<Producto> lista = new List<Producto>();
-
-
-            string query = "select * from dbo.producto";
-
-            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
             try
             {
                 DB_controller.connection.Open();
+
+                string query = "select * from dbo.producto";
+                SqlCommand cmd = new SqlCommand();
+
+                if (!string.IsNullOrEmpty(text))
+                {
+                    query += " WHERE nombre LIKE @text";
+
+                    cmd.Parameters.Add(new SqlParameter("@text", $"%{text}%"));
+                }
+
+                cmd.CommandText = query;
+                cmd.Connection = DB_controller.connection;
+
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {

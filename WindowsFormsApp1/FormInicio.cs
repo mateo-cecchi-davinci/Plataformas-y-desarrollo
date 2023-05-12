@@ -11,15 +11,21 @@ using WindowsFormsApp1.UserControls;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class FormInicio : Form
     {
-        public Form1(string imgName, string nombreUsuario)
+        public FormInicio(string imgName, string nombreUsuario, bool rolUsuario )
         {
             InitializeComponent();
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
-            guna2CirclePictureBox1.Image = Image.FromFile("C:\\Users\\Usuario\\source\\repos\\WindowsFormsApp1\\WindowsFormsApp1\\Resources\\imagenes\\usuarios\\" + imgName + ".jpeg");
+            guna2CirclePictureBox1.Image = Image.FromFile("C:\\PlataformasDesarrollo\\ecommerce\\images\\" + imgName + ".jpg");
             label2.Text = nombreUsuario;
+
+            if(rolUsuario == false)
+            {
+                buttonVentas.Hide();
+                buttonUsuarios.Hide();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,26 +40,26 @@ namespace WindowsFormsApp1
             panelContainer.Controls.Add(userControl);
             userControl.BringToFront();
         }
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void buttonInicioPantalla_Click(object sender, EventArgs e)
         {
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
         
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void buttonProductos_Click(object sender, EventArgs e)
         {
             UserControl_Productos ucProductos = new UserControl_Productos();
             addUserControl(ucProductos);
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void buttonUsuarios_Click(object sender, EventArgs e)
         {
             UserControl_Usuarios ucUsuarios = new UserControl_Usuarios();
             addUserControl(ucUsuarios);
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private void buttonVentas_Click(object sender, EventArgs e)
         {
             UserControl_Ventas ucVentas = new UserControl_Ventas();
             addUserControl(ucVentas);

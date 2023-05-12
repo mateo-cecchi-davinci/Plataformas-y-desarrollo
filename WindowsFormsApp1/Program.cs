@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DB_controller.initialize();
-            Application.Run(new Form2());
+            Application.Run(new FormLogin());
         }
     }
 }

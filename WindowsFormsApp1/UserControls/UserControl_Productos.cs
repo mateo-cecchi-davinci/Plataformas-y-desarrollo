@@ -27,7 +27,7 @@ namespace WindowsFormsApp1.UserControls
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
             AgregarProducto formAgregar = new AgregarProducto("ADD",0);
 
@@ -42,26 +42,46 @@ namespace WindowsFormsApp1.UserControls
         {
 
         }
-        public void MostrarProductos()
+        public void MostrarProductos(string text = null)
         {
-            List<Producto> productos = Producto_Controller.obtenerTodos();
-            List<Categoria> categorias= Categoria_Controller.obtenerTodas();
+            List<Producto> productos = new List<Producto>();
 
-            tablaProductos.Rows.Clear();
-            foreach (Producto prod in productos)
+            if (!string.IsNullOrEmpty(text))
             {
-                int rowIndex = tablaProductos.Rows.Add();
-                tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
-                tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
-                tablaProductos.Rows[rowIndex].Cells[2].Value = prod.Descripcion;
-                tablaProductos.Rows[rowIndex].Cells[3].Value = prod.Stock.ToString();
-                tablaProductos.Rows[rowIndex].Cells[4].Value = prod.Precio.ToString();
-                tablaProductos.Rows[rowIndex].Cells[5].Value = prod.Activo.ToString();
-                tablaProductos.Rows[rowIndex].Cells[6].Value = Categoria_Controller.findById(prod.Categoria).Nombre;
+                tablaProductos.Rows.Clear();
+                productos = Producto_Controller.obtenerTodos(text);
+
+                foreach (Producto prod in productos)
+                {
+                    int rowIndex = tablaProductos.Rows.Add();
+                    tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
+                    tablaProductos.Rows[rowIndex].Cells[2].Value = prod.Descripcion;
+                    tablaProductos.Rows[rowIndex].Cells[3].Value = prod.Stock.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[4].Value = prod.Precio.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[5].Value = prod.Activo.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[6].Value = Categoria_Controller.findById(prod.Categoria).Nombre;
+                }
+            }
+            else
+            {
+                productos = Producto_Controller.obtenerTodos();
+                tablaProductos.Rows.Clear();
+                foreach (Producto prod in productos)
+                {
+                    int rowIndex = tablaProductos.Rows.Add();
+                    tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
+                    tablaProductos.Rows[rowIndex].Cells[2].Value = prod.Descripcion;
+                    tablaProductos.Rows[rowIndex].Cells[3].Value = prod.Stock.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[4].Value = prod.Precio.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[5].Value = prod.Activo.ToString();
+                    tablaProductos.Rows[rowIndex].Cells[6].Value = Categoria_Controller.findById(prod.Categoria).Nombre;
+                }
             }
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void buttonCambiarEstadoProducto_Click(object sender, EventArgs e)
         {
             if (tablaProductos.SelectedRows.Count > 0)
             {
@@ -83,7 +103,7 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
-        private void pictureBox4_Click(object sender, EventArgs e)
+        private void buttonEditarUsuario_Click(object sender, EventArgs e)
         {
             if (tablaProductos.SelectedRows.Count > 0)
             {
@@ -108,6 +128,11 @@ namespace WindowsFormsApp1.UserControls
             {
                 MessageBox.Show("Debes seleccionar un producto en la tabla", "Error");
             }
+        }
+        private void buttonBuscadorProductos_Click(object sender, EventArgs e)
+        {
+            MostrarProductos(textBoxBuscarProductos.Text);
+            textBoxBuscarProductos.Text = string.Empty;
         }
     }
 }

@@ -13,12 +13,9 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form2 : Form
+    public partial class FormLogin : Form
     {
-
-        
-
-        public Form2()
+        public FormLogin()
         {
             InitializeComponent();
         }
@@ -44,16 +41,18 @@ namespace WindowsFormsApp1
             if(u != null )
             {
                if( guna2TextBox1.Text.Equals(u.Contraseña)) {
-                    Form1 form1 = new Form1(u.Img, u.UserName);
+                    FormInicio form1 = new FormInicio(u.Img, u.UserName, u.Admin);
                     form1.Show();
-                } else
+                }
+                else
                 {
                     label7.Visible = true;
 
                     label7.Text = "La contraseña no es correcta";
 
                 }
-            } else
+            } 
+            else
             {
                 label6.Visible = true;
 

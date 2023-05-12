@@ -83,5 +83,22 @@ namespace WindowsFormsApp1.UserControls
                 MessageBox.Show("Debes seleccionar un usuario en la tabla", "Error al querer borrar");
             }
         }
+
+        private void buttonAgregarUsuario_Click(object sender, EventArgs e)
+        {
+            AgregarUsuarioForm formAgregarUsuario = new AgregarUsuarioForm();
+
+            DialogResult dialogResult = formAgregarUsuario.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                mostrarUsuarios();
+            }
+        }
+
+        private void buttonBuscarUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

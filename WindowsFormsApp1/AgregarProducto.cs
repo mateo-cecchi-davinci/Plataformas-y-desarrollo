@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
+using WindowsFormsApp1.Helpers;
 using WindowsFormsApp1.Models;
 
 
@@ -16,9 +17,10 @@ namespace WindowsFormsApp1
 {
     public partial class AgregarProducto : Form
     {
-        Image File;
         string situacionState = "ADD";
         long idToEdit = 0;
+        string photopath;
+        byte[] binaryphoto;
         public AgregarProducto(string situacion,long id)
         {
             InitializeComponent();
@@ -58,16 +60,9 @@ namespace WindowsFormsApp1
         {
 
         }
-
         private void btnCargarImg_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "JPG(*.JPG)|*.jpg|*.jpeg|JPEG(*.JPEG)";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                File = Image.FromFile(ofd.FileName);
-                imagen.Image = File;
-            }
+            ImageCreator.Crear(imagenProducto);
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -115,7 +110,7 @@ namespace WindowsFormsApp1
         private byte[] ConvertirImg()
         {
             System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            imagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+            imagenProducto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
             return ms.GetBuffer();
         }
 
