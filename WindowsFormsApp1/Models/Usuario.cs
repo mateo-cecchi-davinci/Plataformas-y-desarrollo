@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,8 +23,9 @@ namespace WindowsFormsApp1.Models
 
         public byte[] imagen { get; set; }
 
-        public Usuario( string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo)
+        public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo)
         {
+            _id = id;
             Name = name;
             Apellido = apellido;
             Dni = dni;

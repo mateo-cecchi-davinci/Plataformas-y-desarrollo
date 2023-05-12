@@ -22,33 +22,10 @@ namespace WindowsFormsApp1
     {
         string situacionState = "ADD";
         long idToEdit = 0;
-        public FormAgregarUsuario(string situacion , long id)
+        public FormAgregarUsuario()
         {
             InitializeComponent();
 
-            if (id != 0)
-            {
-                situacionState = situacion;
-                idToEdit = id;
-                labelAgregarUser.Text = "Editar un usuario";
-                confirmarAgregarUsuarioButton.Text = "Actualizar";
-                Usuario UsuarioToEdit = Usuario_Controller.findById(id);
-                txtNombre.Text = productoToEdit.Nombre;
-                txtDescripcion.Text = productoToEdit.Descripcion;
-
-                foreach (string catName in txtCategoria.Items)
-                {
-                    if (catName == Categoria_Controller.findById(productoToEdit.Categoria).Nombre)
-                    {
-                        txtCategoria.SelectedItem = catName;
-                        break;
-                    }
-                }
-
-                txtPrecio.Text = productoToEdit.Precio.ToString();
-                txtStock.Value = productoToEdit.Stock;
-
-            }
         }
 
         private void label1_Click(object sender, EventArgs e)
