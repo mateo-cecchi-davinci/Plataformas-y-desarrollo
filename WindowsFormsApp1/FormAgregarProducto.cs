@@ -19,6 +19,7 @@ namespace WindowsFormsApp1
     {
         string situacionState = "ADD";
         long idToEdit = 0;
+        Image File;
         public FormAgregarProducto(string situacion,long id)
         {
             InitializeComponent();
@@ -64,7 +65,13 @@ namespace WindowsFormsApp1
         }
         private void btnCargarImg_Click(object sender, EventArgs e)
         {
-            ImageCreator.Crear(imagenProducto);
+            OpenFileDialog  openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "JPG(*.JPG)|*.jpg";
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+               File = Image.FromFile(openFileDialog.FileName);
+               imagenProducto.Image = File;
+            }
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -82,12 +89,20 @@ namespace WindowsFormsApp1
             producto.Descripcion = txtDescripcion.Text;
             producto.Stock = Int32.Parse(txtStock.Value.ToString());
             producto.Precio = Decimal.Parse(txtPrecio.Text);
-            //producto.Imagen = File.ToString();
+            producto.Image = NombreImagen.Text;
             producto.Categoria = Categoria_Controller.findByName(txtCategoria.SelectedItem.ToString()).Id;
             producto.Activo = true;
-            producto.Image = ConvertirImg();
+            try
+            {
+                File.Save(@"C:\Users\Usuario\source\repos\WindowsFormsApp1\WindowsFormsApp1\Resources\imagenes\productos\" + NombreImagen.Text + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            catch
+            {
+                MessageBox.Show("Hay un problema con la imagen.", "");
+                return;
 
-            if(situacionState.Equals("EDIT"))
+            }
+            if (situacionState.Equals("EDIT"))
             {
                 if (Producto_Controller.actualizarProducto(idToEdit,producto))
                 {
@@ -112,14 +127,7 @@ namespace WindowsFormsApp1
                 }
             }
         }
-        private byte[] ConvertirImg()
-        {
-            System.IO.MemoryStream ms = new System.IO.MemoryStream();
-            imagenProducto.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-            return ms.GetBuffer();
-        }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
+            private void txtNombre_TextChanged(object sender, EventArgs e)
         {
 
         }

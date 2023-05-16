@@ -18,12 +18,12 @@ namespace WindowsFormsApp1
             InitializeComponent();
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
-            guna2CirclePictureBox1.Image = Image.FromFile("C:\\PlataformasDesarrollo\\ecommerce\\images\\" + imgName + ".jpg");
+            guna2CirclePictureBox1.Image = Image.FromFile("C:\\Users\\Usuario\\source\\repos\\WindowsFormsApp1\\WindowsFormsApp1\\Resources\\imagenes\\usuarios\\" + imgName + ".jpeg");
             label2.Text = nombreUsuario;
 
             if(rolUsuario == false)
             {
-                buttonVentas.Hide();
+                buttonInicioPantalla.Hide();
                 buttonUsuarios.Hide();
             }
         }

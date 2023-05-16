@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -14,14 +15,14 @@ namespace WindowsFormsApp1.Controllers
     {
         public static bool addProducto(Producto producto)
         {
-            string query = "INSERT INTO dbo.producto (nombre, descripcion, stock, precio, categoria, activo, image) VALUES " +
+            string query = "INSERT INTO dbo.producto (nombre, descripcion, stock, precio, categoria, activo, imagen) VALUES " +
                "(@nombre, " +
                "@descripcion, " +
                "@stock, " +
                "@precio, " +
                "@categoria," +
                "@activo, " +
-               "@image" +
+               "@imagen" +
                ");";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
@@ -31,7 +32,7 @@ namespace WindowsFormsApp1.Controllers
             cmd.Parameters.AddWithValue("@precio", producto.Precio);
             cmd.Parameters.AddWithValue("@categoria", producto.Categoria);
             cmd.Parameters.AddWithValue("@activo", producto.Activo);
-            cmd.Parameters.AddWithValue("@image", producto.Image);
+            cmd.Parameters.AddWithValue("@imagen", producto.Image);
             try
             {
                 DB_controller.connection.Open();
@@ -79,6 +80,7 @@ namespace WindowsFormsApp1.Controllers
                     prod.Precio = reader.GetDecimal(4);
                     prod.Categoria = reader.GetInt32(5);
                     prod.Activo = reader.GetBoolean(6);
+                    prod.Image = reader.GetString(7);
                     lista.Add(prod);
 
                 }
