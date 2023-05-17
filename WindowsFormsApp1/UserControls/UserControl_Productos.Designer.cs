@@ -84,12 +84,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.tablaProductos.Location = new System.Drawing.Point(45, 119);
-            this.tablaProductos.Margin = new System.Windows.Forms.Padding(4);
+            this.tablaProductos.Location = new System.Drawing.Point(34, 97);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 51;
-            this.tablaProductos.Size = new System.Drawing.Size(1193, 430);
+            this.tablaProductos.Size = new System.Drawing.Size(895, 349);
             this.tablaProductos.TabIndex = 4;
             this.tablaProductos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tablaProductos.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -165,10 +164,10 @@
             // buttonEditarUsuario
             // 
             this.buttonEditarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.editar;
-            this.buttonEditarUsuario.Location = new System.Drawing.Point(141, 34);
-            this.buttonEditarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEditarUsuario.Location = new System.Drawing.Point(106, 28);
+            this.buttonEditarUsuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonEditarUsuario.Name = "buttonEditarUsuario";
-            this.buttonEditarUsuario.Size = new System.Drawing.Size(62, 43);
+            this.buttonEditarUsuario.Size = new System.Drawing.Size(46, 35);
             this.buttonEditarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEditarUsuario.TabIndex = 6;
             this.buttonEditarUsuario.TabStop = false;
@@ -177,10 +176,10 @@
             // buttonEstadoProducto
             // 
             this.buttonEstadoProducto.Image = global::WindowsFormsApp1.Properties.Resources.true_false;
-            this.buttonEstadoProducto.Location = new System.Drawing.Point(223, 34);
-            this.buttonEstadoProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEstadoProducto.Location = new System.Drawing.Point(167, 28);
+            this.buttonEstadoProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonEstadoProducto.Name = "buttonEstadoProducto";
-            this.buttonEstadoProducto.Size = new System.Drawing.Size(87, 43);
+            this.buttonEstadoProducto.Size = new System.Drawing.Size(65, 35);
             this.buttonEstadoProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEstadoProducto.TabIndex = 5;
             this.buttonEstadoProducto.TabStop = false;
@@ -189,10 +188,10 @@
             // buscadorProductos
             // 
             this.buscadorProductos.Image = global::WindowsFormsApp1.Properties.Resources.buscar;
-            this.buscadorProductos.Location = new System.Drawing.Point(1092, 15);
-            this.buscadorProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buscadorProductos.Location = new System.Drawing.Point(819, 12);
+            this.buscadorProductos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buscadorProductos.Name = "buscadorProductos";
-            this.buscadorProductos.Size = new System.Drawing.Size(92, 62);
+            this.buscadorProductos.Size = new System.Drawing.Size(69, 50);
             this.buscadorProductos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buscadorProductos.TabIndex = 3;
             this.buscadorProductos.TabStop = false;
@@ -201,10 +200,10 @@
             // buttonAgregarProducto
             // 
             this.buttonAgregarProducto.Image = global::WindowsFormsApp1.Properties.Resources.agregar;
-            this.buttonAgregarProducto.Location = new System.Drawing.Point(45, 34);
-            this.buttonAgregarProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAgregarProducto.Location = new System.Drawing.Point(34, 28);
+            this.buttonAgregarProducto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAgregarProducto.Name = "buttonAgregarProducto";
-            this.buttonAgregarProducto.Size = new System.Drawing.Size(67, 43);
+            this.buttonAgregarProducto.Size = new System.Drawing.Size(50, 35);
             this.buttonAgregarProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonAgregarProducto.TabIndex = 2;
             this.buttonAgregarProducto.TabStop = false;
@@ -221,18 +220,18 @@
             this.textBoxBuscarProductos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxBuscarProductos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxBuscarProductos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxBuscarProductos.Location = new System.Drawing.Point(639, 15);
-            this.textBoxBuscarProductos.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxBuscarProductos.Location = new System.Drawing.Point(479, 12);
             this.textBoxBuscarProductos.Name = "textBoxBuscarProductos";
             this.textBoxBuscarProductos.PasswordChar = '\0';
             this.textBoxBuscarProductos.PlaceholderText = "";
             this.textBoxBuscarProductos.SelectedText = "";
-            this.textBoxBuscarProductos.Size = new System.Drawing.Size(447, 62);
+            this.textBoxBuscarProductos.Size = new System.Drawing.Size(335, 50);
             this.textBoxBuscarProductos.TabIndex = 7;
+            this.textBoxBuscarProductos.TextChanged += new System.EventHandler(this.textBoxBuscarProductos_TextChanged);
             // 
             // UserControl_Productos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxBuscarProductos);
             this.Controls.Add(this.buttonEditarUsuario);
@@ -240,9 +239,8 @@
             this.Controls.Add(this.tablaProductos);
             this.Controls.Add(this.buscadorProductos);
             this.Controls.Add(this.buttonAgregarProducto);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControl_Productos";
-            this.Size = new System.Drawing.Size(1283, 593);
+            this.Size = new System.Drawing.Size(962, 482);
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditarUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEstadoProducto)).EndInit();

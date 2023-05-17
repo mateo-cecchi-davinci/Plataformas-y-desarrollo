@@ -151,5 +151,10 @@ namespace WindowsFormsApp1.UserControls
         {
 
         }
+
+        private void textBoxBuscarProductos_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
