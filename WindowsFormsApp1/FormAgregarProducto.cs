@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -89,7 +90,7 @@ namespace WindowsFormsApp1
             producto.Descripcion = txtDescripcion.Text;
             producto.Stock = Int32.Parse(txtStock.Value.ToString());
             producto.Precio = Decimal.Parse(txtPrecio.Text);
-            producto.Image = NombreImagen.Text;
+            producto.Image = ExtraerBytesFromImage();
             producto.Categoria = Categoria_Controller.findByName(txtCategoria.SelectedItem.ToString()).Id;
             producto.Activo = true;
             try
@@ -104,7 +105,7 @@ namespace WindowsFormsApp1
             }
             if (situacionState.Equals("EDIT"))
             {
-                if (Producto_Controller.actualizarProducto(idToEdit,producto))
+                if (Producto_Controller.actualizarProducto(idToEdit, producto))
                 {
                     MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
                     this.DialogResult = DialogResult.OK;
@@ -114,20 +115,34 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
                 }
             }
-            else 
-            { 
+            else
+            {
                 if (Producto_Controller.addProducto(producto))
                 {
                     MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
                     this.DialogResult = DialogResult.OK;
-                } 
+                }
                 else
                 {
                     MessageBox.Show("Debes completar todos los campos", "Error al agregar producto");
                 }
             }
         }
-            private void txtNombre_TextChanged(object sender, EventArgs e)
+
+        private byte[] ExtraerBytesFromImage()
+        {
+            byte[] imagenBytes;
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                imagenProducto.Image.Save(memoryStream, ImageFormat.Jpeg); // Cambia ImageFormat.Jpeg según el formato de tu imagen
+                imagenBytes = memoryStream.ToArray();
+            }
+
+            return imagenBytes;
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
         {
 
         }

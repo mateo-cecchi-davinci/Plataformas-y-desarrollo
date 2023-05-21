@@ -17,13 +17,14 @@ namespace WindowsFormsApp1.Controllers
         {
             var builder = new SqlConnectionStringBuilder();
 
-            builder.DataSource = "PC-JERO2\\SQLEXPRESS";
+            builder.DataSource = "IOLNOTE-ITFC\\SQLEXPRESS";
             builder.InitialCatalog = "hardhouse";
             builder.IntegratedSecurity = true;
             connectionString = builder.ToString();
             connection = new SqlConnection(connectionString);
             Trace.WriteLine("Conexión a la DB: " + connectionString);
         }
+
 
 
 

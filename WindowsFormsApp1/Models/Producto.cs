@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Models
         public decimal Precio { get; set; }
         public bool Activo { get; set; }
         public long Categoria { get; set; }
-        public String Image { get; set; }
+        public byte[] Image { get; set; }
 
 
     }

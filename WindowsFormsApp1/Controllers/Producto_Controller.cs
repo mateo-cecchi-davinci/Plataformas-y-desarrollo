@@ -80,7 +80,8 @@ namespace WindowsFormsApp1.Controllers
                     prod.Precio = reader.GetDecimal(4);
                     prod.Categoria = reader.GetInt32(5);
                     prod.Activo = reader.GetBoolean(6);
-                    prod.Image = reader.GetString(7);
+                    byte[] imagenBytes = (byte[])reader["image"]; // Lee la imagen como bytes
+                    prod.Image = imagenBytes;
                     lista.Add(prod);
 
                 }

@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
-            guna2CirclePictureBox1.Image = Image.FromFile("C:\\Users\\Usuario\\source\\repos\\WindowsFormsApp1\\WindowsFormsApp1\\Resources\\imagenes\\usuarios\\" + imgName + ".jpeg");
+            guna2CirclePictureBox1.Image = Image.FromFile("C:\\PlataformasDesarrollo\\ecommerce\\images\\" + imgName + ".jpg");
             label2.Text = nombreUsuario;
 
             if(rolUsuario == false)
