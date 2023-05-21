@@ -195,7 +195,7 @@
             this.confirmarAgregarUsuarioButton.TabIndex = 19;
             this.confirmarAgregarUsuarioButton.Text = "Confirmar";
             this.confirmarAgregarUsuarioButton.UseVisualStyleBackColor = true;
-            this.confirmarAgregarUsuarioButton.Click += new System.EventHandler(this.confirmarAgregarUsuarioButton_Click);
+            this.confirmarAgregarUsuarioButton.Click += new System.EventHandler(this.btnAgregarUsuario);
             // 
             // FormAgregarUsuario
             // 

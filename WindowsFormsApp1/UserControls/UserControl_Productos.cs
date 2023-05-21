@@ -115,7 +115,7 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
-        private void buttonEditarUsuario_Click(object sender, EventArgs e)
+        private void buttonEditarProducto_Click(object sender, EventArgs e)
         {
             if (tablaProductos.SelectedRows.Count > 0)
             {

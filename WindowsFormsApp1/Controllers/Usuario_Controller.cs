@@ -25,8 +25,8 @@ namespace WindowsFormsApp1.Controllers
                "@dni, " +
                "@nombre_usuario, " +
                "@contraseña, " +
-               "@admin " +
-               "@activo, " +
+               "@admin, " +
+               "@activo " +
                ");";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
@@ -42,13 +42,89 @@ namespace WindowsFormsApp1.Controllers
             {
                 DB_controller.connection.Open();
                 cmd.ExecuteNonQuery();
-                DB_controller.connection.Close();
             }
             catch (Exception ex)
             {
                 throw new Exception("Hay un error en la query: " + ex.Message);
             }
-            return false;
+            finally
+            {
+                DB_controller.connection.Close();
+            }
+            return true;
+        }
+
+        public static bool validoNombreCompleto(string nombre, string apellido)
+        {
+            string nombreCompleto = string.Empty;
+
+            string query = @"select dbo.usuario.nombre, dbo.usuario.apellido 
+                                from dbo.usuario 
+                                    where dbo.usuario.nombre = @nombre AND dbo.usuario.apellido = @apellido";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            cmd.Parameters.AddWithValue("@apellido", apellido);
+
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    nombreCompleto = reader.GetString(0);
+                    nombreCompleto += " " + reader.GetString(1);
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return string.IsNullOrEmpty(nombreCompleto) ? true : false;
+        }
+
+        public static Usuario findById(long id)
+        {
+            Usuario usuario = new Usuario();
+
+
+            string query = "select * from dbo.usuario where dbo.usuario.id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    usuario._id = reader.GetInt64(0);
+                    usuario.Name = reader.GetString(1);
+                    usuario.Apellido = reader.GetString(2);
+                    usuario.Dni = reader.GetString(3);
+                    usuario.UserName = reader.GetString(4);
+                    usuario.Contraseña = reader.GetString(5);
+                    usuario.Admin = reader.GetBoolean(6);
+                    usuario.Activo = reader.GetBoolean(6);
+
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return usuario;
         }
 
         public static Usuario findByUserName(string username)
@@ -78,12 +154,21 @@ namespace WindowsFormsApp1.Controllers
 
             return usuario;
         }
-        public static bool editarUsuario(Usuario usuario)
+        public static bool actualizarUsuario(long id, Usuario usuario)
         {
             //Darlo de alta en la BBDD
-            string query = "UPDATE dbo.usuario SET nombre=@nombre, apellido=@apellido, dni=@dni, nombre_usuario=@nombre_usuario, contraseña=@contraseña, admin=@admin, activo=@activo;";
+            string query = @"UPDATE dbo.usuario 
+                            SET nombre=@nombre,
+                                apellido=@apellido,
+                                dni=@dni,
+                                nombre_usuario=@nombre_usuario,
+                                contraseña=@contraseña,
+                                admin=@admin, 
+                                activo=@activo
+                                    WHERE id=@id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@nombre", usuario.Name);
             cmd.Parameters.AddWithValue("@apellido", usuario.Apellido);
             cmd.Parameters.AddWithValue("@dni", usuario.Dni);
@@ -96,13 +181,16 @@ namespace WindowsFormsApp1.Controllers
             {
                 DB_controller.connection.Open();
                 cmd.ExecuteNonQuery();
-                DB_controller.connection.Close();
             }
             catch (Exception ex)
             {
                 throw new Exception("Error: " + ex.Message);
             }
-            return false;
+            finally
+            {
+                DB_controller.connection.Close();
+            }
+            return true;
         }
     
         public static List<Usuario> usuarios()
