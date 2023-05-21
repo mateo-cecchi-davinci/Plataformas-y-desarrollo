@@ -27,17 +27,17 @@ namespace WindowsFormsApp1.UserControls
 
             usuarios = Usuario_Controller.usuarios();
 
-            guna2DataGridView1.Rows.Clear();
+            tablaUsuarios.Rows.Clear();
             foreach (Usuario usuario in usuarios)
             {
-                int rowIndex = guna2DataGridView1.Rows.Add();
+                int rowIndex = tablaUsuarios.Rows.Add();
 
-                guna2DataGridView1.Rows[rowIndex].Cells[0].Value = usuario._id;
-                guna2DataGridView1.Rows[rowIndex].Cells[1].Value = usuario.Name;
-                guna2DataGridView1.Rows[rowIndex].Cells[2].Value = usuario.Apellido;
-                guna2DataGridView1.Rows[rowIndex].Cells[3].Value = usuario.Dni;
-                guna2DataGridView1.Rows[rowIndex].Cells[4].Value = usuario.UserName;
-                guna2DataGridView1.Rows[rowIndex].Cells[5].Value = usuario.Activo;
+                tablaUsuarios.Rows[rowIndex].Cells[0].Value = usuario._id;
+                tablaUsuarios.Rows[rowIndex].Cells[1].Value = usuario.Name;
+                tablaUsuarios.Rows[rowIndex].Cells[2].Value = usuario.Apellido;
+                tablaUsuarios.Rows[rowIndex].Cells[3].Value = usuario.Dni;
+                tablaUsuarios.Rows[rowIndex].Cells[4].Value = usuario.UserName;
+                tablaUsuarios.Rows[rowIndex].Cells[5].Value = usuario.Activo;
 
 
                 /*if (prod.Activo)
@@ -59,16 +59,13 @@ namespace WindowsFormsApp1.UserControls
 
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void btnCambiarEstadoUsuario_Click(object sender, EventArgs e)
         {
-            if (guna2DataGridView1.SelectedRows.Count > 0)
+            if (tablaUsuarios.SelectedRows.Count > 0)
             {
-                DataGridViewRow filaSeleccionada = guna2DataGridView1.SelectedRows[0];
+                DataGridViewRow filaSeleccionada = tablaUsuarios.SelectedRows[0];
                 String celdaId = filaSeleccionada.Cells["ID"].Value.ToString();
                 String celdaEstado = filaSeleccionada.Cells["Activo"].Value.ToString();
-
-
-
                 long id = Int64.Parse(celdaId);
                 bool activo = Boolean.Parse(celdaEstado);
                 if (Usuario_Controller.cambiarEstadoUsuario(id, activo))
@@ -86,7 +83,7 @@ namespace WindowsFormsApp1.UserControls
 
         private void buttonAgregarUsuario_Click(object sender, EventArgs e)
         {
-            FormAgregarUsuario formAgregarUsuario = new FormAgregarUsuario();
+            FormAgregarUsuario formAgregarUsuario = new FormAgregarUsuario("ADD", 0);
 
             DialogResult dialogResult = formAgregarUsuario.ShowDialog();
 
@@ -99,6 +96,33 @@ namespace WindowsFormsApp1.UserControls
         private void buttonBuscarUsuario_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonEditarUsuario_Click(object sender, EventArgs e)
+        {
+            if (tablaUsuarios.SelectedRows.Count > 0)
+            {
+                DataGridViewRow filaSeleccionada = tablaUsuarios.SelectedRows[0];
+
+                String celdaId = filaSeleccionada.Cells["ID"].Value.ToString();
+
+                long id = Int64.Parse(celdaId);
+
+                FormAgregarUsuario formAgregar = new FormAgregarUsuario("EDIT", id);
+
+                DialogResult dialogResult = formAgregar.ShowDialog();
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    mostrarUsuarios();
+                }
+
+                mostrarUsuarios();
+            }
+            else
+            {
+                MessageBox.Show("Debes seleccionar un usuario en la tabla", "Error");
+            }
         }
     }
 }

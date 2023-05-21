@@ -22,9 +22,22 @@ namespace WindowsFormsApp1
     {
         string situacionState = "ADD";
         long idToEdit = 0;
-        public FormAgregarUsuario()
+        public FormAgregarUsuario(string situacion, long id)
         {
             InitializeComponent();
+            if (id != 0)
+            {
+                situacionState = situacion;
+                idToEdit = id;
+                label1.Text = "Editar un Usuario";
+                confirmarAgregarUsuarioButton.Text = "Actualizar";
+                Usuario usarioToEdit = Usuario_Controller.findById(id);
+                txtAgregarNombreUsuario.Text = usarioToEdit.Name;
+                txtApellidoUsuario.Text = usarioToEdit.Apellido;
+                txtDniUsuario.Text = usarioToEdit.Dni;
+                txtUserName.Text = usarioToEdit.UserName;
+                txtContraseñaUsuario.Text = usarioToEdit.Contraseña;
+            }
 
         }
 
@@ -38,17 +51,53 @@ namespace WindowsFormsApp1
             ImageCreator.Crear(imagenUsuario);
         }
 
-        private void confirmarAgregarUsuarioButton_Click(object sender, EventArgs e)
+        private void btnAgregarUsuario(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
-            usuario.Name = txtAgregarNombreUsuario.Text;
-            usuario.Apellido = txtApellidoUsuario.Text;
             usuario.Dni = txtDniUsuario.Text;
             usuario.UserName = txtUserName.Text;
             usuario.Contraseña = txtContraseñaUsuario.Text;
             usuario.imagen = ConvertirImg();
+            usuario.Activo = true;
+            usuario.Admin = true;
 
-            
+            //Validaciones
+
+            if(Usuario_Controller.validoNombreCompleto(txtAgregarNombreUsuario.Text, txtApellidoUsuario.Text))
+            {
+                usuario.Name = txtAgregarNombreUsuario.Text;
+                usuario.Apellido = txtApellidoUsuario.Text;
+            }
+            else
+            {
+                MessageBox.Show("Este usuario ya ha sido registrado", "Error al agregar un usuario");
+            }
+                
+
+            if (situacionState.Equals("EDIT"))
+            {
+                if (Usuario_Controller.actualizarUsuario(idToEdit, usuario))
+                {
+                    MessageBox.Show("Usuario agregado correctamente", "Exito al agregar");
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Debes completar todos los campos", "Error al agregar un usuario");
+                }
+            }
+            else
+            {
+                if (Usuario_Controller.crearUsuario(usuario))
+                {
+                    MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Debes completar todos los campos", "Error al agregar un usuario");
+                }
+            }
         }
 
         private byte[] ConvertirImg()
