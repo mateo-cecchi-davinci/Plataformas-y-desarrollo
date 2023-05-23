@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfirmarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfirmarVenta.Designer.cs">
+      <DependentUpon>ConfirmarVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="UserControls\UserControl_Ventas.Designer.cs">
       <DependentUpon>UserControl_Ventas.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConfirmarVenta.resx">
+      <DependentUpon>ConfirmarVenta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAgregarProducto.resx">
       <DependentUpon>FormAgregarProducto.cs</DependentUpon>
     </EmbeddedResource>

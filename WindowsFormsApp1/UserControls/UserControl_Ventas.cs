@@ -16,12 +16,25 @@ namespace WindowsFormsApp1.UserControls
     public partial class UserControl_Ventas : UserControl
     {
         Producto prodToAdd;
+
         Venta venta = new Venta();
 
         public UserControl_Ventas()
         {
             InitializeComponent();
             MostrarProductos(null);
+            List <Categoria> categorias = Categoria_Controller.obtenerTodas();
+
+            List<Categoria> lista = Categoria_Controller.obtenerTodas();
+
+            foreach (Categoria c in lista)
+            {
+                comboboxCategoria.Items.Add(c.Nombre);
+                foreach (Categoria subcat in c.subcategorias)
+                {
+                    comboboxCategoria.Items.Add(subcat.Nombre);
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -46,7 +59,14 @@ namespace WindowsFormsApp1.UserControls
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta);
 
+            DialogResult dialogResult = formConfirmarVenta.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                
+            }
         }
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
@@ -72,6 +92,7 @@ namespace WindowsFormsApp1.UserControls
                 String celdaId = filaSeleccionada.Cells["Id"].Value.ToString();
                 
                 long id = Int64.Parse(celdaId);
+                MessageBox.Show(id.ToString() , "");
 
                 AgregarProductoAVenta(id);
                 MostrarProductosDeVenta();
@@ -115,6 +136,35 @@ namespace WindowsFormsApp1.UserControls
 
 
 
+            foreach (ItemVenta item in venta.Items)
+            {
+                if (item.Producto.Id == prod.Id)
+                {
+                    if (item.Cantidad < cantidad && prod.Stock > cantidad)
+                    {
+                        item.Cantidad += cantidad;
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error" + cantidad, "");
+
+                    }
+                }
+
+            }
+            if (prod.Stock >= cantidad)
+            {                 
+                    ItemVenta itemVenta = new ItemVenta();
+                    itemVenta.Producto = prod;
+                    itemVenta.Cantidad = cantidad;
+                    venta.Items.Add(itemVenta);
+                
+            } else
+            {
+                MessageBox.Show("No hay suficiente stock", "");
+            }
+
         }
 
         public void MostrarProductosDeVenta()
@@ -140,5 +190,16 @@ namespace WindowsFormsApp1.UserControls
             
         }
 
+        private void txtNombreProd_TextChanged(object sender, EventArgs e)
+        {
+            MostrarProductos( txtNombreProd.Text );
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Categoria cat = Categoria_Controller.findByName(comboboxCategoria.SelectedItem.ToString());
+
+            MostrarProductos(txtNombreProd.Text);
+        }
     }
 }
