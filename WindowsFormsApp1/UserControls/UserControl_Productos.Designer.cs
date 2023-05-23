@@ -46,7 +46,6 @@
             this.buttonAgregarProducto = new System.Windows.Forms.PictureBox();
             this.textBoxBuscarProductos = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEditarProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEstadoProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buscadorProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonAgregarProducto)).BeginInit();
@@ -171,7 +170,7 @@
             this.buttonEditarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEditarUsuario.TabIndex = 6;
             this.buttonEditarUsuario.TabStop = false;
-            this.buttonEditarUsuario.Click += new System.EventHandler(this.buttonEditarUsuario_Click);
+            this.buttonEditarUsuario.Click += new System.EventHandler(this.buttonEditarProducto_Click);
             // 
             // buttonEstadoProducto
             // 
@@ -234,7 +233,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBoxBuscarProductos);
-            this.Controls.Add(this.buttonEditarProducto);
             this.Controls.Add(this.buttonEstadoProducto);
             this.Controls.Add(this.tablaProductos);
             this.Controls.Add(this.buscadorProductos);
@@ -242,7 +240,6 @@
             this.Name = "UserControl_Productos";
             this.Size = new System.Drawing.Size(962, 482);
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.buttonEditarProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEstadoProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buscadorProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonAgregarProducto)).EndInit();
