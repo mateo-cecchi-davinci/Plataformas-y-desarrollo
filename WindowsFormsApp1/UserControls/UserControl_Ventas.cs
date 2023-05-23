@@ -65,8 +65,6 @@ namespace WindowsFormsApp1.UserControls
         {
             ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta);
 
-            ////Validar email - nombrecliente - direccion y medio de pago
-            ///
 
             if(venta.Items.Count < 1)
             {
@@ -163,11 +161,7 @@ namespace WindowsFormsApp1.UserControls
         public void AgregarProductoAVenta(long id)
         {
             Producto prod = Producto_Controller.findById(id);
-
-
             int cantidad = Int32.Parse(txtCantidadProd.Value.ToString());
-
-
 
             foreach (ItemVenta item in venta.Items)
             {
@@ -233,6 +227,22 @@ namespace WindowsFormsApp1.UserControls
             Categoria cat = Categoria_Controller.findByName(comboboxCategoria.SelectedItem.ToString());
 
             MostrarProductos(txtNombreProd.Text);
+        }
+
+        private void btnDeleteSalesProduct_Click(object sender, EventArgs e)
+        {
+            if (foundProductsTable.SelectedRows.Count > 0)
+            {
+                DataGridViewRow filaSeleccionada = foundProductsTable.SelectedRows[0];
+
+                long id = Int64.Parse(filaSeleccionada.Cells["Id"].Value.ToString());
+
+                Producto prod = Producto_Controller.findById(id);
+                ItemVenta item = venta.Items.Where(x => x.Producto.Nombre == prod.Nombre).FirstOrDefault();
+                venta.Items.Remove(item);
+
+                MostrarProductosDeVenta();
+            }
         }
     }
 }

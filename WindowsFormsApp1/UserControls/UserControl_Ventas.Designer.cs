@@ -56,7 +56,7 @@
             this.txtFecha = new System.Windows.Forms.Label();
             this.txtCantidadProd = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.btnAgregarProd = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.btnDeleteSalesProduct = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -75,7 +75,7 @@
             this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.tablaVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadProd)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteSalesProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.foundProductsTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -245,6 +245,7 @@
             this.txtBoxNombreClienteVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBoxNombreClienteVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBoxNombreClienteVentas.Location = new System.Drawing.Point(32, 165);
+            this.txtBoxNombreClienteVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxNombreClienteVentas.Name = "txtBoxNombreClienteVentas";
             this.txtBoxNombreClienteVentas.PasswordChar = '\0';
             this.txtBoxNombreClienteVentas.PlaceholderText = "";
@@ -284,6 +285,7 @@
             this.txtBoxEmailVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBoxEmailVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBoxEmailVentas.Location = new System.Drawing.Point(303, 165);
+            this.txtBoxEmailVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxEmailVentas.Name = "txtBoxEmailVentas";
             this.txtBoxEmailVentas.PasswordChar = '\0';
             this.txtBoxEmailVentas.PlaceholderText = "";
@@ -349,6 +351,7 @@
             this.txtCantidadProd.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCantidadProd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtCantidadProd.Location = new System.Drawing.Point(1132, 591);
+            this.txtCantidadProd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtCantidadProd.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -374,16 +377,17 @@
             this.btnAgregarProd.Text = "Agregar";
             this.btnAgregarProd.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
-            // guna2PictureBox1
+            // btnDeleteSalesProduct
             // 
-            this.guna2PictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.eliminar_logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(818, 148);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(66, 69);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 22;
-            this.guna2PictureBox1.TabStop = false;
+            this.btnDeleteSalesProduct.Image = global::WindowsFormsApp1.Properties.Resources.eliminar_logo;
+            this.btnDeleteSalesProduct.ImageRotate = 0F;
+            this.btnDeleteSalesProduct.Location = new System.Drawing.Point(916, 140);
+            this.btnDeleteSalesProduct.Name = "btnDeleteSalesProduct";
+            this.btnDeleteSalesProduct.Size = new System.Drawing.Size(66, 69);
+            this.btnDeleteSalesProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnDeleteSalesProduct.TabIndex = 22;
+            this.btnDeleteSalesProduct.TabStop = false;
+            this.btnDeleteSalesProduct.Click += new System.EventHandler(this.btnDeleteSalesProduct_Click);
             // 
             // label8
             // 
@@ -425,6 +429,7 @@
             this.txtBoxAddressVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBoxAddressVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBoxAddressVentas.Location = new System.Drawing.Point(555, 165);
+            this.txtBoxAddressVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxAddressVentas.Name = "txtBoxAddressVentas";
             this.txtBoxAddressVentas.PasswordChar = '\0';
             this.txtBoxAddressVentas.PlaceholderText = "";
@@ -617,7 +622,7 @@
             this.Controls.Add(this.txtBoxAddressVentas);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.guna2PictureBox1);
+            this.Controls.Add(this.btnDeleteSalesProduct);
             this.Controls.Add(this.btnAgregarProd);
             this.Controls.Add(this.txtCantidadProd);
             this.Controls.Add(this.txtFecha);
@@ -640,7 +645,7 @@
             this.Load += new System.EventHandler(this.UserControl_Ventas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadProd)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDeleteSalesProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.foundProductsTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -666,7 +671,7 @@
         private System.Windows.Forms.Label txtFecha;
         private Guna.UI2.WinForms.Guna2NumericUpDown txtCantidadProd;
         private Guna.UI2.WinForms.Guna2Button btnAgregarProd;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private Guna.UI2.WinForms.Guna2PictureBox btnDeleteSalesProduct;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
