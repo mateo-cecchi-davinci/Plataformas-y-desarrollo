@@ -19,13 +19,17 @@ namespace WindowsFormsApp1.UserControls
 
         Venta venta = new Venta();
 
-        public UserControl_Ventas()
+        public UserControl_Ventas(Usuario user)
         {
             InitializeComponent();
             MostrarProductos(null);
             List <Categoria> categorias = Categoria_Controller.obtenerTodas();
 
             List<Categoria> lista = Categoria_Controller.obtenerTodas();
+            label15.Text = DateTime.Now.Date.ToShortDateString();
+            label14.Text = user.UserName.ToString();
+
+
 
             foreach (Categoria c in lista)
             {
@@ -57,9 +61,42 @@ namespace WindowsFormsApp1.UserControls
 
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
             ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta);
+
+            ////Validar email - nombrecliente - direccion y medio de pago
+            ///
+
+            if(venta.Items.Count < 1)
+            {
+                MessageBox.Show("Debes seleccionar al menos un producto para realizar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text))
+            {
+                MessageBox.Show("Por favor ingresa tu nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtBoxEmailVentas.Text))
+            {
+                MessageBox.Show("Por favor ingresa un email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
+            {
+                MessageBox.Show("Por favor ingresa una direccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (radioBtnTarjeta.Checked.Equals(false) && radioBtnEfectivo.Checked.Equals(false))
+            {
+                MessageBox.Show("Por favor selecciona un metodo de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             DialogResult dialogResult = formConfirmarVenta.ShowDialog();
 
@@ -71,11 +108,7 @@ namespace WindowsFormsApp1.UserControls
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
         {
-
-
-
             MostrarProductos(txtNombreProd.Text);
-
         }
 
         private void guna2NumericUpDown1_ValueChanged(object sender, EventArgs e)

@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
             if(u != null )
             {
                if( guna2TextBox1.Text.Equals(u.Contraseña)) {
-                    FormInicio form1 = new FormInicio(u.Img, u.UserName, u.Admin);
+                    FormInicio form1 = new FormInicio(u);
                     form1.Show();
                 }
                 else

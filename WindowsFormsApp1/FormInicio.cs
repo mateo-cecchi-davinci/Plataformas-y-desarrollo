@@ -7,21 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 using WindowsFormsApp1.UserControls;
 
 namespace WindowsFormsApp1
 {
     public partial class FormInicio : Form
     {
-        public FormInicio(string imgName, string nombreUsuario, bool rolUsuario )
+        public Usuario user;
+        public FormInicio(Usuario usuario)
         {
             InitializeComponent();
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
-            guna2CirclePictureBox1.Image = Image.FromFile("C:\\PlataformasDesarrollo\\ecommerce\\images\\" + imgName + ".jpg");
-            label2.Text = nombreUsuario;
+            guna2CirclePictureBox1.Image = Image.FromFile("C:\\PlataformasDesarrollo\\ecommerce\\images\\" + usuario.Img + ".jpg");
+            label2.Text = usuario.UserName;
+            user = usuario;
 
-            if(rolUsuario == false)
+            if (usuario.Admin == false)
             {
                 buttonInicioPantalla.Hide();
                 buttonUsuarios.Hide();
@@ -30,7 +33,7 @@ namespace WindowsFormsApp1
 
         private void label1_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void addUserControl(UserControl userControl)
@@ -61,7 +64,7 @@ namespace WindowsFormsApp1
 
         private void buttonVentas_Click(object sender, EventArgs e)
         {
-            UserControl_Ventas ucVentas = new UserControl_Ventas();
+            UserControl_Ventas ucVentas = new UserControl_Ventas(this.user);
             addUserControl(ucVentas);
         }
 
