@@ -64,7 +64,9 @@ namespace WindowsFormsApp1
         }
 
         // TO DO 
-        /* 
+         /* 
+          * 
+          *Mostrar producto por categoria y nombre
          Traer datos de cliente y poner fecha
          Hacer algo con el medio de pago ( si es tarjeta, al generar venta, le pones un form que tenga para poner datos)
          Generar PDF de Venta

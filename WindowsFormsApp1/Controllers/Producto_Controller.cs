@@ -49,7 +49,7 @@ namespace WindowsFormsApp1.Controllers
 
         }
 
-        public static List<Producto> obtenerTodos(string text = null)
+        public static List<Producto> obtenerTodos(string text = null )
         {
             List<Producto> lista = new List<Producto>();
             try
@@ -64,6 +64,7 @@ namespace WindowsFormsApp1.Controllers
                     query += " WHERE nombre LIKE @text";
 
                     cmd.Parameters.Add(new SqlParameter("@text", $"%{text}%"));
+
                 }
 
                 cmd.CommandText = query;

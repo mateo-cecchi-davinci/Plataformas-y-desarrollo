@@ -23,6 +23,18 @@ namespace WindowsFormsApp1.UserControls
         {
             InitializeComponent();
             MostrarProductos(null);
+            List <Categoria> categorias = Categoria_Controller.obtenerTodas();
+
+            List<Categoria> lista = Categoria_Controller.obtenerTodas();
+
+            foreach (Categoria c in lista)
+            {
+                comboboxCategoria.Items.Add(c.Nombre);
+                foreach (Categoria subcat in c.subcategorias)
+                {
+                    comboboxCategoria.Items.Add(subcat.Nombre);
+                }
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -178,5 +190,16 @@ namespace WindowsFormsApp1.UserControls
             
         }
 
+        private void txtNombreProd_TextChanged(object sender, EventArgs e)
+        {
+            MostrarProductos( txtNombreProd.Text );
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Categoria cat = Categoria_Controller.findByName(comboboxCategoria.SelectedItem.ToString());
+
+            MostrarProductos(txtNombreProd.Text);
+        }
     }
 }

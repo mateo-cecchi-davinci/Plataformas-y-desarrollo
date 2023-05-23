@@ -131,5 +131,10 @@ namespace WindowsFormsApp1
         {
 
         }
+
+        private void txtCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
