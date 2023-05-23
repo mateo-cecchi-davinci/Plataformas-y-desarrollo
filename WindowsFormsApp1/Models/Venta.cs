@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.Models
         {
             foreach (ItemVenta item in Items) {
 
-                total += item.Producto.Precio * item.Cantidad;
+                this.total += item.Producto.Precio * item.Cantidad;
 
             }
         }
