@@ -158,6 +158,60 @@ namespace WindowsFormsApp1.Controllers
             }
         }
 
+        public static List<Producto> obtenerTodosPorCategoria(string categoria)
+        {
+            List<Producto> lista = new List<Producto>();
+            try
+            {
+                //SELECT*
+                //FROM producto
+                //INNER JOIN categoria ON producto.categoria = categoria.id
+                //WHERE categoria.nombre = 'Refrigeracion Liquida';
+
+                DB_controller.connection.Open();
+
+                string query = @"SELECT * 
+                                 FROM dbo.producto 
+                                 INNER JOIN dbo.categoria 
+                                 ON dbo.producto.categoria = dbo.categoria.id
+                                 WHERE dbo.categoria.nombre LIKE @categoria";
+
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.Parameters.Add(new SqlParameter("@categoria", $"%{categoria}%"));
+
+                cmd.CommandText = query;
+                cmd.Connection = DB_controller.connection;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Producto prod = new Producto();
+                    prod.Id = reader.GetInt64(0);
+                    prod.Nombre = reader.GetString(1);
+                    prod.Descripcion = reader.GetString(2);
+                    prod.Stock = reader.GetInt32(3);
+                    prod.Precio = reader.GetDecimal(4);
+                    prod.Categoria = reader.GetInt32(5);
+                    prod.Activo = reader.GetBoolean(6);
+                    byte[] imagenBytes = (byte[])reader["image"]; // Lee la imagen como bytes
+                    prod.Image = imagenBytes;
+                    lista.Add(prod);
+
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return lista;
+        }
+
         public static bool actualizarProducto(long id, Producto producto)
         {
             string query = "update dbo.producto set nombre = @nombre, descripcion = @descripcion, stock = @stock, precio = @precio, categoria = @categoria where id = @id;";

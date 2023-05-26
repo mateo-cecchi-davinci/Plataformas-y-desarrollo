@@ -51,6 +51,11 @@ namespace WindowsFormsApp1
             ImageCreator.Crear(imagenUsuario);
         }
 
+        private void validarConstraseña(string constraseña)
+        {
+
+        }
+
         private void btnAgregarUsuario(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();

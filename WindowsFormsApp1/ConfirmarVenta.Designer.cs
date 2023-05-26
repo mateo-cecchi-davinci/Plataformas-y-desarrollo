@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaConfirmarVenta = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFinalizarVenta = new Guna.UI2.WinForms.Guna2Button();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFinalizarVenta = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.Label();
@@ -52,16 +52,16 @@
             // 
             // tablaConfirmarVenta
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.tablaConfirmarVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaConfirmarVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.tablaConfirmarVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaConfirmarVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.tablaConfirmarVenta.ColumnHeadersHeight = 15;
             this.tablaConfirmarVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.tablaConfirmarVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -70,19 +70,21 @@
             this.Descripcion,
             this.Cantidad,
             this.Subtotal});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaConfirmarVenta.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaConfirmarVenta.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaConfirmarVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.tablaConfirmarVenta.Location = new System.Drawing.Point(110, 104);
+            this.tablaConfirmarVenta.Location = new System.Drawing.Point(165, 160);
+            this.tablaConfirmarVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaConfirmarVenta.Name = "tablaConfirmarVenta";
             this.tablaConfirmarVenta.RowHeadersVisible = false;
-            this.tablaConfirmarVenta.Size = new System.Drawing.Size(635, 288);
+            this.tablaConfirmarVenta.RowHeadersWidth = 62;
+            this.tablaConfirmarVenta.Size = new System.Drawing.Size(952, 443);
             this.tablaConfirmarVenta.TabIndex = 0;
             this.tablaConfirmarVenta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tablaConfirmarVenta.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -107,13 +109,44 @@
             this.tablaConfirmarVenta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.tablaConfirmarVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 8;
+            this.Codigo.Name = "Codigo";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MinimumWidth = 8;
+            this.Precio.Name = "Precio";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.MinimumWidth = 8;
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 8;
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.MinimumWidth = 8;
+            this.Subtotal.Name = "Subtotal";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(327, 41);
+            this.label1.Location = new System.Drawing.Point(490, 63);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 29);
+            this.label1.Size = new System.Drawing.Size(315, 44);
             this.label1.TabIndex = 1;
             this.label1.Text = "Confirmar Venta";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -122,9 +155,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(586, 449);
+            this.label2.Location = new System.Drawing.Point(879, 691);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 18);
+            this.label2.Size = new System.Drawing.Size(202, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Total (con IVA):";
             // 
@@ -132,18 +166,20 @@
             // 
             this.txtTotal.AutoSize = true;
             this.txtTotal.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(586, 421);
+            this.txtTotal.Location = new System.Drawing.Point(879, 648);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(0, 18);
+            this.txtTotal.Size = new System.Drawing.Size(0, 29);
             this.txtTotal.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(329, 400);
+            this.label3.Location = new System.Drawing.Point(494, 615);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 18);
+            this.label3.Size = new System.Drawing.Size(113, 29);
             this.label3.TabIndex = 5;
             this.label3.Text = "IVA(%):";
             // 
@@ -155,53 +191,32 @@
             this.txtFinalizarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.txtFinalizarVenta.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFinalizarVenta.ForeColor = System.Drawing.Color.White;
-            this.txtFinalizarVenta.Location = new System.Drawing.Point(345, 473);
+            this.txtFinalizarVenta.Location = new System.Drawing.Point(518, 728);
+            this.txtFinalizarVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFinalizarVenta.Name = "txtFinalizarVenta";
-            this.txtFinalizarVenta.Size = new System.Drawing.Size(175, 45);
+            this.txtFinalizarVenta.Size = new System.Drawing.Size(262, 69);
             this.txtFinalizarVenta.TabIndex = 6;
             this.txtFinalizarVenta.Text = "Finalizar Venta";
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
+            this.txtFinalizarVenta.Click += new System.EventHandler(this.txtFinalizarVenta_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(730, 451);
+            this.label4.Location = new System.Drawing.Point(1095, 694);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 16);
+            this.label4.Size = new System.Drawing.Size(0, 25);
             this.label4.TabIndex = 7;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(587, 421);
+            this.label5.Location = new System.Drawing.Point(880, 648);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(84, 18);
+            this.label5.Size = new System.Drawing.Size(123, 29);
             this.label5.TabIndex = 9;
             this.label5.Text = "Subtotal:";
             // 
@@ -209,17 +224,19 @@
             // 
             this.txtSubtotal.AutoSize = true;
             this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSubtotal.Location = new System.Drawing.Point(677, 423);
+            this.txtSubtotal.Location = new System.Drawing.Point(1016, 651);
+            this.txtSubtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtSubtotal.Name = "txtSubtotal";
-            this.txtSubtotal.Size = new System.Drawing.Size(0, 16);
+            this.txtSubtotal.Size = new System.Drawing.Size(0, 25);
             this.txtSubtotal.TabIndex = 10;
             // 
             // txtTotalConIva
             // 
             this.txtTotalConIva.AutoSize = true;
-            this.txtTotalConIva.Location = new System.Drawing.Point(730, 453);
+            this.txtTotalConIva.Location = new System.Drawing.Point(1095, 697);
+            this.txtTotalConIva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txtTotalConIva.Name = "txtTotalConIva";
-            this.txtTotalConIva.Size = new System.Drawing.Size(0, 13);
+            this.txtTotalConIva.Size = new System.Drawing.Size(0, 20);
             this.txtTotalConIva.TabIndex = 11;
             this.txtTotalConIva.Click += new System.EventHandler(this.label7_Click);
             // 
@@ -233,17 +250,18 @@
             this.comboboxIva.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.comboboxIva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.comboboxIva.ItemHeight = 30;
-            this.comboboxIva.Location = new System.Drawing.Point(332, 423);
+            this.comboboxIva.Location = new System.Drawing.Point(498, 651);
+            this.comboboxIva.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboboxIva.Name = "comboboxIva";
-            this.comboboxIva.Size = new System.Drawing.Size(201, 36);
+            this.comboboxIva.Size = new System.Drawing.Size(300, 36);
             this.comboboxIva.TabIndex = 12;
             this.comboboxIva.SelectedIndexChanged += new System.EventHandler(this.comboboxIva_SelectedIndexChanged);
             // 
             // ConfirmarVenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 621);
+            this.ClientSize = new System.Drawing.Size(1320, 955);
             this.Controls.Add(this.comboboxIva);
             this.Controls.Add(this.txtTotalConIva);
             this.Controls.Add(this.txtSubtotal);
@@ -255,6 +273,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaConfirmarVenta);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ConfirmarVenta";
             this.Text = "ConfirmarVenta";
             this.Load += new System.EventHandler(this.ConfirmarVenta_Load);

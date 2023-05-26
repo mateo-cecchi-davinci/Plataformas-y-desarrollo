@@ -158,6 +158,38 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
+        public void MostrarProductosPorCategoria(string categoria)
+        {
+            List<Producto> productos = new List<Producto>();
+
+            foundProductsTable.Rows.Clear();
+
+            productos = Producto_Controller.obtenerTodosPorCategoria(categoria);
+
+            if(productos.Count > 0)
+            {
+                foreach (Producto prod in productos)
+                {
+                    int rowIndex = foundProductsTable.Rows.Add();
+
+
+                    foundProductsTable.Rows[rowIndex].Cells[0].Value = prod.Nombre;
+                    foundProductsTable.Rows[rowIndex].Cells[1].Value = prod.Stock.ToString();
+                    foundProductsTable.Rows[rowIndex].Cells[2].Value = prod.Id;
+
+                }
+            }
+            else
+            {
+                int rowIndex = foundProductsTable.Rows.Add();
+
+                foundProductsTable.Rows[rowIndex].Cells[0].Value = "Sin productos";
+                foundProductsTable.Rows[rowIndex].Cells[1].Value = "0";
+                foundProductsTable.Rows[rowIndex].Cells[2].Value = 0;
+            }
+
+        }
+
         public void AgregarProductoAVenta(long id)
         {
             Producto prod = Producto_Controller.findById(id);
@@ -196,12 +228,12 @@ namespace WindowsFormsApp1.UserControls
 
         public void MostrarProductosDeVenta()
         {
-            tablaVenta.Rows.Clear();
+           tablaVenta.Rows.Clear();
+
            if( venta.Items.Count > 0)
-            {
+           {
                 foreach (ItemVenta itemVenta in venta.Items)
                 {
-
                     int rowIndex = tablaVenta.Rows.Add();
 
                     tablaVenta.Rows[rowIndex].Cells[0].Value = itemVenta.Producto.Id;
@@ -209,9 +241,6 @@ namespace WindowsFormsApp1.UserControls
                     tablaVenta.Rows[rowIndex].Cells[2].Value = itemVenta.Producto.Precio;
                     tablaVenta.Rows[rowIndex].Cells[3].Value = itemVenta.Producto.Descripcion;
                     tablaVenta.Rows[rowIndex].Cells[4].Value = itemVenta.Cantidad;
-
-
-
                 }
             }
             
@@ -219,14 +248,45 @@ namespace WindowsFormsApp1.UserControls
 
         private void txtNombreProd_TextChanged(object sender, EventArgs e)
         {
-            MostrarProductos( txtNombreProd.Text );
+            if(comboboxCategoria.SelectedItem == null)
+            {
+                label5.Text = "Debes seleccionar una Categoria";
+                label5.ForeColor = Color.Red;
+                txtNombreProd.Clear();
+                comboboxCategoria.Focus();
+            }
+            else
+            {
+                label5.Text = "Producto:";
+                label5.ForeColor = Color.Black;
+                List<Producto> productos = Producto_Controller.obtenerTodosPorCategoria(comboboxCategoria.SelectedItem.ToString());
+                List<Producto> productosFiltrados = productos.FindAll(p => p.Nombre.Contains(txtNombreProd.Text));
+
+                foundProductsTable.Rows.Clear();
+
+
+                foreach (Producto prod in productosFiltrados)
+                {
+                    int rowIndex = foundProductsTable.Rows.Add();
+
+
+                    foundProductsTable.Rows[rowIndex].Cells[0].Value = prod.Nombre;
+                    foundProductsTable.Rows[rowIndex].Cells[1].Value = prod.Stock.ToString();
+                    foundProductsTable.Rows[rowIndex].Cells[2].Value = prod.Id;
+
+                }
+            }
+            
         }
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtNombreProd.Clear();
+            label5.Text = "Producto:";
+            label5.ForeColor = Color.Black;
             Categoria cat = Categoria_Controller.findByName(comboboxCategoria.SelectedItem.ToString());
-
-            MostrarProductos(txtNombreProd.Text);
+            
+            MostrarProductosPorCategoria(cat.Nombre.ToString());
         }
 
         private void btnDeleteSalesProduct_Click(object sender, EventArgs e)
@@ -244,5 +304,7 @@ namespace WindowsFormsApp1.UserControls
                 MostrarProductosDeVenta();
             }
         }
+
+        
     }
 }

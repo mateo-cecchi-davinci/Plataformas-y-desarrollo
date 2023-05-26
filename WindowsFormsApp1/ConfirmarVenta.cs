@@ -67,9 +67,9 @@ namespace WindowsFormsApp1
          /* 
           * 
           *Mostrar producto por categoria y nombre
-         Traer datos de cliente y poner fecha
+         Traer datos de cliente y poner fecha - done
          Hacer algo con el medio de pago ( si es tarjeta, al generar venta, le pones un form que tenga para poner datos)
-         Generar PDF de Venta
+         Generar PDF de Venta 
          Cuadrar stock cantidad y que no se pase en la tabla de venta
          Guardar Venta en BDD, implica (descontar stock en producto)
          */
@@ -87,6 +87,12 @@ namespace WindowsFormsApp1
                 decimal IVA = Decimal.Parse(comboboxIva.SelectedItem.ToString());
                 decimal totalConIva = IVA > 0 ? (subTotal * IVA) / 100 + subTotal : subTotal;
                 txtTotalConIva.Text = totalConIva.ToString();           
+        }
+
+        private void txtFinalizarVenta_Click(object sender, EventArgs e)
+        {
+            //TODO : Agregar la logica para crear un PDF file sobre la venta generada
+            // checquear stock, actualizar tabla producto y tabla venta 
         }
     }
 }
