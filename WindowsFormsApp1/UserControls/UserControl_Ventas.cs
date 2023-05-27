@@ -30,7 +30,6 @@ namespace WindowsFormsApp1.UserControls
             label14.Text = user.UserName.ToString();
 
 
-
             foreach (Categoria c in lista)
             {
                 comboboxCategoria.Items.Add(c.Nombre);
@@ -114,7 +113,7 @@ namespace WindowsFormsApp1.UserControls
 
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void btnAgregarProd_Click(object sender, EventArgs e)
         {
             if (foundProductsTable.SelectedRows.Count > 0)
             {
@@ -123,12 +122,12 @@ namespace WindowsFormsApp1.UserControls
                 String celdaId = filaSeleccionada.Cells["Id"].Value.ToString();
                 
                 long id = Int64.Parse(celdaId);
-                MessageBox.Show(id.ToString() , "");
 
                 AgregarProductoAVenta(id);
                 MostrarProductosDeVenta();
 
-                txtNombreProd.Text = "";
+                txtNombreProd.Clear();
+                CalcularTotales();
 
             }
             else
@@ -137,6 +136,22 @@ namespace WindowsFormsApp1.UserControls
             }
 
         }
+
+        private void CalcularTotales()
+        {
+            decimal subTotal = decimal.Zero;
+            decimal totalConIVA = decimal.Zero;
+
+            foreach (ItemVenta item in venta.Items)
+            {
+                subTotal += item.Producto.Precio * item.Cantidad;
+                totalConIVA = subTotal + (subTotal * 21)/100;
+            }
+
+            txtSubTotal1.Text = subTotal.ToString();
+            txtTotalConIVA1.Text = totalConIVA.ToString();
+        }
+
 
         public void MostrarProductos(string nombre)
         {
@@ -194,32 +209,25 @@ namespace WindowsFormsApp1.UserControls
         {
             Producto prod = Producto_Controller.findById(id);
             int cantidad = Int32.Parse(txtCantidadProd.Value.ToString());
-
-            foreach (ItemVenta item in venta.Items)
-            {
-                if (item.Producto.Id == prod.Id)
-                {
-                    if (item.Cantidad < cantidad && prod.Stock > cantidad)
-                    {
-                        item.Cantidad += cantidad;
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error" + cantidad, "");
-
-                    }
-                }
-
-            }
-            if (prod.Stock >= cantidad)
-            {                 
-                    ItemVenta itemVenta = new ItemVenta();
-                    itemVenta.Producto = prod;
-                    itemVenta.Cantidad = cantidad;
-                    venta.Items.Add(itemVenta);
                 
-            } else
+            ItemVenta productoExistenteEnVentas = venta.Items.Where(item => item.Producto.Id == prod.Id).FirstOrDefault();
+
+            int nuevaCantidad = productoExistenteEnVentas != null 
+                                ? productoExistenteEnVentas.Cantidad + cantidad : 0;
+
+            
+            if(prod.Stock >= nuevaCantidad && productoExistenteEnVentas != null)
+            {
+                productoExistenteEnVentas.Cantidad += cantidad;
+            }
+            else if(prod.Stock >= cantidad && productoExistenteEnVentas == null)
+            {
+                ItemVenta itemVenta = new ItemVenta();
+                itemVenta.Producto = prod;
+                itemVenta.Cantidad = cantidad;
+                venta.Items.Add(itemVenta);
+            }
+            else
             {
                 MessageBox.Show("No hay suficiente stock", "");
             }
@@ -300,6 +308,7 @@ namespace WindowsFormsApp1.UserControls
                 Producto prod = Producto_Controller.findById(id);
                 ItemVenta item = venta.Items.Where(x => x.Producto.Nombre == prod.Nombre).FirstOrDefault();
                 venta.Items.Remove(item);
+                CalcularTotales();
 
                 MostrarProductosDeVenta();
             }
