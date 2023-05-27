@@ -212,6 +212,28 @@ namespace WindowsFormsApp1.Controllers
             return lista;
         }
 
+        public static bool actualizarStock(long id, int nuevoStock)
+        {
+            string query = @"UPDATE dbo.producto SET stock = @nuevoStock
+                                WHERE id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@nuevoStock", nuevoStock);
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
         public static bool actualizarProducto(long id, Producto producto)
         {
             string query = "update dbo.producto set nombre = @nombre, descripcion = @descripcion, stock = @stock, precio = @precio, categoria = @categoria where id = @id;";
