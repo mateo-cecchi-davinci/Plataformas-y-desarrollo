@@ -28,7 +28,7 @@ namespace WindowsFormsApp1.UserControls
             List<Categoria> lista = Categoria_Controller.obtenerTodas();
             label15.Text = DateTime.Now.Date.ToShortDateString();
             label14.Text = user.UserName.ToString();
-
+            venta.vendedor = user._id;
 
             foreach (Categoria c in lista)
             {
@@ -62,7 +62,7 @@ namespace WindowsFormsApp1.UserControls
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
-            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta);
+            
 
 
             if(venta.Items.Count < 1)
@@ -77,7 +77,7 @@ namespace WindowsFormsApp1.UserControls
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtBoxEmailVentas.Text))
+            if (string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text))
             {
                 MessageBox.Show("Por favor ingresa un email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -94,6 +94,14 @@ namespace WindowsFormsApp1.UserControls
                 MessageBox.Show("Por favor selecciona un metodo de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            Cliente cliente = new Cliente();
+            cliente.Nombre = txtBoxNombreClienteVentas.Text.ToString();
+            cliente.Dni = txtBoxDNIlVentas.Text.ToString();
+            cliente.Direccion = txtBoxAddressVentas.Text.ToString();
+  
+
+            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, cliente);
 
             DialogResult dialogResult = formConfirmarVenta.ShowDialog();
 
@@ -148,6 +156,7 @@ namespace WindowsFormsApp1.UserControls
                 totalConIVA = subTotal + (subTotal * 21)/100;
             }
 
+            venta.total = totalConIVA;
             txtSubTotal1.Text = subTotal.ToString();
             txtTotalConIVA1.Text = totalConIVA.ToString();
         }

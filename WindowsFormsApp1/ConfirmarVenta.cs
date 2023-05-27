@@ -10,20 +10,28 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Controllers;
 using WindowsFormsApp1.Models;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.xml;
+using System.IO;
+using iTextSharp.tool.xml;
 
 namespace WindowsFormsApp1
 {
     public partial class ConfirmarVenta : Form
     {
-        public ConfirmarVenta(Venta venta)
+        Cliente cliente1;
+        Venta venta1;
+        public ConfirmarVenta(Venta venta, Cliente cliente)
         {
             InitializeComponent();
             llenarTabla(venta);
-
-            comboboxIva.Items.Add("0");
-            comboboxIva.Items.Add("10,5");
+            cliente1 = cliente;
+            venta1 = venta;
+            //comboboxIva.Items.Add("0");
+            //comboboxIva.Items.Add("10,5");
+            //comboboxIva.Items.Add("27");
             comboboxIva.Items.Add("21");
-            comboboxIva.Items.Add("27");
             
         }
 
@@ -93,6 +101,50 @@ namespace WindowsFormsApp1
         {
             //TODO : Agregar la logica para crear un PDF file sobre la venta generada
             // checquear stock, actualizar tabla producto y tabla venta 
+
+            string fileName = @"C:\HardHouse-Ventas\" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
+
+            string paginaHtml_texto = Properties.Resources.plantilla.ToString();
+            paginaHtml_texto = paginaHtml_texto.Replace("@CLIENTE", cliente1.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", cliente1.Dni);
+            paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+            string filas = string.Empty;
+            decimal total = 0;
+
+            foreach (ItemVenta item in venta1.Items)
+            {
+                filas += "<tr>";
+                filas += "<td>" + item.Cantidad.ToString()  + "</td>";
+                filas += "<td>" + item.Producto.Precio.ToString() + "</td>";
+                filas += "<td>" + item.Producto.Nombre.ToString() + "</td>";
+                filas += "<td>" + item.Producto.Precio.ToString() + "</td>";
+                filas += "</tr>";
+                total += item.Producto.Precio * Decimal.Parse(item.Cantidad.ToString());
+            }
+
+            paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL_COMPRA", ((total*21)/100).ToString());
+
+
+            using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            {
+                Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+
+                pdfDoc.Open();
+
+                using (StringReader sr = new StringReader(paginaHtml_texto))
+                {
+                    XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                }
+
+                pdfDoc.Close();
+
+                stream.Close();
+            }
+                    
         }
     }
 }

@@ -196,7 +196,7 @@
             this.txtFinalizarVenta.Name = "txtFinalizarVenta";
             this.txtFinalizarVenta.Size = new System.Drawing.Size(262, 69);
             this.txtFinalizarVenta.TabIndex = 6;
-            this.txtFinalizarVenta.Text = "Finalizar Venta";
+            this.txtFinalizarVenta.Text = "Finalizar y Imprimir";
             this.txtFinalizarVenta.Click += new System.EventHandler(this.txtFinalizarVenta_Click);
             // 
             // label4
