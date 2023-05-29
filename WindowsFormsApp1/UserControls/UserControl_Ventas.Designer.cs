@@ -256,7 +256,6 @@
             this.txtBoxNombreClienteVentas.SelectedText = "";
             this.txtBoxNombreClienteVentas.Size = new System.Drawing.Size(225, 45);
             this.txtBoxNombreClienteVentas.TabIndex = 6;
-            this.txtBoxNombreClienteVentas.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // label3
             // 

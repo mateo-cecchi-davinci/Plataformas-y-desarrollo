@@ -15,23 +15,28 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.xml;
 using System.IO;
 using iTextSharp.tool.xml;
+using WindowsFormsApp1.UserControls;
 
 namespace WindowsFormsApp1
 {
     public partial class ConfirmarVenta : Form
     {
-        Cliente cliente1;
-        Venta venta1;
-        public ConfirmarVenta(Venta venta, Cliente cliente)
+        private readonly Cliente _cliente;
+        private readonly Venta _venta;
+        private readonly Usuario _usuario;
+        private readonly UserControl_Ventas _userControl_Ventas;
+        public ConfirmarVenta(Venta venta, Cliente cliente, Usuario usuario, UserControl_Ventas userControl_Ventas)
         {
             InitializeComponent();
             llenarTabla(venta);
-            cliente1 = cliente;
-            venta1 = venta;
+            _cliente = cliente;
+            _venta = venta;
+            _usuario = usuario;
+            _userControl_Ventas = userControl_Ventas;
             //comboboxIva.Items.Add("0");
             //comboboxIva.Items.Add("10,5");
             //comboboxIva.Items.Add("27");
-            comboboxIva.Items.Add("21");
+            //comboboxIva.Items.Add("21");
             
         }
 
@@ -89,13 +94,13 @@ namespace WindowsFormsApp1
            
         }
 
-        private void comboboxIva_SelectedIndexChanged(object sender, EventArgs e)
-        {          
-                decimal subTotal = Decimal.Parse(txtSubtotal.Text);
-                decimal IVA = Decimal.Parse(comboboxIva.SelectedItem.ToString());
-                decimal totalConIva = IVA > 0 ? (subTotal * IVA) / 100 + subTotal : subTotal;
-                txtTotalConIva.Text = totalConIva.ToString();           
-        }
+        //private void comboboxIva_SelectedIndexChanged(object sender, EventArgs e)
+        //{          
+        //        decimal subTotal = Decimal.Parse(txtSubtotal.Text);
+        //        decimal IVA = Decimal.Parse(comboboxIva.SelectedItem.ToString());
+        //        decimal totalConIva = IVA > 0 ? (subTotal * IVA) / 100 + subTotal : subTotal;
+        //        txtTotalConIva.Text = totalConIva.ToString();           
+        //}
 
         private void txtFinalizarVenta_Click(object sender, EventArgs e)
         {
@@ -105,14 +110,14 @@ namespace WindowsFormsApp1
             string fileName = @"C:\HardHouse-Ventas\" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
 
             string paginaHtml_texto = Properties.Resources.plantilla.ToString();
-            paginaHtml_texto = paginaHtml_texto.Replace("@CLIENTE", cliente1.Nombre);
-            paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", cliente1.Dni);
+            paginaHtml_texto = paginaHtml_texto.Replace("@CLIENTE", _cliente.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", _cliente.Dni);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
             string filas = string.Empty;
             decimal total = 0;
 
-            foreach (ItemVenta item in venta1.Items)
+            foreach (ItemVenta item in _venta.Items)
             {
                 filas += "<tr>";
                 filas += "<td>" + item.Cantidad.ToString()  + "</td>";
@@ -135,16 +140,45 @@ namespace WindowsFormsApp1
 
                 pdfDoc.Open();
 
+
+
                 using (StringReader sr = new StringReader(paginaHtml_texto))
                 {
                     XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
                 }
 
                 pdfDoc.Close();
-
                 stream.Close();
+                ValidatePDf(sender, e, pdfDoc);
+
+                this.Close();
             }
-                    
+
+        }
+
+        private bool ValidatePDf(object sender, EventArgs e, Document pdfDoc)
+        {
+            if (pdfDoc.IsOpen() == false)
+            {
+                if (MessageBox.Show("Venta generada con exito, Desea realizar otra venta ?", "Venta Generada", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    == DialogResult.Yes)
+                {
+                    _userControl_Ventas.CleanTable();
+                }
+                else
+                {
+                    ((FormInicio)this.Owner).buttonInicioPantalla_Click(sender, e);
+                }
+                return true;
+            }
+
+            MessageBox.Show("Se ha producido un error al generar la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+        }
+
+        private void btnVolverConfirmarVenta_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

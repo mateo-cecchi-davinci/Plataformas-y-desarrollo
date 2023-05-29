@@ -38,15 +38,14 @@
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtFinalizarVenta = new Guna.UI2.WinForms.Guna2Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.Label();
             this.txtTotalConIva = new System.Windows.Forms.Label();
-            this.comboboxIva = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnVolverConfirmarVenta = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaConfirmarVenta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,17 +150,6 @@
             this.label1.Text = "Confirmar Venta";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(879, 691);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 29);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Total (con IVA):";
-            // 
             // txtTotal
             // 
             this.txtTotal.AutoSize = true;
@@ -172,17 +160,6 @@
             this.txtTotal.Size = new System.Drawing.Size(0, 29);
             this.txtTotal.TabIndex = 3;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(494, 615);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 29);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "IVA(%):";
-            // 
             // txtFinalizarVenta
             // 
             this.txtFinalizarVenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -191,10 +168,10 @@
             this.txtFinalizarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.txtFinalizarVenta.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtFinalizarVenta.ForeColor = System.Drawing.Color.White;
-            this.txtFinalizarVenta.Location = new System.Drawing.Point(518, 728);
+            this.txtFinalizarVenta.Location = new System.Drawing.Point(661, 629);
             this.txtFinalizarVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFinalizarVenta.Name = "txtFinalizarVenta";
-            this.txtFinalizarVenta.Size = new System.Drawing.Size(262, 69);
+            this.txtFinalizarVenta.Size = new System.Drawing.Size(218, 53);
             this.txtFinalizarVenta.TabIndex = 6;
             this.txtFinalizarVenta.Text = "Finalizar y Imprimir";
             this.txtFinalizarVenta.Click += new System.EventHandler(this.txtFinalizarVenta_Click);
@@ -208,17 +185,6 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 25);
             this.label4.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(880, 648);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 29);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Subtotal:";
             // 
             // txtSubtotal
             // 
@@ -240,35 +206,56 @@
             this.txtTotalConIva.TabIndex = 11;
             this.txtTotalConIva.Click += new System.EventHandler(this.label7_Click);
             // 
-            // comboboxIva
+            // label2
             // 
-            this.comboboxIva.BackColor = System.Drawing.Color.Transparent;
-            this.comboboxIva.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboboxIva.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboboxIva.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.comboboxIva.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.comboboxIva.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.comboboxIva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.comboboxIva.ItemHeight = 30;
-            this.comboboxIva.Location = new System.Drawing.Point(498, 651);
-            this.comboboxIva.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboboxIva.Name = "comboboxIva";
-            this.comboboxIva.Size = new System.Drawing.Size(300, 36);
-            this.comboboxIva.TabIndex = 12;
-            this.comboboxIva.SelectedIndexChanged += new System.EventHandler(this.comboboxIva_SelectedIndexChanged);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(160, 697);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(202, 29);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Total (con IVA):";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(160, 629);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 29);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Subtotal:";
+            // 
+            // btnVolverConfirmarVenta
+            // 
+            this.btnVolverConfirmarVenta.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnVolverConfirmarVenta.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnVolverConfirmarVenta.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnVolverConfirmarVenta.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnVolverConfirmarVenta.FillColor = System.Drawing.Color.Red;
+            this.btnVolverConfirmarVenta.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnVolverConfirmarVenta.ForeColor = System.Drawing.Color.White;
+            this.btnVolverConfirmarVenta.Location = new System.Drawing.Point(900, 629);
+            this.btnVolverConfirmarVenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnVolverConfirmarVenta.Name = "btnVolverConfirmarVenta";
+            this.btnVolverConfirmarVenta.Size = new System.Drawing.Size(218, 53);
+            this.btnVolverConfirmarVenta.TabIndex = 12;
+            this.btnVolverConfirmarVenta.Text = "Volver";
+            this.btnVolverConfirmarVenta.Click += new System.EventHandler(this.btnVolverConfirmarVenta_Click);
             // 
             // ConfirmarVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1320, 955);
-            this.Controls.Add(this.comboboxIva);
+            this.Controls.Add(this.btnVolverConfirmarVenta);
             this.Controls.Add(this.txtTotalConIva);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFinalizarVenta);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -287,9 +274,7 @@
 
         private Guna.UI2.WinForms.Guna2DataGridView tablaConfirmarVenta;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label txtTotal;
-        private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Button txtFinalizarVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
@@ -297,9 +282,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label txtSubtotal;
         private System.Windows.Forms.Label txtTotalConIva;
-        private Guna.UI2.WinForms.Guna2ComboBox comboboxIva;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2Button btnVolverConfirmarVenta;
     }
 }

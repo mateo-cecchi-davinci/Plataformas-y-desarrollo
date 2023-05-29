@@ -78,7 +78,6 @@
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(436, 55);
             this.txtUsername.TabIndex = 3;
-            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             // 
             // label1
             // 
@@ -112,7 +111,6 @@
             this.label3.Size = new System.Drawing.Size(436, 37);
             this.label3.TabIndex = 6;
             this.label3.Text = "Inicia sesión para continuar";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // pictureBox1
             // 
@@ -147,7 +145,6 @@
             this.label5.Size = new System.Drawing.Size(619, 29);
             this.label5.TabIndex = 9;
             this.label5.Text = "Todos los derechos reservados  © HardHouse 2023";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // guna2TextBox1
             // 
@@ -179,7 +176,6 @@
             this.label6.Size = new System.Drawing.Size(0, 20);
             this.label6.TabIndex = 11;
             this.label6.Visible = false;
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -211,7 +207,6 @@
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HardHouse";
-            this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

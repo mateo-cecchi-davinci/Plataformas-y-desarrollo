@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
             panelContainer.Controls.Add(userControl);
             userControl.BringToFront();
         }
-        private void buttonInicioPantalla_Click(object sender, EventArgs e)
+        public void buttonInicioPantalla_Click(object sender, EventArgs e)
         {
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);

@@ -18,6 +18,7 @@ namespace WindowsFormsApp1.UserControls
         Producto prodToAdd;
 
         Venta venta = new Venta();
+        Usuario usuario;
 
         public UserControl_Ventas(Usuario user)
         {
@@ -28,6 +29,8 @@ namespace WindowsFormsApp1.UserControls
             List<Categoria> lista = Categoria_Controller.obtenerTodas();
             label15.Text = DateTime.Now.Date.ToShortDateString();
             label14.Text = user.UserName.ToString();
+
+            usuario = user;
             venta.vendedor = user._id;
 
             foreach (Categoria c in lista)
@@ -50,10 +53,7 @@ namespace WindowsFormsApp1.UserControls
 
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void UserControl_Ventas_Load(object sender, EventArgs e)
         {
@@ -62,48 +62,59 @@ namespace WindowsFormsApp1.UserControls
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
-            
 
+            Cliente cliente = new Cliente();
 
-            if(venta.Items.Count < 1)
+            if (venta.Items.Count < 1)
             {
                 MessageBox.Show("Debes seleccionar al menos un producto para realizar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text))
+            if( string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text) &&
+                string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text) &&
+                string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
             {
-                MessageBox.Show("Por favor ingresa tu nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                
+                cliente.Nombre = "Consumidor Final";
+                cliente.Dni = "XXXXXXXXX";
+                cliente.Direccion = "XXXXXXXX";
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text))
+                {
+                    MessageBox.Show("Por favor ingresa tu nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text))
+                {
+                    MessageBox.Show("Por favor ingresa un email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
+                {
+                    MessageBox.Show("Por favor ingresa una direccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                cliente.Nombre = txtBoxNombreClienteVentas.Text.ToString();
+                cliente.Dni = txtBoxDNIlVentas.Text.ToString();
+                cliente.Direccion = txtBoxAddressVentas.Text.ToString();
             }
 
-            if (string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text))
-            {
-                MessageBox.Show("Por favor ingresa un email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
-            {
-                MessageBox.Show("Por favor ingresa una direccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            
 
             if (radioBtnTarjeta.Checked.Equals(false) && radioBtnEfectivo.Checked.Equals(false))
             {
-                MessageBox.Show("Por favor selecciona un metodo de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                radioBtnEfectivo.Checked = true;
             }
 
-            Cliente cliente = new Cliente();
-            cliente.Nombre = txtBoxNombreClienteVentas.Text.ToString();
-            cliente.Dni = txtBoxDNIlVentas.Text.ToString();
-            cliente.Direccion = txtBoxAddressVentas.Text.ToString();
-  
+            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, cliente, usuario, this);
 
-            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, cliente);
-
-            DialogResult dialogResult = formConfirmarVenta.ShowDialog();
+            DialogResult dialogResult = formConfirmarVenta.ShowDialog(this);
 
             if (dialogResult == DialogResult.OK)
             {
@@ -308,11 +319,11 @@ namespace WindowsFormsApp1.UserControls
 
         private void btnDeleteSalesProduct_Click(object sender, EventArgs e)
         {
-            if (foundProductsTable.SelectedRows.Count > 0)
+            if (tablaVenta.SelectedRows.Count > 0)
             {
-                DataGridViewRow filaSeleccionada = foundProductsTable.SelectedRows[0];
+                DataGridViewRow filaSeleccionada = tablaVenta.SelectedRows[0];
 
-                long id = Int64.Parse(filaSeleccionada.Cells["Id"].Value.ToString());
+                long id = Int64.Parse(filaSeleccionada.Cells["Codigo"].Value.ToString());
 
                 Producto prod = Producto_Controller.findById(id);
                 ItemVenta item = venta.Items.Where(x => x.Producto.Nombre == prod.Nombre).FirstOrDefault();
@@ -323,6 +334,16 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
-        
+        public void CleanTable()
+        {
+            tablaVenta.Rows.Clear();
+            txtSubTotal1.Clear();
+            txtTotalConIVA1.Clear();
+
+            for (int i = 0; i < venta.Items.Count(); i ++)
+            {
+                venta.Items.RemoveAt(i);
+            }
+        }
     }
 }

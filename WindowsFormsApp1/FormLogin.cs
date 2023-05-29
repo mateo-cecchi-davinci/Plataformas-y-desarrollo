@@ -19,18 +19,6 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             label6.Visible = false;
@@ -44,6 +32,7 @@ namespace WindowsFormsApp1
                if( guna2TextBox1.Text.Equals(u.Contraseña)) {
                     FormInicio form1 = new FormInicio(u);
                     form1.Show();
+                    this.Hide();
                 }
                 else
                 {
@@ -60,22 +49,7 @@ namespace WindowsFormsApp1
                 label6.Text = "El usuario no existe";
             }
         }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 
-    }
+}
 
