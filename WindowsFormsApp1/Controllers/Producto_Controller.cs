@@ -44,7 +44,6 @@ namespace WindowsFormsApp1.Controllers
             {
                 throw new Exception("Hay un error en la query: " + ex.Message);
                 return false;
-
             }
 
         }

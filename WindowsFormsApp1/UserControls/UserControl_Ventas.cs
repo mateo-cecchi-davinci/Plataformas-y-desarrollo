@@ -16,7 +16,6 @@ namespace WindowsFormsApp1.UserControls
     public partial class UserControl_Ventas : UserControl
     {
         Producto prodToAdd;
-
         Venta venta = new Venta();
         Usuario usuario;
 
