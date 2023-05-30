@@ -14,6 +14,8 @@ namespace WindowsFormsApp1.Models
         public string Email { get; set; }
         public string Direccion { get; set; }
 
+        public int Tipo { get; set; }
+
         public Cliente (string nombre, string direccion, string dni)
         {
             this.Nombre = nombre;

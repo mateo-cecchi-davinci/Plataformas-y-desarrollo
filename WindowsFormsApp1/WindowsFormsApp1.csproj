@@ -67,6 +67,7 @@
     <Compile Include="ConfirmarVenta.Designer.cs">
       <DependentUpon>ConfirmarVenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\Clientes_Controller.cs" />
     <Compile Include="FormAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>

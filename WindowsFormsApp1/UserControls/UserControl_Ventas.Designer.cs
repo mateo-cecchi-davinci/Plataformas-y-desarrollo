@@ -45,8 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerarVenta = new Guna.UI2.WinForms.Guna2Button();
-            this.txtBoxNombreClienteVentas = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtBoxDNIlVentas = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,8 +57,6 @@
             this.btnDeleteSalesProduct = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtBoxAddressVentas = new Guna.UI2.WinForms.Guna2TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.txtNombreProd = new Guna.UI2.WinForms.Guna2TextBox();
@@ -77,6 +73,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtTotalConIVA1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSubTotal1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteSalesProduct)).BeginInit();
@@ -237,44 +235,14 @@
             this.btnGenerarVenta.Text = "Generar Venta";
             this.btnGenerarVenta.Click += new System.EventHandler(this.btnGenerarVenta_Click);
             // 
-            // txtBoxNombreClienteVentas
-            // 
-            this.txtBoxNombreClienteVentas.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBoxNombreClienteVentas.DefaultText = "";
-            this.txtBoxNombreClienteVentas.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBoxNombreClienteVentas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBoxNombreClienteVentas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBoxNombreClienteVentas.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBoxNombreClienteVentas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoxNombreClienteVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBoxNombreClienteVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoxNombreClienteVentas.Location = new System.Drawing.Point(32, 165);
-            this.txtBoxNombreClienteVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtBoxNombreClienteVentas.Name = "txtBoxNombreClienteVentas";
-            this.txtBoxNombreClienteVentas.PasswordChar = '\0';
-            this.txtBoxNombreClienteVentas.PlaceholderText = "";
-            this.txtBoxNombreClienteVentas.SelectedText = "";
-            this.txtBoxNombreClienteVentas.Size = new System.Drawing.Size(225, 45);
-            this.txtBoxNombreClienteVentas.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 142);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 20);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Nombre Cliente:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(302, 142);
+            this.label4.Location = new System.Drawing.Point(35, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 20);
+            this.label4.Size = new System.Drawing.Size(175, 20);
             this.label4.TabIndex = 9;
-            this.label4.Text = "DNI:";
+            this.label4.Text = "Buscar Cliente por DNI:";
             // 
             // txtBoxDNIlVentas
             // 
@@ -287,7 +255,7 @@
             this.txtBoxDNIlVentas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBoxDNIlVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBoxDNIlVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoxDNIlVentas.Location = new System.Drawing.Point(303, 165);
+            this.txtBoxDNIlVentas.Location = new System.Drawing.Point(36, 153);
             this.txtBoxDNIlVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxDNIlVentas.Name = "txtBoxDNIlVentas";
             this.txtBoxDNIlVentas.PasswordChar = '\0';
@@ -333,7 +301,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(33, 12);
+            this.label7.Location = new System.Drawing.Point(484, 12);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 33);
             this.label7.TabIndex = 18;
@@ -411,35 +379,6 @@
             this.label9.Size = new System.Drawing.Size(0, 33);
             this.label9.TabIndex = 24;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(555, 142);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 20);
-            this.label10.TabIndex = 26;
-            this.label10.Text = "Dirección:";
-            // 
-            // txtBoxAddressVentas
-            // 
-            this.txtBoxAddressVentas.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBoxAddressVentas.DefaultText = "";
-            this.txtBoxAddressVentas.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtBoxAddressVentas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtBoxAddressVentas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBoxAddressVentas.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtBoxAddressVentas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoxAddressVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtBoxAddressVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoxAddressVentas.Location = new System.Drawing.Point(555, 165);
-            this.txtBoxAddressVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtBoxAddressVentas.Name = "txtBoxAddressVentas";
-            this.txtBoxAddressVentas.PasswordChar = '\0';
-            this.txtBoxAddressVentas.PlaceholderText = "";
-            this.txtBoxAddressVentas.SelectedText = "";
-            this.txtBoxAddressVentas.Size = new System.Drawing.Size(225, 45);
-            this.txtBoxAddressVentas.TabIndex = 25;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -454,7 +393,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Franklin Gothic Medium", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(27, 45);
+            this.label12.Location = new System.Drawing.Point(32, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(198, 70);
             this.label12.TabIndex = 28;
@@ -593,7 +532,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(143, 23);
+            this.label15.Location = new System.Drawing.Point(594, 23);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 20);
             this.label15.TabIndex = 34;
@@ -668,10 +607,30 @@
             this.txtSubTotal1.Size = new System.Drawing.Size(225, 45);
             this.txtSubTotal1.TabIndex = 43;
             // 
+            // btnBuscarCliente
+            // 
+            this.btnBuscarCliente.Location = new System.Drawing.Point(281, 153);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(146, 45);
+            this.btnBuscarCliente.TabIndex = 44;
+            this.btnBuscarCliente.Text = "Buscar Cliente";
+            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarCliente
+            // 
+            this.btnAgregarCliente.Location = new System.Drawing.Point(444, 153);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(144, 44);
+            this.btnAgregarCliente.TabIndex = 45;
+            this.btnAgregarCliente.Text = "Agregar Cliente";
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            // 
             // UserControl_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAgregarCliente);
+            this.Controls.Add(this.btnBuscarCliente);
             this.Controls.Add(this.txtSubTotal1);
             this.Controls.Add(this.txtTotalConIVA1);
             this.Controls.Add(this.label16);
@@ -685,8 +644,6 @@
             this.Controls.Add(this.txtNombreProd);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.txtBoxAddressVentas);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnDeleteSalesProduct);
@@ -698,8 +655,6 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBoxDNIlVentas);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtBoxNombreClienteVentas);
             this.Controls.Add(this.btnGenerarVenta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -727,8 +682,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button btnGenerarVenta;
-        private Guna.UI2.WinForms.Guna2TextBox txtBoxNombreClienteVentas;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxDNIlVentas;
         private System.Windows.Forms.Label label5;
@@ -741,8 +694,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox btnDeleteSalesProduct;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private Guna.UI2.WinForms.Guna2TextBox txtBoxAddressVentas;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private Guna.UI2.WinForms.Guna2TextBox txtNombreProd;
@@ -764,5 +715,7 @@
         private System.Windows.Forms.Label label16;
         private Guna.UI2.WinForms.Guna2TextBox txtTotalConIVA1;
         private Guna.UI2.WinForms.Guna2TextBox txtSubTotal1;
+        private System.Windows.Forms.Button btnBuscarCliente;
+        private System.Windows.Forms.Button btnAgregarCliente;
     }
 }
