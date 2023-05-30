@@ -11,7 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WindowsFormsApp1.Controllers
 {
-    public static class Producto_Controller
+    public static class Producto_Controller 
     {
         public static bool addProducto(Producto producto)
         {
