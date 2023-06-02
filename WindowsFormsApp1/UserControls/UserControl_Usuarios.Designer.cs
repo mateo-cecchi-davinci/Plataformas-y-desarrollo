@@ -45,7 +45,7 @@
             this.NombreDeUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Activo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonEditarUsuario = new System.Windows.Forms.PictureBox();
-            this.textBoxBuscadorUsuario = new System.Windows.Forms.TextBox();
+            this.textBoxBuscadorUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.buttonAgregarUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonBuscarUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCambiarEstadoUsuario)).BeginInit();
@@ -56,9 +56,9 @@
             // buttonAgregarUsuario
             // 
             this.buttonAgregarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.agregar;
-            this.buttonAgregarUsuario.Location = new System.Drawing.Point(254, 103);
+            this.buttonAgregarUsuario.Location = new System.Drawing.Point(35, 49);
             this.buttonAgregarUsuario.Name = "buttonAgregarUsuario";
-            this.buttonAgregarUsuario.Size = new System.Drawing.Size(104, 77);
+            this.buttonAgregarUsuario.Size = new System.Drawing.Size(67, 51);
             this.buttonAgregarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonAgregarUsuario.TabIndex = 3;
             this.buttonAgregarUsuario.TabStop = false;
@@ -67,9 +67,9 @@
             // buttonBuscarUsuario
             // 
             this.buttonBuscarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.buscar;
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(1143, 104);
+            this.buttonBuscarUsuario.Location = new System.Drawing.Point(1267, 49);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
-            this.buttonBuscarUsuario.Size = new System.Drawing.Size(104, 77);
+            this.buttonBuscarUsuario.Size = new System.Drawing.Size(121, 51);
             this.buttonBuscarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonBuscarUsuario.TabIndex = 4;
             this.buttonBuscarUsuario.TabStop = false;
@@ -78,9 +78,9 @@
             // btnCambiarEstadoUsuario
             // 
             this.btnCambiarEstadoUsuario.Image = global::WindowsFormsApp1.Properties.Resources.true_false;
-            this.btnCambiarEstadoUsuario.Location = new System.Drawing.Point(384, 103);
+            this.btnCambiarEstadoUsuario.Location = new System.Drawing.Point(108, 47);
             this.btnCambiarEstadoUsuario.Name = "btnCambiarEstadoUsuario";
-            this.btnCambiarEstadoUsuario.Size = new System.Drawing.Size(124, 77);
+            this.btnCambiarEstadoUsuario.Size = new System.Drawing.Size(105, 52);
             this.btnCambiarEstadoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCambiarEstadoUsuario.TabIndex = 6;
             this.btnCambiarEstadoUsuario.TabStop = false;
@@ -88,6 +88,7 @@
             // 
             // tablaUsuarios
             // 
+            this.tablaUsuarios.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.tablaUsuarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -116,12 +117,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.tablaUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
             this.tablaUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.tablaUsuarios.Location = new System.Drawing.Point(254, 237);
+            this.tablaUsuarios.Location = new System.Drawing.Point(35, 123);
             this.tablaUsuarios.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaUsuarios.Name = "tablaUsuarios";
             this.tablaUsuarios.RowHeadersVisible = false;
             this.tablaUsuarios.RowHeadersWidth = 62;
-            this.tablaUsuarios.Size = new System.Drawing.Size(993, 431);
+            this.tablaUsuarios.Size = new System.Drawing.Size(1353, 558);
             this.tablaUsuarios.TabIndex = 7;
             this.tablaUsuarios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tablaUsuarios.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -184,10 +185,10 @@
             // buttonEditarUsuario
             // 
             this.buttonEditarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.editar;
-            this.buttonEditarUsuario.Location = new System.Drawing.Point(534, 102);
+            this.buttonEditarUsuario.Location = new System.Drawing.Point(219, 47);
             this.buttonEditarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEditarUsuario.Name = "buttonEditarUsuario";
-            this.buttonEditarUsuario.Size = new System.Drawing.Size(104, 78);
+            this.buttonEditarUsuario.Size = new System.Drawing.Size(67, 52);
             this.buttonEditarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEditarUsuario.TabIndex = 8;
             this.buttonEditarUsuario.TabStop = false;
@@ -195,9 +196,22 @@
             // 
             // textBoxBuscadorUsuario
             // 
-            this.textBoxBuscadorUsuario.Location = new System.Drawing.Point(882, 154);
+            this.textBoxBuscadorUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.textBoxBuscadorUsuario.DefaultText = "";
+            this.textBoxBuscadorUsuario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.textBoxBuscadorUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.textBoxBuscadorUsuario.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBoxBuscadorUsuario.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.textBoxBuscadorUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBoxBuscadorUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textBoxBuscadorUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.textBoxBuscadorUsuario.Location = new System.Drawing.Point(889, 51);
+            this.textBoxBuscadorUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBuscadorUsuario.Name = "textBoxBuscadorUsuario";
-            this.textBoxBuscadorUsuario.Size = new System.Drawing.Size(229, 26);
+            this.textBoxBuscadorUsuario.PasswordChar = '\0';
+            this.textBoxBuscadorUsuario.PlaceholderText = "";
+            this.textBoxBuscadorUsuario.SelectedText = "";
+            this.textBoxBuscadorUsuario.Size = new System.Drawing.Size(371, 48);
             this.textBoxBuscadorUsuario.TabIndex = 9;
             // 
             // UserControl_Usuarios
@@ -219,7 +233,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tablaUsuarios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditarUsuario)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -237,6 +250,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NombreDeUsuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Activo;
         private System.Windows.Forms.PictureBox buttonEditarUsuario;
-        private System.Windows.Forms.TextBox textBoxBuscadorUsuario;
+        private Guna.UI2.WinForms.Guna2TextBox textBoxBuscadorUsuario;
     }
 }

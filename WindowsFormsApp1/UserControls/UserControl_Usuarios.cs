@@ -134,6 +134,5 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
-       
     }
 }

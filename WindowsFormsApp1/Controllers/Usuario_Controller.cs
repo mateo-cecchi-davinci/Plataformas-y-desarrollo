@@ -177,7 +177,9 @@ namespace WindowsFormsApp1.Controllers
                     usuario.UserName = reader.GetString(4);
                     usuario.Contraseña = reader.GetString(5);
                     usuario.Admin = reader.GetBoolean(6);
-                    usuario.Activo = reader.GetBoolean(6);
+                    usuario.Activo = reader.GetBoolean(7);
+                    byte[] imagenBytes = (byte[])reader["image"]; // Lee la imagen como bytes
+                    usuario.Imagen = imagenBytes;
 
                 }
                 reader.Close();
