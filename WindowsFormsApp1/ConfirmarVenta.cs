@@ -147,7 +147,7 @@ namespace WindowsFormsApp1
         {
             Email email = new Email()
             {
-                apiKey = "SG.yl0REhTpQJiS_TftPOGphA.lZg6TJ3jlZ6fYjWtYSpNVNTkt47AZAgK6gPmSaTwYaY",
+                apiKey = "",
                 fromEmail = "leonel.pineiro@davinci.edu.ar",
                 toEmail = _cliente.Email,
                 subject = "Venta Generada con exito",
