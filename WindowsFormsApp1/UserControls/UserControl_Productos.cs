@@ -51,11 +51,10 @@ namespace WindowsFormsApp1.UserControls
                 {
                     int rowIndex = tablaProductos.Rows.Add();
                     tablaProductos.Rows[rowIndex].Height = 100;
-                    Image file;
-                    string ruta = "C:\\PlataformasDesarrollo\\ecommerce\\images\\DNI-FRENTE-Jeronimo-Lago.jpg";
+                    /*Image file;
 
-                    file = Image.FromFile(ruta);
-
+                    file = Image.FromFile("C:\\Users\\Usuario\\Desktop\\.NET Apps\\prueba\\Plataformas-y-desarrollo\\WindowsFormsApp1\\Resources\\imagenes\\productos\\" + prod.Image + ".jpeg");
+*/
                     tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
                     tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
                     tablaProductos.Rows[rowIndex].Cells[2].Value = prod.Descripcion;
@@ -63,7 +62,7 @@ namespace WindowsFormsApp1.UserControls
                     tablaProductos.Rows[rowIndex].Cells[4].Value = prod.Precio.ToString();
                     tablaProductos.Rows[rowIndex].Cells[5].Value = prod.Activo.ToString(); 
                     tablaProductos.Rows[rowIndex].Cells[6].Value = Categoria_Controller.findById(prod.Categoria).Nombre;
-                    tablaProductos.Rows[rowIndex].Cells[7].Value = file;
+                    tablaProductos.Rows[rowIndex].Cells[7].Value = prod.Image;
                 }
             }
             else
@@ -75,10 +74,11 @@ namespace WindowsFormsApp1.UserControls
 
                     int rowIndex = tablaProductos.Rows.Add();
                     tablaProductos.Rows[rowIndex].Height = 100;
-                    Image file;
+                  /*  Image file;
                     string ruta = "C:\\PlataformasDesarrollo\\ecommerce\\images\\DNI-FRENTE-Jeronimo-Lago.jpg";
 
-                    file = Image.FromFile(ruta);
+                    file = Image.FromFile("C:\\Users\\Usuario\\Desktop\\.NET Apps\\prueba\\Plataformas-y-desarrollo\\WindowsFormsApp1\\Resources\\imagenes\\productos\\" + prod.Image + ".jpeg");
+*/
 
                     tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
                     tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
@@ -87,7 +87,7 @@ namespace WindowsFormsApp1.UserControls
                     tablaProductos.Rows[rowIndex].Cells[4].Value = prod.Precio.ToString();
                     tablaProductos.Rows[rowIndex].Cells[5].Value = prod.Activo.ToString();
                     tablaProductos.Rows[rowIndex].Cells[6].Value = Categoria_Controller.findById(prod.Categoria).Nombre;
-                    tablaProductos.Rows[rowIndex].Cells[7].Value = file;
+                    tablaProductos.Rows[rowIndex].Cells[7].Value = prod.Image;
 
                 }
             }
@@ -124,8 +124,7 @@ namespace WindowsFormsApp1.UserControls
                 String celdaId = filaSeleccionada.Cells["idProducto"].Value.ToString();
 
                 long id = Int64.Parse(celdaId);
-
-                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
+                                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
 
                 DialogResult dialogResult = formAgregar.ShowDialog();
 

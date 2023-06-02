@@ -40,6 +40,7 @@ namespace WindowsFormsApp1.UserControls
                     comboboxCategoria.Items.Add(subcat.Nombre);
                 }
             }
+            txtNombreCliente.Text = "Cliente: Consumidor Final";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -69,7 +70,7 @@ namespace WindowsFormsApp1.UserControls
                 MessageBox.Show("Debes seleccionar al menos un producto para realizar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+/*
             if( string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text) &&
                 string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text) &&
                 string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
@@ -103,14 +104,14 @@ namespace WindowsFormsApp1.UserControls
                 cliente.Dni = txtBoxDNIlVentas.Text.ToString();
                 cliente.Direccion = txtBoxAddressVentas.Text.ToString();
             }
-
+            */
             
 
             if (radioBtnTarjeta.Checked.Equals(false) && radioBtnEfectivo.Checked.Equals(false))
             {
                 radioBtnEfectivo.Checked = true;
             }
-
+            
             ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, cliente, usuario, this);
 
             DialogResult dialogResult = formConfirmarVenta.ShowDialog(this);
@@ -343,6 +344,41 @@ namespace WindowsFormsApp1.UserControls
             {
                 venta.Items.RemoveAt(i);
             }
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            if (txtBoxDNIlVentas.Text.Length > 0 && txtBoxDNIlVentas.Text.Length < 15)
+            {
+                Cliente cliente = Clientes_Controller.buscarCliente(txtBoxDNIlVentas.Text);
+              
+
+                if (String.IsNullOrEmpty(cliente.Dni))
+                {
+                    txtNombreCliente.Text = "Cliente: Consumidor Final";
+                }
+                else
+                {
+                    txtNombreCliente.Text = "Cliente: " + cliente.Nombre;
+                }
+            } else
+            {
+                MessageBox.Show("Debes ingresar un DNI válido.", "Error al buscar cliente");
+            }
+        }
+
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            FormCliente formAgregarCliente = new FormCliente();
+
+            DialogResult dialogResult = formAgregarCliente.ShowDialog();
+
+           
+        }
+
+        private void txtBoxDNIlVentas_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

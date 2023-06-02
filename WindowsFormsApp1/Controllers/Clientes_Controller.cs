@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers
@@ -17,7 +18,7 @@ namespace WindowsFormsApp1.Controllers
                "@direccion, " +
                "@email, " +
                "@dni, " +
-               "@tipo, " +
+               "@tipo " +
                ");";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
@@ -46,10 +47,10 @@ namespace WindowsFormsApp1.Controllers
             Cliente cliente = new Cliente();
 
 
-            string query = "SELECT * FROM dbo.clientes WHERE dbo.clientes.dni LIKE @dni";
+            string query = "SELECT * FROM dbo.clientes WHERE dbo.clientes.dni =  @dni";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
-            cmd.Parameters.AddWithValue("@dni", $"%{dni}%");
+            cmd.Parameters.AddWithValue("@dni", dni);
 
             try
             {
@@ -57,11 +58,12 @@ namespace WindowsFormsApp1.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    cliente.Nombre = reader.GetString(0);
-                    cliente.Dni = reader.GetString(1);
-                    cliente.Email = reader.GetString(2);
-                    cliente.Direccion = reader.GetString(3);
-                    cliente.Tipo = reader.GetInt32(4);
+                    cliente._id = reader.GetInt32(0);
+                    cliente.Nombre = reader.GetString(1);
+                    cliente.Direccion = reader.GetString(2);
+                    cliente.Email = reader.GetString(3);
+                    cliente.Dni = reader.GetString(4);
+                    cliente.Tipo = reader.GetInt32(5);
                 }
                 reader.Close();
             }

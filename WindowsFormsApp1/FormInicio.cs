@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
             UserControl_Inicio ucInicio = new UserControl_Inicio();
             addUserControl(ucInicio);
-            guna2CirclePictureBox1.Image = Image.FromFile("C:\\PlataformasDesarrollo\\ecommerce\\images\\" + usuario.Img + ".jpg");
+            guna2CirclePictureBox1.Image = Image.FromFile("C:\\Users\\Usuario\\Desktop\\.NET Apps\\prueba\\Plataformas-y-desarrollo\\WindowsFormsApp1\\Resources\\imagenes\\usuarios\\" + usuario.Img + ".jpeg");
             label2.Text = usuario.UserName;
             user = usuario;
 
@@ -81,6 +81,12 @@ namespace WindowsFormsApp1
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            UserControlCategorias ucCategorias = new UserControlCategorias();
+            addUserControl(ucCategorias);
         }
     }
 }

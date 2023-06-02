@@ -47,7 +47,38 @@ namespace WindowsFormsApp1.Controllers
             }
 
         }
+        public static int obtenerTotalDeVentas()
+        {
+            int total = 0;
+            try
+            {
+                DB_controller.connection.Open();
 
+                string query = "SELECT COUNT(*) FROM dbo.venta;";
+                SqlCommand cmd = new SqlCommand();
+
+                
+
+                cmd.CommandText = query;
+                cmd.Connection = DB_controller.connection;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    total = reader.GetInt32(0);
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return total;
+        }
         public static List<Producto> obtenerTodos(string text = null )
         {
             List<Producto> lista = new List<Producto>();
