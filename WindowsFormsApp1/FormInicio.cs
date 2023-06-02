@@ -22,9 +22,10 @@ namespace WindowsFormsApp1
             user = usuario;
 
             if (usuario.Admin == false)
-            {
-                buttonInicioPantalla.Hide();
+            { 
+                buttonProductos.Hide();
                 buttonUsuarios.Hide();
+                guna2Button1.Hide();
             }
         }
 

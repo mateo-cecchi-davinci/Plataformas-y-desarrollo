@@ -116,6 +116,8 @@
     <Compile Include="Helper\ImageCreator.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
+    <Compile Include="Models\Graficos\GraficoCategoriaBestSellerModel.cs" />
+    <Compile Include="Models\Graficos\GraficoProductoBestSellerModel.cs" />
     <Compile Include="Models\ItemVenta.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Models\Usuario.cs" />
