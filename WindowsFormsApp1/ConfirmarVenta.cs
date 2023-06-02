@@ -65,35 +65,7 @@ namespace WindowsFormsApp1
 
         }
 
-        // TO DO 
-         /* 
-          * 
-          *Mostrar producto por categoria y nombre - done
-         Traer datos de cliente y poner fecha - done
-         Hacer algo con el medio de pago ( si es tarjeta, al generar venta, le pones un form que tenga para poner datos)
-         Generar PDF de Venta - done (hay que mejorarlo)
-         Cuadrar stock cantidad y que no se pase en la tabla de venta
-         Guardar Venta en BDD, implica (descontar stock en producto)
-         */
 
-       
-
-        //private void comboboxIva_SelectedIndexChanged(object sender, EventArgs e)
-        //{          
-        //        decimal subTotal = Decimal.Parse(txtSubtotal.Text);
-        //        decimal IVA = Decimal.Parse(comboboxIva.SelectedItem.ToString());
-        //        decimal totalConIva = IVA > 0 ? (subTotal * IVA) / 100 + subTotal : subTotal;
-        //        txtTotalConIva.Text = totalConIva.ToString();           
-        //}
-
-        private string GenerarNumeroComprobante(int numeroActual)
-        {
-            String numeroVenta = _venta.Id.ToString();
-
-            string formato = "{0:D" + (9 - numeroVenta.Length) + "}";
-            string numeroComprobante = string.Format(formato, numeroActual);
-            return numeroComprobante;
-        }
 
         private void txtFinalizarVenta_Click(object sender, EventArgs e)
         {
@@ -109,6 +81,7 @@ namespace WindowsFormsApp1
             paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", _cliente.Dni);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
             paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_FACTURA", _cliente._id == 1 ? "A" : "B" );
+            paginaHtml_texto = paginaHtml_texto.Replace("@VENDEDOR", _usuario.UserName);
             paginaHtml_texto = paginaHtml_texto.Replace("@NUMERO_FACTURA", GenerarNumeroComprobante(Producto_Controller.obtenerTotalDeVentas()));
 
             string filas = string.Empty;

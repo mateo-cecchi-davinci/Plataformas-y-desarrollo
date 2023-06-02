@@ -87,36 +87,36 @@ namespace WindowsFormsApp1
             // 
             // btnResponsableInscripto
             // 
-            this.btnResponsableInscripto.AutoSize = true;
-            this.btnResponsableInscripto.Location = new System.Drawing.Point(199, 345);
-            this.btnResponsableInscripto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnResponsableInscripto.Name = "btnResponsableInscripto";
-            this.btnResponsableInscripto.Size = new System.Drawing.Size(130, 17);
-            this.btnResponsableInscripto.TabIndex = 6;
-            this.btnResponsableInscripto.TabStop = true;
-            this.btnResponsableInscripto.Text = "Responsable Inscripto";
-            this.btnResponsableInscripto.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarCliente
-            // 
-            this.btnAgregarCliente.Location = new System.Drawing.Point(90, 412);
-            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.Size = new System.Drawing.Size(96, 46);
-            this.btnAgregarCliente.TabIndex = 7;
-            this.btnAgregarCliente.Text = "Agregar cliente";
-            this.btnAgregarCliente.UseVisualStyleBackColor = true;
-            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
-            // 
-            // btnVolverAtras
-            // 
-            this.btnVolverAtras.Location = new System.Drawing.Point(202, 412);
-            this.btnVolverAtras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnVolverAtras.Name = "btnVolverAtras";
-            this.btnVolverAtras.Size = new System.Drawing.Size(102, 46);
-            this.btnVolverAtras.TabIndex = 8;
-            this.btnVolverAtras.Text = "Volver atrás";
-            this.btnVolverAtras.UseVisualStyleBackColor = true;
+            //this.btnResponsableInscripto.AutoSize = true;
+            //this.btnResponsableInscripto.Location = new System.Drawing.Point(199, 345);
+            //this.btnResponsableInscripto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            //this.btnResponsableInscripto.Name = "btnResponsableInscripto";
+            //this.btnResponsableInscripto.Size = new System.Drawing.Size(130, 17);
+            //this.btnResponsableInscripto.TabIndex = 6;
+            //this.btnResponsableInscripto.TabStop = true;
+            //this.btnResponsableInscripto.Text = "Responsable Inscripto";
+            //this.btnResponsableInscripto.UseVisualStyleBackColor = true;
+            //// 
+            //// btnAgregarCliente
+            //// 
+            //this.btnAgregarCliente.Location = new System.Drawing.Point(90, 412);
+            //this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            //this.btnAgregarCliente.Name = "btnAgregarCliente";
+            //this.btnAgregarCliente.Size = new System.Drawing.Size(96, 46);
+            //this.btnAgregarCliente.TabIndex = 7;
+            //this.btnAgregarCliente.Text = "Agregar cliente";
+            //this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            //this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
+            //// 
+            //// btnVolverAtras
+            //// 
+            //this.btnVolverAtras.Location = new System.Drawing.Point(202, 412);
+            //this.btnVolverAtras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            //this.btnVolverAtras.Name = "btnVolverAtras";
+            //this.btnVolverAtras.Size = new System.Drawing.Size(102, 46);
+            //this.btnVolverAtras.TabIndex = 8;
+            //this.btnVolverAtras.Text = "Volver atrás";
+            //this.btnVolverAtras.UseVisualStyleBackColor = true;
             // 
             // label2
             // 

@@ -70,5 +70,11 @@ namespace WindowsFormsApp1
             addUserControl(ucVentas);
         }
 
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            UserControlCategorias ucCategorias = new UserControlCategorias();
+            addUserControl(ucCategorias);
+        }
     }
 }

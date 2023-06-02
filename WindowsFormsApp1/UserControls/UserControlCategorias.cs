@@ -26,11 +26,7 @@ namespace WindowsFormsApp1.UserControls
         {
             FormCategoria formCategoria = new FormCategoria(1,0);
             DialogResult dialogResult = formCategoria.ShowDialog();
-            if ( dialogResult == DialogResult.OK)
-            {
-                formCategoria.Close();
-                MostrarCategorias(null);
-            }
+            MostrarCategorias(null);
         }
 
 

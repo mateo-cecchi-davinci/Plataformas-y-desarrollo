@@ -47,20 +47,23 @@ namespace WindowsFormsApp1.Controllers
             }
 
         }
-        public static int obtenerTotalDeVentas()
-        {
-            int total = 0;
-            try
-            {
-                DB_controller.connection.Open();
+        //public static int obtenerTotalDeVentas()
+        //{
+        //    int total = 0;
+        //    try
+        //    {
+        //        DB_controller.connection.Open();
 
-                string query = "SELECT COUNT(*) FROM dbo.venta;";
-                SqlCommand cmd = new SqlCommand();
+        //        string query = "SELECT COUNT(*) FROM dbo.venta;";
+        //        SqlCommand cmd = new SqlCommand();
 
-                
 
-                cmd.CommandText = query;
-                cmd.Connection = DB_controller.connection;
+
+        //        cmd.CommandText = query;
+        //        cmd.Connection = DB_controller.connection;
+        //    }
+        //}
+
 
         public static bool actualizarStock (int nuevoStock, long id)
         {
