@@ -104,9 +104,9 @@ namespace WindowsFormsApp1.Controllers
                 {
                     cliente._id = reader.GetInt32(0);
                     cliente.Nombre = reader.GetString(1);
-                    cliente.Dni = reader.GetString(2);
+                    cliente.Direccion = reader.GetString(2);
                     cliente.Email = reader.GetString(3);
-                    cliente.Direccion = reader.GetString(4);
+                    cliente.Dni = reader.GetString(4);
                     cliente.Tipo = reader.GetInt32(5);
                 }
                 reader.Close();

@@ -167,6 +167,8 @@ namespace WindowsFormsApp1.Controllers
                     prod.Precio = reader.GetDecimal(4);
                     prod.Categoria = reader.GetInt32(5);
                     prod.Activo = reader.GetBoolean(6);
+                    byte[] imagenBytes = (byte[])reader["image"];
+                    prod.Image = imagenBytes;
 
                 }
                 reader.Close();
@@ -209,11 +211,6 @@ namespace WindowsFormsApp1.Controllers
             List<Producto> lista = new List<Producto>();
             try
             {
-                //SELECT*
-                //FROM producto
-                //INNER JOIN categoria ON producto.categoria = categoria.id
-                //WHERE categoria.nombre = 'Refrigeracion Liquida';
-
                 DB_controller.connection.Open();
 
                 string query = @"SELECT * 
@@ -240,7 +237,7 @@ namespace WindowsFormsApp1.Controllers
                     prod.Precio = reader.GetDecimal(4);
                     prod.Categoria = reader.GetInt32(5);
                     prod.Activo = reader.GetBoolean(6);
-                    byte[] imagenBytes = (byte[])reader["image"]; // Lee la imagen como bytes
+                    byte[] imagenBytes = (byte[])reader["image"]; 
                     prod.Image = imagenBytes;
                     lista.Add(prod);
 

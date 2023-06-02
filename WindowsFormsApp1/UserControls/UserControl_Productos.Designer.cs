@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tablaProductos = new Guna.UI2.WinForms.Guna2DataGridView();
             this.idProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,28 +45,28 @@
             this.buscadorProductos = new System.Windows.Forms.PictureBox();
             this.buttonAgregarProducto = new System.Windows.Forms.PictureBox();
             this.textBoxBuscarProductos = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonEditarProducto = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.tablaProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEditarUsuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonEstadoProducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buscadorProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonAgregarProducto)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEditarProducto)).BeginInit();
             this.SuspendLayout();
             // 
             // tablaProductos
             // 
             this.tablaProductos.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            this.tablaProductos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.tablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.tablaProductos.ColumnHeadersHeight = 15;
             this.tablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.tablaProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -78,21 +78,21 @@
             this.estadoProducto,
             this.categoriaProducto,
             this.Imagen});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tablaProductos.DefaultCellStyle = dataGridViewCellStyle21;
             this.tablaProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.tablaProductos.Location = new System.Drawing.Point(51, 128);
+            this.tablaProductos.Location = new System.Drawing.Point(36, 128);
             this.tablaProductos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tablaProductos.Name = "tablaProductos";
             this.tablaProductos.RowHeadersVisible = false;
             this.tablaProductos.RowHeadersWidth = 51;
-            this.tablaProductos.Size = new System.Drawing.Size(1342, 559);
+            this.tablaProductos.Size = new System.Drawing.Size(1357, 559);
             this.tablaProductos.TabIndex = 4;
             this.tablaProductos.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.tablaProductos.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -115,7 +115,6 @@
             this.tablaProductos.ThemeStyle.RowsStyle.Height = 22;
             this.tablaProductos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tablaProductos.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.tablaProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tablaProductos_CellContentClick);
             // 
             // idProducto
             // 
@@ -176,15 +175,14 @@
             this.buttonEditarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEditarUsuario.TabIndex = 6;
             this.buttonEditarUsuario.TabStop = false;
-            this.buttonEditarUsuario.Click += new System.EventHandler(this.buttonEditarProducto_Click);
             // 
             // buttonEstadoProducto
             // 
             this.buttonEstadoProducto.Image = global::WindowsFormsApp1.Properties.Resources.true_false;
-            this.buttonEstadoProducto.Location = new System.Drawing.Point(237, 42);
+            this.buttonEstadoProducto.Location = new System.Drawing.Point(102, 51);
             this.buttonEstadoProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEstadoProducto.Name = "buttonEstadoProducto";
-            this.buttonEstadoProducto.Size = new System.Drawing.Size(98, 54);
+            this.buttonEstadoProducto.Size = new System.Drawing.Size(73, 50);
             this.buttonEstadoProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEstadoProducto.TabIndex = 5;
             this.buttonEstadoProducto.TabStop = false;
@@ -193,10 +191,10 @@
             // buscadorProductos
             // 
             this.buscadorProductos.Image = global::WindowsFormsApp1.Properties.Resources.buscar;
-            this.buscadorProductos.Location = new System.Drawing.Point(1227, 42);
+            this.buscadorProductos.Location = new System.Drawing.Point(1252, 51);
             this.buscadorProductos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buscadorProductos.Name = "buscadorProductos";
-            this.buscadorProductos.Size = new System.Drawing.Size(166, 54);
+            this.buscadorProductos.Size = new System.Drawing.Size(141, 50);
             this.buscadorProductos.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buscadorProductos.TabIndex = 3;
             this.buscadorProductos.TabStop = false;
@@ -205,10 +203,10 @@
             // buttonAgregarProducto
             // 
             this.buttonAgregarProducto.Image = global::WindowsFormsApp1.Properties.Resources.agregar;
-            this.buttonAgregarProducto.Location = new System.Drawing.Point(51, 42);
+            this.buttonAgregarProducto.Location = new System.Drawing.Point(36, 51);
             this.buttonAgregarProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAgregarProducto.Name = "buttonAgregarProducto";
-            this.buttonAgregarProducto.Size = new System.Drawing.Size(75, 54);
+            this.buttonAgregarProducto.Size = new System.Drawing.Size(50, 50);
             this.buttonAgregarProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonAgregarProducto.TabIndex = 2;
             this.buttonAgregarProducto.TabStop = false;
@@ -225,32 +223,32 @@
             this.textBoxBuscarProductos.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxBuscarProductos.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxBuscarProductos.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxBuscarProductos.Location = new System.Drawing.Point(657, 42);
+            this.textBoxBuscarProductos.Location = new System.Drawing.Point(796, 51);
             this.textBoxBuscarProductos.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBuscarProductos.Name = "textBoxBuscarProductos";
             this.textBoxBuscarProductos.PasswordChar = '\0';
             this.textBoxBuscarProductos.PlaceholderText = "";
             this.textBoxBuscarProductos.SelectedText = "";
-            this.textBoxBuscarProductos.Size = new System.Drawing.Size(565, 54);
+            this.textBoxBuscarProductos.Size = new System.Drawing.Size(449, 50);
             this.textBoxBuscarProductos.TabIndex = 7;
-            this.textBoxBuscarProductos.TextChanged += new System.EventHandler(this.textBoxBuscarProductos_TextChanged);
             // 
-            // pictureBox1
+            // buttonEditarProducto
             // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.true_false;
-            this.pictureBox1.Location = new System.Drawing.Point(133, 42);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 54);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.buttonEditarProducto.Image = global::WindowsFormsApp1.Properties.Resources.editar;
+            this.buttonEditarProducto.Location = new System.Drawing.Point(196, 51);
+            this.buttonEditarProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonEditarProducto.Name = "buttonEditarProducto";
+            this.buttonEditarProducto.Size = new System.Drawing.Size(42, 48);
+            this.buttonEditarProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.buttonEditarProducto.TabIndex = 9;
+            this.buttonEditarProducto.TabStop = false;
+            this.buttonEditarProducto.Click += new System.EventHandler(this.buttonEditarProducto_Click_1);
             // 
             // UserControl_Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.buttonEditarProducto);
             this.Controls.Add(this.textBoxBuscarProductos);
             this.Controls.Add(this.buttonEstadoProducto);
             this.Controls.Add(this.tablaProductos);
@@ -264,7 +262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.buttonEstadoProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buscadorProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonAgregarProducto)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.buttonEditarProducto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -284,6 +282,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoProducto;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoriaProducto;
         private System.Windows.Forms.DataGridViewImageColumn Imagen;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox buttonEditarProducto;
     }
 }

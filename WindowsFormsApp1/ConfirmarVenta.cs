@@ -68,17 +68,14 @@ namespace WindowsFormsApp1
 
 
         private void txtFinalizarVenta_Click(object sender, EventArgs e)
-        {
-            //TODO : Agregar la logica para crear un PDF file sobre la venta generada
-            // checquear stock, actualizar tabla producto y tabla venta 
-
-            string fileName = @"C:\HardHouse-Ventas\" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
+        {  
+            string fileName = @"C:\HardHouse-Ventas\" + _cliente.Nombre +"-"+DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
 
             string paginaHtml_texto = Properties.Resources.plantilla.ToString();
             paginaHtml_texto = paginaHtml_texto.Replace("@NOMBRE_CLIENTE", _cliente.Nombre);
             paginaHtml_texto = paginaHtml_texto.Replace("@DNI_CLIENTE", _cliente.Dni);
             paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_CLIENTE", _cliente.Tipo == 1 ? "Consumidor Final" : "Responsable Inscripto");
-            paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", _cliente.Dni);
+            paginaHtml_texto = paginaHtml_texto.Replace("@DIRECCION", _cliente.Direccion);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
             paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_FACTURA", _cliente._id == 1 ? "A" : "B" );
             paginaHtml_texto = paginaHtml_texto.Replace("@VENDEDOR", _usuario.UserName);
@@ -112,7 +109,14 @@ namespace WindowsFormsApp1
 
                 pdfDoc.Open();
 
+                iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoAppHardware, System.Drawing.Imaging.ImageFormat.Png);
 
+                img.ScaleToFit(80, 60);
+                img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+
+                pdfDoc.Add(img);
 
                 using (StringReader sr = new StringReader(paginaHtml_texto))
                 {

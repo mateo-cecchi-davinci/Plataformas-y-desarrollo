@@ -56,9 +56,9 @@
             // buttonAgregarUsuario
             // 
             this.buttonAgregarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.agregar;
-            this.buttonAgregarUsuario.Location = new System.Drawing.Point(35, 49);
+            this.buttonAgregarUsuario.Location = new System.Drawing.Point(35, 59);
             this.buttonAgregarUsuario.Name = "buttonAgregarUsuario";
-            this.buttonAgregarUsuario.Size = new System.Drawing.Size(67, 51);
+            this.buttonAgregarUsuario.Size = new System.Drawing.Size(45, 41);
             this.buttonAgregarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonAgregarUsuario.TabIndex = 3;
             this.buttonAgregarUsuario.TabStop = false;
@@ -67,9 +67,9 @@
             // buttonBuscarUsuario
             // 
             this.buttonBuscarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.buscar;
-            this.buttonBuscarUsuario.Location = new System.Drawing.Point(1267, 49);
+            this.buttonBuscarUsuario.Location = new System.Drawing.Point(1289, 59);
             this.buttonBuscarUsuario.Name = "buttonBuscarUsuario";
-            this.buttonBuscarUsuario.Size = new System.Drawing.Size(121, 51);
+            this.buttonBuscarUsuario.Size = new System.Drawing.Size(99, 41);
             this.buttonBuscarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonBuscarUsuario.TabIndex = 4;
             this.buttonBuscarUsuario.TabStop = false;
@@ -78,9 +78,9 @@
             // btnCambiarEstadoUsuario
             // 
             this.btnCambiarEstadoUsuario.Image = global::WindowsFormsApp1.Properties.Resources.true_false;
-            this.btnCambiarEstadoUsuario.Location = new System.Drawing.Point(108, 47);
+            this.btnCambiarEstadoUsuario.Location = new System.Drawing.Point(93, 59);
             this.btnCambiarEstadoUsuario.Name = "btnCambiarEstadoUsuario";
-            this.btnCambiarEstadoUsuario.Size = new System.Drawing.Size(105, 52);
+            this.btnCambiarEstadoUsuario.Size = new System.Drawing.Size(83, 42);
             this.btnCambiarEstadoUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnCambiarEstadoUsuario.TabIndex = 6;
             this.btnCambiarEstadoUsuario.TabStop = false;
@@ -185,10 +185,10 @@
             // buttonEditarUsuario
             // 
             this.buttonEditarUsuario.Image = global::WindowsFormsApp1.Properties.Resources.editar;
-            this.buttonEditarUsuario.Location = new System.Drawing.Point(219, 47);
+            this.buttonEditarUsuario.Location = new System.Drawing.Point(204, 59);
             this.buttonEditarUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEditarUsuario.Name = "buttonEditarUsuario";
-            this.buttonEditarUsuario.Size = new System.Drawing.Size(67, 52);
+            this.buttonEditarUsuario.Size = new System.Drawing.Size(45, 42);
             this.buttonEditarUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.buttonEditarUsuario.TabIndex = 8;
             this.buttonEditarUsuario.TabStop = false;
@@ -205,13 +205,13 @@
             this.textBoxBuscadorUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textBoxBuscadorUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.textBoxBuscadorUsuario.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.textBoxBuscadorUsuario.Location = new System.Drawing.Point(889, 51);
+            this.textBoxBuscadorUsuario.Location = new System.Drawing.Point(933, 59);
             this.textBoxBuscadorUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxBuscadorUsuario.Name = "textBoxBuscadorUsuario";
             this.textBoxBuscadorUsuario.PasswordChar = '\0';
             this.textBoxBuscadorUsuario.PlaceholderText = "";
             this.textBoxBuscadorUsuario.SelectedText = "";
-            this.textBoxBuscadorUsuario.Size = new System.Drawing.Size(371, 48);
+            this.textBoxBuscadorUsuario.Size = new System.Drawing.Size(349, 38);
             this.textBoxBuscadorUsuario.TabIndex = 9;
             // 
             // UserControl_Usuarios

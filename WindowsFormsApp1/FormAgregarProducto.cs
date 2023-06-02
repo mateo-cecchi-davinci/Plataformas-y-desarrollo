@@ -56,14 +56,19 @@ namespace WindowsFormsApp1
 
                 txtPrecio.Text = productoToEdit.Precio.ToString();
                 txtStock.Value = productoToEdit.Stock;
-                
+                imagenProducto.Image = cargarFotoDePerfil(productoToEdit.Image);
             }
         }
 
-        private void AgregarProducto_Load(object sender, EventArgs e)
+        private Bitmap cargarFotoDePerfil(byte[] fotoDePerfil)
         {
+            MemoryStream ms = new MemoryStream(fotoDePerfil);
 
+            Bitmap bitmap = new Bitmap(ms);
+
+            return bitmap;
         }
+
         private void btnCargarImg_Click(object sender, EventArgs e)
         {
             OpenFileDialog  openFileDialog = new OpenFileDialog();
@@ -73,14 +78,6 @@ namespace WindowsFormsApp1
                File = Image.FromFile(openFileDialog.FileName);
                imagenProducto.Image = File;
             }
-        }
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonAgregarProducto_Click(object sender, EventArgs e)
@@ -141,14 +138,5 @@ namespace WindowsFormsApp1
             return imagenBytes;
         }
 
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

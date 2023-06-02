@@ -77,7 +77,6 @@
             this.txtCategoria.Name = "txtCategoria";
             this.txtCategoria.Size = new System.Drawing.Size(280, 36);
             this.txtCategoria.TabIndex = 1;
-            this.txtCategoria.SelectedIndexChanged += new System.EventHandler(this.txtCategoria_SelectedIndexChanged);
             // 
             // txtNombre
             // 
@@ -98,7 +97,6 @@
             this.txtNombre.SelectedText = "";
             this.txtNombre.Size = new System.Drawing.Size(279, 29);
             this.txtNombre.TabIndex = 2;
-            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             // 
             // txtDescripcion
             // 
@@ -168,7 +166,6 @@
             this.imagenProducto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.imagenProducto.TabIndex = 7;
             this.imagenProducto.TabStop = false;
-            this.imagenProducto.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // btnCargarImg
             // 
@@ -203,7 +200,6 @@
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "Descripcion:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -311,7 +307,6 @@
             this.Name = "FormAgregarProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formulario de Producto";
-            this.Load += new System.EventHandler(this.AgregarProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtStock)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenProducto)).EndInit();
             this.ResumeLayout(false);

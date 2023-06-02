@@ -107,7 +107,15 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
-        private void buttonEditarProducto_Click(object sender, EventArgs e)
+       
+        private void buttonBuscadorProductos_Click(object sender, EventArgs e)
+        {
+            MostrarProductos(textBoxBuscarProductos.Text);
+            
+        }
+
+
+        private void buttonEditarProducto_Click_1(object sender, EventArgs e)
         {
             if (tablaProductos.SelectedRows.Count > 0)
             {
@@ -116,7 +124,7 @@ namespace WindowsFormsApp1.UserControls
                 String celdaId = filaSeleccionada.Cells["idProducto"].Value.ToString();
 
                 long id = Int64.Parse(celdaId);
-                                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
+                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
 
                 DialogResult dialogResult = formAgregar.ShowDialog();
 
@@ -124,7 +132,7 @@ namespace WindowsFormsApp1.UserControls
                 {
                     MostrarProductos();
                 }
-    
+
                 MostrarProductos();
             }
             else
@@ -132,20 +140,6 @@ namespace WindowsFormsApp1.UserControls
                 MessageBox.Show("Debes seleccionar un producto en la tabla", "Error");
             }
         }
-        private void buttonBuscadorProductos_Click(object sender, EventArgs e)
-        {
-            MostrarProductos(textBoxBuscarProductos.Text);
-            
-        }
 
-        private void tablaProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void textBoxBuscarProductos_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

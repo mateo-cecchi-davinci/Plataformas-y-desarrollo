@@ -318,8 +318,6 @@ namespace WindowsFormsApp1.UserControls
             FormCliente formAgregarCliente = new FormCliente();
 
             DialogResult dialogResult = formAgregarCliente.ShowDialog();
-
-           
         }
 
         private void txtBoxDNIlVentas_TextChanged(object sender, EventArgs e)
