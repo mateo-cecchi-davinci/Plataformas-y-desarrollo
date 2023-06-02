@@ -251,8 +251,8 @@ namespace WindowsFormsApp1.Controllers
             cmd.Parameters.AddWithValue("@dni", usuario.Dni);
             cmd.Parameters.AddWithValue("@nombre_usuario", usuario.UserName);
             cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
-            cmd.Parameters.AddWithValue("@admin", true);
-            cmd.Parameters.AddWithValue("@activo", true);
+            cmd.Parameters.AddWithValue("@admin", usuario.Admin);
+            cmd.Parameters.AddWithValue("@activo", usuario.Activo);
 
             try
             {
@@ -364,6 +364,28 @@ namespace WindowsFormsApp1.Controllers
             return false;
         }
 
+        public static bool cambiarRolUsuario(long id,long isAdmin)
+        {
+
+            string query = "UPDATE dbo.usuario SET dbo.usuario.admin=@rol WHERE dbo.usuario.id = @id;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@rol", isAdmin );
+
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+            return false;
+        }
 
 
     }

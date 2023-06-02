@@ -15,6 +15,7 @@ using System.Xml.Linq;
 using WindowsFormsApp1.Controllers;
 using WindowsFormsApp1.Helper;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.UserControls;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WindowsFormsApp1
@@ -23,7 +24,7 @@ namespace WindowsFormsApp1
     {
         string situacionState = "ADD";
         long idToEdit = 0;
-        private readonly Usuario _usarioToEdit;
+        private  Usuario _usarioToEdit;
         Image File;
 
         public FormAgregarUsuario(string situacion, long id)
@@ -41,7 +42,21 @@ namespace WindowsFormsApp1
                 txtDniUsuario.Text = _usarioToEdit.Dni;
                 txtUserName.Text = _usarioToEdit.UserName;
                 txtContraseñaUsuario.Text = _usarioToEdit.Contraseña;
+                 if( _usarioToEdit.Admin != false )
+                {
+                    btnAdmin.Checked = false;
+                    btnNoAdmin.Checked = true;
+
+                }
+                else
+                {
+                    btnAdmin.Checked = true;
+                    btnNoAdmin.Checked = false;
+                }
                 imagenUser.Image = cargarFotoDePerfil(_usarioToEdit.Imagen);
+            } else
+            {
+                btnAdmin.Checked = true;
             }
 
         }
@@ -82,9 +97,18 @@ namespace WindowsFormsApp1
             {
                 usuario.Dni = txtDniUsuario.Text;
                 usuario.UserName = txtUserName.Text;
+                usuario.Name = txtAgregarNombreUsuario.Text;
+                usuario.Apellido = txtApellidoUsuario.Text;
                 usuario.Activo = true;
-                usuario.Admin = true;
-
+                if (btnAdmin.Checked)
+                {
+                    
+                    usuario.Admin = true;
+                }
+                else
+                {
+                    usuario.Admin = false;
+                }
             }
             else
             {
@@ -199,6 +223,11 @@ namespace WindowsFormsApp1
                 File = Image.FromFile(openFileDialog.FileName);
                 imagenUser.Image = File;
             }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

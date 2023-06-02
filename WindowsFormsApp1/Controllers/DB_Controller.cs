@@ -17,8 +17,8 @@ namespace WindowsFormsApp1.Controllers
         {
             var builder = new SqlConnectionStringBuilder();
 
-            builder.DataSource = "IOLNOTE-ITFC\\SQLEXPRESS";
-            builder.InitialCatalog = "hardhouse";
+            builder.DataSource = "PC-JERO2\\SQLEXPRESS";
+            builder.InitialCatalog = "hardhouse-new";
             builder.IntegratedSecurity = true;
             connectionString = builder.ToString();
             connection = new SqlConnection(connectionString);
