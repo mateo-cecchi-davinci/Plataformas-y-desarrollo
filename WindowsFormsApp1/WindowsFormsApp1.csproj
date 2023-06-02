@@ -69,6 +69,10 @@
       <DependentUpon>ConfirmarVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Controllers\Clientes_Controller.cs" />
+    <Compile Include="Controllers\Item_Venta_Controller.cs" />
+    <Compile Include="Controllers\Venta_Controller.cs" />
+    <Compile Include="DTOs\ItemVentaDTO.cs" />
+    <Compile Include="DTOs\VentaDTO.cs" />
     <Compile Include="FormAgregarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,12 +114,6 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\ImageCreator.cs" />
-    <Compile Include="ListaClientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListaClientes.Designer.cs">
-      <DependentUpon>ListaClientes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\ItemVenta.cs" />

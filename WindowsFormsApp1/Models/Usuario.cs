@@ -19,11 +19,9 @@ namespace WindowsFormsApp1.Models
         public bool Admin { get; set; }
         public bool Activo { get; set; }
 
-        public string Img { get; set; }
+        public byte[] Imagen { get; set; } 
 
-        public byte[] imagen { get; set; }
-
-        public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo)
+        public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo, byte[] imagen)
         {
             _id = id;
             Name = name;
@@ -33,30 +31,7 @@ namespace WindowsFormsApp1.Models
             Contraseña = contraseña;
             Admin = admin;
             Activo = activo;
-        }
-
-        public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, bool admin, bool activo, string img)
-        {
-            _id = id;
-            Name = name;
-            Apellido = apellido;
-            Dni = dni;
-            UserName = userName;
-            Contraseña = contraseña;
-            Admin = admin;
-            Activo = activo;
-            Img = img;
-        }
-
-        public Usuario(long id, string name, string apellido, string dni, string userName, string contraseña, string img)
-        {
-            _id = id;
-            Name = name;
-            Apellido = apellido;
-            Dni = dni;
-            UserName = userName;
-            Contraseña = contraseña;
-            Img = img;
+            Imagen = imagen;
         }
 
         public Usuario()

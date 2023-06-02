@@ -51,10 +51,7 @@ namespace WindowsFormsApp1.UserControls
                 {
                     int rowIndex = tablaProductos.Rows.Add();
                     tablaProductos.Rows[rowIndex].Height = 100;
-                    /*Image file;
 
-                    file = Image.FromFile("C:\\Users\\Usuario\\Desktop\\.NET Apps\\prueba\\Plataformas-y-desarrollo\\WindowsFormsApp1\\Resources\\imagenes\\productos\\" + prod.Image + ".jpeg");
-*/
                     tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
                     tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;
                     tablaProductos.Rows[rowIndex].Cells[2].Value = prod.Descripcion;
@@ -74,11 +71,6 @@ namespace WindowsFormsApp1.UserControls
 
                     int rowIndex = tablaProductos.Rows.Add();
                     tablaProductos.Rows[rowIndex].Height = 100;
-                  /*  Image file;
-                    string ruta = "C:\\PlataformasDesarrollo\\ecommerce\\images\\DNI-FRENTE-Jeronimo-Lago.jpg";
-
-                    file = Image.FromFile("C:\\Users\\Usuario\\Desktop\\.NET Apps\\prueba\\Plataformas-y-desarrollo\\WindowsFormsApp1\\Resources\\imagenes\\productos\\" + prod.Image + ".jpeg");
-*/
 
                     tablaProductos.Rows[rowIndex].Cells[0].Value = prod.Id.ToString();
                     tablaProductos.Rows[rowIndex].Cells[1].Value = prod.Nombre;

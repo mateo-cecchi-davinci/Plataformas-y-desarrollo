@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Controllers
     {
         public static bool addProducto(Producto producto)
         {
-            string query = "INSERT INTO dbo.producto (nombre, descripcion, stock, precio, categoria, activo, imagen) VALUES " +
+            string query = "INSERT INTO dbo.producto (nombre, descripcion, stock, precio, categoria, activo, image) VALUES " +
                "(@nombre, " +
                "@descripcion, " +
                "@stock, " +
@@ -47,38 +47,54 @@ namespace WindowsFormsApp1.Controllers
             }
 
         }
-        public static int obtenerTotalDeVentas()
+        //public static int obtenerTotalDeVentas()
+        //{
+        //    int total = 0;
+        //    try
+        //    {
+        //        DB_controller.connection.Open();
+
+        //        string query = "SELECT COUNT(*) FROM dbo.venta;";
+        //        SqlCommand cmd = new SqlCommand();
+
+
+
+        //        cmd.CommandText = query;
+        //        cmd.Connection = DB_controller.connection;
+        //    }
+        //}
+
+
+        public static bool actualizarStock (int nuevoStock, long id)
         {
-            int total = 0;
+            int numeroDeFilas;
+
+            string query = @"UPDATE dbo.producto 
+                                SET stock = @nuevoStock 
+                                WHERE id = @idProducto;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@idProducto", id);
+            cmd.Parameters.AddWithValue("@nuevoStock", nuevoStock);
+
             try
             {
                 DB_controller.connection.Open();
-
-                string query = "SELECT COUNT(*) FROM dbo.venta;";
-                SqlCommand cmd = new SqlCommand();
-
+                numeroDeFilas = cmd.ExecuteNonQuery();
                 
-
-                cmd.CommandText = query;
-                cmd.Connection = DB_controller.connection;
-
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    total = reader.GetInt32(0);
-                }
-                reader.Close();
-                DB_controller.connection.Close();
-
             }
             catch (Exception ex)
             {
+                throw new Exception("Error: " + ex.Message);
+            }
+            finally
+            {
                 DB_controller.connection.Close();
-                throw new Exception("Hay un error en la query: " + ex.Message);
             }
 
-            return total;
+            return numeroDeFilas > 0 ? true : false;
         }
+
         public static List<Producto> obtenerTodos(string text = null )
         {
             List<Producto> lista = new List<Producto>();
@@ -262,6 +278,39 @@ namespace WindowsFormsApp1.Controllers
             {
                 throw new Exception("Error: " + ex.Message);
             }
+        }
+
+        public static int obtenerTotalDeVentas()
+        {
+            int total = 0;
+            try
+            {
+                DB_controller.connection.Open();
+
+                string query = "SELECT COUNT(*) FROM dbo.venta;";
+                SqlCommand cmd = new SqlCommand();
+
+
+
+                cmd.CommandText = query;
+                cmd.Connection = DB_controller.connection;
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    total = reader.GetInt32(0);
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return total;
         }
 
         public static bool actualizarProducto(long id, Producto producto)

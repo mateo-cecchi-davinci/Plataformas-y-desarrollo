@@ -22,35 +22,43 @@ namespace WindowsFormsApp1.UserControls
         }
 
 
-        private void mostrarUsuarios()
+        private void mostrarUsuarios(string text = null)
         {
 
             usuarios = Usuario_Controller.usuarios();
-
             tablaUsuarios.Rows.Clear();
-            foreach (Usuario usuario in usuarios)
+
+            if (string.IsNullOrEmpty(text))
             {
-                int rowIndex = tablaUsuarios.Rows.Add();
-
-                tablaUsuarios.Rows[rowIndex].Cells[0].Value = usuario._id;
-                tablaUsuarios.Rows[rowIndex].Cells[1].Value = usuario.Name;
-                tablaUsuarios.Rows[rowIndex].Cells[2].Value = usuario.Apellido;
-                tablaUsuarios.Rows[rowIndex].Cells[3].Value = usuario.Dni;
-                tablaUsuarios.Rows[rowIndex].Cells[4].Value = usuario.UserName;
-                tablaUsuarios.Rows[rowIndex].Cells[5].Value = usuario.Activo;
-
-
-                /*if (prod.Activo)
+                usuarios = Usuario_Controller.usuarios();
+                tablaUsuarios.Rows.Clear();
+                foreach (Usuario usuario in usuarios)
                 {
-                    tablaProductos.Rows[rowIndex].Cells[4].Value = "Desactivar";
-                }
-                else
-                {
-                    tablaProductos.Rows[rowIndex].Cells[4].Value = "Activar";
-                }
+                    int rowIndex = tablaUsuarios.Rows.Add();
 
-                tablaProductos.Rows[rowIndex].Cells[5].Value = "Editar";
-                */
+                    tablaUsuarios.Rows[rowIndex].Cells[0].Value = usuario._id;
+                    tablaUsuarios.Rows[rowIndex].Cells[1].Value = usuario.Name;
+                    tablaUsuarios.Rows[rowIndex].Cells[2].Value = usuario.Apellido;
+                    tablaUsuarios.Rows[rowIndex].Cells[3].Value = usuario.Dni;
+                    tablaUsuarios.Rows[rowIndex].Cells[4].Value = usuario.UserName;
+                    tablaUsuarios.Rows[rowIndex].Cells[5].Value = usuario.Activo;
+                }
+            }
+            else
+            {
+                usuarios = Usuario_Controller.usuarios(text);
+                tablaUsuarios.Rows.Clear();
+                foreach (Usuario usuario in usuarios)
+                {
+                    int rowIndex = tablaUsuarios.Rows.Add();
+
+                    tablaUsuarios.Rows[rowIndex].Cells[0].Value = usuario._id;
+                    tablaUsuarios.Rows[rowIndex].Cells[1].Value = usuario.Name;
+                    tablaUsuarios.Rows[rowIndex].Cells[2].Value = usuario.Apellido;
+                    tablaUsuarios.Rows[rowIndex].Cells[3].Value = usuario.Dni;
+                    tablaUsuarios.Rows[rowIndex].Cells[4].Value = usuario.UserName;
+                    tablaUsuarios.Rows[rowIndex].Cells[5].Value = usuario.Activo;
+                }
             }
         }
 
@@ -93,9 +101,10 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
+
         private void buttonBuscarUsuario_Click(object sender, EventArgs e)
         {
-
+            mostrarUsuarios(textBoxBuscadorUsuario.Text);
         }
 
         private void buttonEditarUsuario_Click(object sender, EventArgs e)
@@ -124,5 +133,7 @@ namespace WindowsFormsApp1.UserControls
                 MessageBox.Show("Debes seleccionar un usuario en la tabla", "Error");
             }
         }
+
+       
     }
 }

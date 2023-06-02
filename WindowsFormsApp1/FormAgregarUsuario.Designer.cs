@@ -41,11 +41,12 @@
             this.txtContraseñaUsuario = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtConfirmarContraseña = new System.Windows.Forms.TextBox();
-            this.imagenUsuario = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnCargarImgUsuario = new System.Windows.Forms.Button();
             this.confirmarAgregarUsuarioButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.imagenUsuario)).BeginInit();
+            this.labelAgregarUsuarioError = new System.Windows.Forms.Label();
+            this.labelConfirmarContreña = new System.Windows.Forms.Label();
+            this.btnCargarImgUsuario = new System.Windows.Forms.Button();
+            this.imagenUser = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenUser)).BeginInit();
             this.SuspendLayout();
             // 
             // labelAgregarUser
@@ -57,7 +58,6 @@
             this.labelAgregarUser.Size = new System.Drawing.Size(188, 29);
             this.labelAgregarUser.TabIndex = 0;
             this.labelAgregarUser.Text = "Agregar Usuario";
-            this.labelAgregarUser.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtAgregarNombreUsuario
             // 
@@ -66,10 +66,10 @@
             this.txtAgregarNombreUsuario.Size = new System.Drawing.Size(208, 26);
             this.txtAgregarNombreUsuario.TabIndex = 1;
             // 
-            // txtUsuarioApellido
+            // txtApellidoUsuario
             // 
             this.txtApellidoUsuario.Location = new System.Drawing.Point(240, 198);
-            this.txtApellidoUsuario.Name = "txtUsuarioApellido";
+            this.txtApellidoUsuario.Name = "txtApellidoUsuario";
             this.txtApellidoUsuario.Size = new System.Drawing.Size(208, 26);
             this.txtApellidoUsuario.TabIndex = 2;
             // 
@@ -116,10 +116,10 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Nombre Usuario:";
             // 
-            // txtNombreUsuario
+            // txtUserName
             // 
             this.txtUserName.Location = new System.Drawing.Point(240, 358);
-            this.txtUserName.Name = "txtNombreUsuario";
+            this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(208, 26);
             this.txtUserName.TabIndex = 10;
             // 
@@ -154,42 +154,11 @@
             this.txtConfirmarContraseña.Name = "txtConfirmarContraseña";
             this.txtConfirmarContraseña.Size = new System.Drawing.Size(208, 26);
             this.txtConfirmarContraseña.TabIndex = 14;
-            // 
-            // imagenUsuario
-            // 
-            this.imagenUsuario.Location = new System.Drawing.Point(240, 602);
-            this.imagenUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.imagenUsuario.Name = "imagenUsuario";
-            this.imagenUsuario.Size = new System.Drawing.Size(418, 179);
-            this.imagenUsuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imagenUsuario.TabIndex = 16;
-            this.imagenUsuario.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(236, 571);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 20);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Imagen:";
-            // 
-            // btnCargarImgUsuario
-            // 
-            this.btnCargarImgUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCargarImgUsuario.Location = new System.Drawing.Point(240, 801);
-            this.btnCargarImgUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnCargarImgUsuario.Name = "btnCargarImgUsuario";
-            this.btnCargarImgUsuario.Size = new System.Drawing.Size(224, 40);
-            this.btnCargarImgUsuario.TabIndex = 18;
-            this.btnCargarImgUsuario.Text = "Cargar Imagen";
-            this.btnCargarImgUsuario.UseVisualStyleBackColor = true;
-            this.btnCargarImgUsuario.Click += new System.EventHandler(this.btnCargarImgUsuario_Click);
+            this.txtConfirmarContraseña.TextChanged += new System.EventHandler(this.txtConfirmarContraseña_TextChanged);
             // 
             // confirmarAgregarUsuarioButton
             // 
-            this.confirmarAgregarUsuarioButton.Location = new System.Drawing.Point(240, 890);
+            this.confirmarAgregarUsuarioButton.Location = new System.Drawing.Point(240, 640);
             this.confirmarAgregarUsuarioButton.Name = "confirmarAgregarUsuarioButton";
             this.confirmarAgregarUsuarioButton.Size = new System.Drawing.Size(212, 77);
             this.confirmarAgregarUsuarioButton.TabIndex = 19;
@@ -197,15 +166,60 @@
             this.confirmarAgregarUsuarioButton.UseVisualStyleBackColor = true;
             this.confirmarAgregarUsuarioButton.Click += new System.EventHandler(this.btnAgregarUsuario);
             // 
+            // labelAgregarUsuarioError
+            // 
+            this.labelAgregarUsuarioError.AutoSize = true;
+            this.labelAgregarUsuarioError.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAgregarUsuarioError.ForeColor = System.Drawing.Color.Red;
+            this.labelAgregarUsuarioError.Location = new System.Drawing.Point(235, 595);
+            this.labelAgregarUsuarioError.Name = "labelAgregarUsuarioError";
+            this.labelAgregarUsuarioError.Size = new System.Drawing.Size(433, 25);
+            this.labelAgregarUsuarioError.TabIndex = 20;
+            this.labelAgregarUsuarioError.Text = "Todos los campos deben ser completados *";
+            this.labelAgregarUsuarioError.Visible = false;
+            // 
+            // labelConfirmarContreña
+            // 
+            this.labelConfirmarContreña.AutoSize = true;
+            this.labelConfirmarContreña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelConfirmarContreña.ForeColor = System.Drawing.Color.Red;
+            this.labelConfirmarContreña.Location = new System.Drawing.Point(476, 521);
+            this.labelConfirmarContreña.Name = "labelConfirmarContreña";
+            this.labelConfirmarContreña.Size = new System.Drawing.Size(302, 25);
+            this.labelConfirmarContreña.TabIndex = 21;
+            this.labelConfirmarContreña.Text = "No coincide con la contreseña";
+            this.labelConfirmarContreña.Visible = false;
+            // 
+            // btnCargarImgUsuario
+            // 
+            this.btnCargarImgUsuario.Location = new System.Drawing.Point(573, 335);
+            this.btnCargarImgUsuario.Name = "btnCargarImgUsuario";
+            this.btnCargarImgUsuario.Size = new System.Drawing.Size(204, 65);
+            this.btnCargarImgUsuario.TabIndex = 22;
+            this.btnCargarImgUsuario.Text = "Cargar Imagen";
+            this.btnCargarImgUsuario.UseVisualStyleBackColor = true;
+            this.btnCargarImgUsuario.Click += new System.EventHandler(this.btnCargarImgUsuario_Click);
+            // 
+            // imagenUser
+            // 
+            this.imagenUser.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.imagenUser.Location = new System.Drawing.Point(573, 112);
+            this.imagenUser.Name = "imagenUser";
+            this.imagenUser.Size = new System.Drawing.Size(204, 188);
+            this.imagenUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imagenUser.TabIndex = 23;
+            this.imagenUser.TabStop = false;
+            // 
             // FormAgregarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 1005);
-            this.Controls.Add(this.confirmarAgregarUsuarioButton);
+            this.Controls.Add(this.imagenUser);
             this.Controls.Add(this.btnCargarImgUsuario);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.imagenUsuario);
+            this.Controls.Add(this.labelConfirmarContreña);
+            this.Controls.Add(this.labelAgregarUsuarioError);
+            this.Controls.Add(this.confirmarAgregarUsuarioButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtConfirmarContraseña);
             this.Controls.Add(this.label5);
@@ -221,7 +235,7 @@
             this.Controls.Add(this.labelAgregarUser);
             this.Name = "FormAgregarUsuario";
             this.Text = "AgregarUsuarioForm";
-            ((System.ComponentModel.ISupportInitialize)(this.imagenUsuario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,9 +256,10 @@
         private System.Windows.Forms.TextBox txtContraseñaUsuario;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtConfirmarContraseña;
-        private System.Windows.Forms.PictureBox imagenUsuario;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnCargarImgUsuario;
         private System.Windows.Forms.Button confirmarAgregarUsuarioButton;
+        private System.Windows.Forms.Label labelAgregarUsuarioError;
+        private System.Windows.Forms.Label labelConfirmarContreña;
+        private System.Windows.Forms.Button btnCargarImgUsuario;
+        private System.Windows.Forms.PictureBox imagenUser;
     }
 }

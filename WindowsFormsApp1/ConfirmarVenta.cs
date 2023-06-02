@@ -16,6 +16,7 @@ using iTextSharp.text.xml;
 using System.IO;
 using iTextSharp.tool.xml;
 using WindowsFormsApp1.UserControls;
+using WindowsFormsApp1.DTOs;
 
 namespace WindowsFormsApp1
 {
@@ -25,6 +26,7 @@ namespace WindowsFormsApp1
         private readonly Venta _venta;
         private readonly Usuario _usuario;
         private readonly UserControl_Ventas _userControl_Ventas;
+        decimal total;
         public ConfirmarVenta(Venta venta, Cliente cliente, Usuario usuario, UserControl_Ventas userControl_Ventas)
         {
             InitializeComponent();
@@ -33,22 +35,9 @@ namespace WindowsFormsApp1
             _venta = venta;
             _usuario = usuario;
             _userControl_Ventas = userControl_Ventas;
-            //comboboxIva.Items.Add("0");
-            //comboboxIva.Items.Add("10,5");
-            //comboboxIva.Items.Add("27");
-            //comboboxIva.Items.Add("21");
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
         public void llenarTabla(Venta venta)
         {
 
@@ -76,31 +65,7 @@ namespace WindowsFormsApp1
 
         }
 
-        // TO DO 
-         /* 
-          * 
-          *Mostrar producto por categoria y nombre
-         Traer datos de cliente y poner fecha - done
-         Hacer algo con el medio de pago ( si es tarjeta, al generar venta, le pones un form que tenga para poner datos)
-         Generar PDF de Venta 
-         Cuadrar stock cantidad y que no se pase en la tabla de venta
-         Guardar Venta en BDD, implica (descontar stock en producto)
-         */
 
-       
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-           
-        }
-
-        //private void comboboxIva_SelectedIndexChanged(object sender, EventArgs e)
-        //{          
-        //        decimal subTotal = Decimal.Parse(txtSubtotal.Text);
-        //        decimal IVA = Decimal.Parse(comboboxIva.SelectedItem.ToString());
-        //        decimal totalConIva = IVA > 0 ? (subTotal * IVA) / 100 + subTotal : subTotal;
-        //        txtTotalConIva.Text = totalConIva.ToString();           
-        //}
 
         private void txtFinalizarVenta_Click(object sender, EventArgs e)
         {
@@ -116,10 +81,11 @@ namespace WindowsFormsApp1
             paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", _cliente.Dni);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
             paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_FACTURA", _cliente._id == 1 ? "A" : "B" );
+            paginaHtml_texto = paginaHtml_texto.Replace("@VENDEDOR", _usuario.UserName);
             paginaHtml_texto = paginaHtml_texto.Replace("@NUMERO_FACTURA", GenerarNumeroComprobante(Producto_Controller.obtenerTotalDeVentas()));
 
             string filas = string.Empty;
-            decimal total = 0;
+             total = 0;
 
             foreach (ItemVenta item in _venta.Items)
             {
@@ -132,8 +98,10 @@ namespace WindowsFormsApp1
                 total += item.Producto.Precio * Decimal.Parse(item.Cantidad.ToString());
             }
 
+            total = (total * 121) / 100;
+
             paginaHtml_texto = paginaHtml_texto.Replace("@FILAS", filas);
-            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL_COMPRA", ((total*21)/100).ToString());
+            paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL_COMPRA", total.ToString());
 
 
             using (FileStream stream = new FileStream(fileName, FileMode.Create))
@@ -164,6 +132,43 @@ namespace WindowsFormsApp1
         {
             if (pdfDoc.IsOpen() == false)
             {
+                //Guardar Venta en base de datos
+                VentaDTO venta = new VentaDTO()
+                {
+                    fecha = DateTime.Now,
+                    total = total,
+                    cliente = _cliente._id,
+                    vendedor = _usuario._id
+                };
+
+                Venta_Controller.agregarVenta(venta);
+
+                //guardar item ventas en la base de datos
+                foreach (ItemVenta item in _venta.Items)
+                {
+                    ItemVentaDTO itemVenta = new ItemVentaDTO()
+                    {
+                        cantidad = item.Cantidad,
+                        id_producto = item.Producto.Id,
+                    };
+
+                    if(itemVenta != null)
+                    {
+                        Item_Venta_Controller.agregarItemVenta(itemVenta);
+                    }
+                }
+                //
+
+                //actualizar el stock
+                foreach (ItemVenta item in _venta.Items)
+                {
+                    int nuevoStock = item.Producto.Stock - item.Cantidad;
+                    
+                    Producto_Controller.actualizarStock(nuevoStock, item.Producto.Id);
+
+                }
+                //
+
                 if (MessageBox.Show("Venta generada con exito, Desea realizar otra venta ?", "Venta Generada", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     == DialogResult.Yes)
                 {

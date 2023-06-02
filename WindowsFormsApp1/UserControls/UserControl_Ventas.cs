@@ -17,14 +17,16 @@ namespace WindowsFormsApp1.UserControls
     {
         Producto prodToAdd;
         Venta venta = new Venta();
-        Usuario usuario;
+        Usuario usuario; 
+        Cliente _cliente;
+
 
         public UserControl_Ventas(Usuario user)
         {
             InitializeComponent();
             MostrarProductos(null);
-            List <Categoria> categorias = Categoria_Controller.obtenerTodas();
 
+            List <Categoria> categorias = Categoria_Controller.obtenerTodas();
             List<Categoria> lista = Categoria_Controller.obtenerTodas();
             label15.Text = DateTime.Now.Date.ToShortDateString();
             label14.Text = user.UserName.ToString();
@@ -40,7 +42,6 @@ namespace WindowsFormsApp1.UserControls
                     comboboxCategoria.Items.Add(subcat.Nombre);
                 }
             }
-            txtNombreCliente.Text = "Cliente: Consumidor Final";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -62,64 +63,27 @@ namespace WindowsFormsApp1.UserControls
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
-
-            Cliente cliente = new Cliente();
-
             if (venta.Items.Count < 1)
             {
                 MessageBox.Show("Debes seleccionar al menos un producto para realizar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-/*
-            if( string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text) &&
-                string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text) &&
-                string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
+
+            if ( _cliente == null)
             {
-                
-                cliente.Nombre = "Consumidor Final";
-                cliente.Dni = "XXXXXXXXX";
-                cliente.Direccion = "XXXXXXXX";
+                _cliente = Clientes_Controller.asignarConsumidorFinal();
             }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(txtBoxNombreClienteVentas.Text))
-                {
-                    MessageBox.Show("Por favor ingresa tu nombre", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
 
-                if (string.IsNullOrWhiteSpace(txtBoxDNIlVentas.Text))
-                {
-                    MessageBox.Show("Por favor ingresa un email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(txtBoxAddressVentas.Text))
-                {
-                    MessageBox.Show("Por favor ingresa una direccion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                cliente.Nombre = txtBoxNombreClienteVentas.Text.ToString();
-                cliente.Dni = txtBoxDNIlVentas.Text.ToString();
-                cliente.Direccion = txtBoxAddressVentas.Text.ToString();
-            }
-            */
-            
 
             if (radioBtnTarjeta.Checked.Equals(false) && radioBtnEfectivo.Checked.Equals(false))
             {
                 radioBtnEfectivo.Checked = true;
             }
-            
-            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, cliente, usuario, this);
+
+            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, _cliente, usuario, this);
 
             DialogResult dialogResult = formConfirmarVenta.ShowDialog(this);
 
-            if (dialogResult == DialogResult.OK)
-            {
-                
-            }
         }
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
@@ -339,6 +303,8 @@ namespace WindowsFormsApp1.UserControls
             tablaVenta.Rows.Clear();
             txtSubTotal1.Clear();
             txtTotalConIVA1.Clear();
+            txtBoxDNIlVentas.Clear();
+            this.MostrarProductos(null);
 
             for (int i = 0; i < venta.Items.Count(); i ++)
             {
@@ -346,26 +312,6 @@ namespace WindowsFormsApp1.UserControls
             }
         }
 
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            if (txtBoxDNIlVentas.Text.Length > 0 && txtBoxDNIlVentas.Text.Length < 15)
-            {
-                Cliente cliente = Clientes_Controller.buscarCliente(txtBoxDNIlVentas.Text);
-              
-
-                if (String.IsNullOrEmpty(cliente.Dni))
-                {
-                    txtNombreCliente.Text = "Cliente: Consumidor Final";
-                }
-                else
-                {
-                    txtNombreCliente.Text = "Cliente: " + cliente.Nombre;
-                }
-            } else
-            {
-                MessageBox.Show("Debes ingresar un DNI válido.", "Error al buscar cliente");
-            }
-        }
 
         private void btnAgregarCliente_Click(object sender, EventArgs e)
         {
@@ -378,7 +324,58 @@ namespace WindowsFormsApp1.UserControls
 
         private void txtBoxDNIlVentas_TextChanged(object sender, EventArgs e)
         {
+            if(txtBoxDNIlVentas.Text.Length < 8 )
+            {
+                labelBuscadorCliente.Text = "Ingresar los 8 numeros del DNI";
+                labelBuscadorCliente.ForeColor = Color.Red;
+            }
+            else
+            {
+                labelBuscadorCliente.Text = "Buscando";
+                labelBuscadorCliente.ForeColor = Color.Black;
+                string dni = txtBoxDNIlVentas.Text.ToString();
 
+                if (isDNINumber(dni))
+                {
+                    _cliente = Clientes_Controller.buscarCliente(dni);
+                    if (_cliente != null)
+                    {
+                        labelBuscadorCliente.Text = $"Cliente {_cliente.Nombre} encontrado con exito";
+                        labelBuscadorCliente.ForeColor = Color.Green;
+                    }
+                    else
+                    {
+                        labelBuscadorCliente.Text = "El Cliente no existe, puedes agregarlo";
+                        labelBuscadorCliente.ForeColor = Color.Red;
+                    }
+                }
+                
+
+            }
+
+        }
+
+        private bool isDNINumber(string txtBoxDniVentas)
+        {
+            long dni;
+
+            bool dniNumber = Int64.TryParse(txtBoxDniVentas, out dni);
+
+            if (dniNumber)
+            {
+                return true;
+            }
+            labelBuscadorCliente.Text = "Error, Ingresar 8 digitos numericos";
+            labelBuscadorCliente.ForeColor = Color.Red;
+
+            return false;
+        }
+
+        private void btnAgregarCliente_Click_1(object sender, EventArgs e)
+        {
+            FormCliente formCliente = new FormCliente();
+
+            DialogResult dialogResult = formCliente.ShowDialog(this);
         }
     }
 }
