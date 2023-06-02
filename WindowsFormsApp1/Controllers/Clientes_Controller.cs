@@ -8,16 +8,18 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.Controllers
 {
-    public class Clientes_Controller
+    public static class Clientes_Controller
     {
         public static bool agregarCliente(Cliente cliente)
         {
+            int numeroFilas;
+
             string query = "INSERT INTO dbo.clientes (nombre, direccion, email, dni,  tipo) VALUES " +
                "(@nombre, " +
                "@direccion, " +
                "@email, " +
                "@dni, " +
-               "@tipo, " +
+               "@tipo " +
                ");";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
@@ -29,27 +31,32 @@ namespace WindowsFormsApp1.Controllers
             try
             {
                 DB_controller.connection.Open();
-                cmd.ExecuteNonQuery();
-                DB_controller.connection.Close();
-                return true;
+                numeroFilas = cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
                 throw new Exception("Hay un error en la query: " + ex.Message);
-                return false;
-
+                
             }
+            finally
+            {
+
+                DB_controller.connection.Close();
+            }
+
+            return numeroFilas > 0 ? true : false;
         }
 
-        public static Cliente buscarCliente(string dni)
+        public static Cliente asignarConsumidorFinal()
         {
+            string dni = "00000000";
             Cliente cliente = new Cliente();
+            
 
-
-            string query = "SELECT * FROM dbo.clientes WHERE dbo.clientes.dni LIKE @dni";
+            string query = "SELECT * FROM dbo.clientes WHERE dbo.clientes.dni = @dni";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
-            cmd.Parameters.AddWithValue("@dni", $"%{dni}%");
+            cmd.Parameters.AddWithValue("@dni", dni);
 
             try
             {
@@ -57,17 +64,17 @@ namespace WindowsFormsApp1.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    cliente.Nombre = reader.GetString(0);
-                    cliente.Dni = reader.GetString(1);
-                    cliente.Email = reader.GetString(2);
-                    cliente.Direccion = reader.GetString(3);
-                    cliente.Tipo = reader.GetInt32(4);
+                    cliente._id = reader.GetInt32(0);
+                    cliente.Nombre = reader.GetString(1);
+                    cliente.Dni = reader.GetString(2);
+                    cliente.Email = reader.GetString(3);
+                    cliente.Direccion = reader.GetString(4);
+                    cliente.Tipo = reader.GetInt32(5);
                 }
                 reader.Close();
             }
             catch (Exception ex)
             {
-                
                 throw new Exception("Hay un error en la query: " + ex.Message);
             }
             finally
@@ -75,7 +82,44 @@ namespace WindowsFormsApp1.Controllers
                 DB_controller.connection.Close();
             }
 
-            return cliente;
+            return string.IsNullOrEmpty(cliente.Nombre) == false ? cliente : null;
+        }
+
+        public static Cliente buscarCliente(string dni)
+        {
+            Cliente cliente = new Cliente();
+
+
+            string query = "SELECT * FROM dbo.clientes WHERE dbo.clientes.dni = @dni";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@dni", dni);
+
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    cliente._id = reader.GetInt32(0);
+                    cliente.Nombre = reader.GetString(1);
+                    cliente.Dni = reader.GetString(2);
+                    cliente.Email = reader.GetString(3);
+                    cliente.Direccion = reader.GetString(4);
+                    cliente.Tipo = reader.GetInt32(5);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+            finally
+            {
+                DB_controller.connection.Close();
+            }
+            
+             return string.IsNullOrEmpty(cliente.Nombre) == false ? cliente : null;
         }
     }
 }

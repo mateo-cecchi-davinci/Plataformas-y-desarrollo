@@ -90,12 +90,11 @@ namespace WindowsFormsApp1
             producto.Descripcion = txtDescripcion.Text;
             producto.Stock = Int32.Parse(txtStock.Value.ToString());
             producto.Precio = Decimal.Parse(txtPrecio.Text);
-            producto.Image = ExtraerBytesFromImage();
             producto.Categoria = Categoria_Controller.findByName(txtCategoria.SelectedItem.ToString()).Id;
             producto.Activo = true;
             try
             {
-                File.Save(@"C:\Users\Usuario\source\repos\WindowsFormsApp1\WindowsFormsApp1\Resources\imagenes\productos\" + NombreImagen.Text + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                producto.Image = ExtraerBytesFromImage();
             }
             catch
             {

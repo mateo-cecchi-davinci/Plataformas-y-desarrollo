@@ -19,14 +19,15 @@ namespace WindowsFormsApp1.Controllers
         public static bool crearUsuario(Usuario usuario)
         {
             //Darlo de alta en la BBDD
-            string query = "INSERT INTO dbo.usuario (nombre, apellido, dni, nombre_usuario, contraseña, admin, activo) VALUES " +
+            string query = "INSERT INTO dbo.usuario (nombre, apellido, dni, nombre_usuario, contraseña, admin, activo, image) VALUES " +
                "(@nombre, " +
                "@apellido, " +
                "@dni, " +
                "@nombre_usuario, " +
                "@contraseña, " +
                "@admin, " +
-               "@activo " +
+               "@activo, " +
+               "@image " +
                ");";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
@@ -37,6 +38,7 @@ namespace WindowsFormsApp1.Controllers
             cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
             cmd.Parameters.AddWithValue("@admin", true);
             cmd.Parameters.AddWithValue("@activo", true);
+            cmd.Parameters.AddWithValue("@image", usuario.Imagen);
 
             try
             {
@@ -52,6 +54,70 @@ namespace WindowsFormsApp1.Controllers
                 DB_controller.connection.Close();
             }
             return true;
+        }
+
+        public static byte[] getImagenDePerfilUsuario(long id)
+        {
+            byte[] imagen = null;
+
+            string query = @"select dbo.usuario.image
+                                from dbo.usuario 
+                                    where dbo.usuario.id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    imagen = (byte[])reader["image"]; // Lee la imagen como bytes
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return imagen;
+        }
+
+        public static bool validarDNI (string dni)
+        {
+            string dniRegistrado = string.Empty;
+
+            string query = @"select dbo.usuario.dni
+                                from dbo.usuario 
+                                    where dbo.usuario.dni = @dni";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@dni", dni);
+
+            try
+            {
+                DB_controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    dniRegistrado = reader.GetString(0);
+                }
+                reader.Close();
+                DB_controller.connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                DB_controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + ex.Message);
+            }
+
+            return string.IsNullOrEmpty(dniRegistrado) ? true : false;
         }
 
         public static bool validoNombreCompleto(string nombre, string apellido)
@@ -129,8 +195,9 @@ namespace WindowsFormsApp1.Controllers
 
         public static Usuario findByUserName(string username)
         {
+            Usuario usuario = new Usuario();
             string query = "select * from dbo.usuario where dbo.usuario.nombre_usuario = @userName;";
-            Usuario usuario = null;
+            
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
             cmd.Parameters.AddWithValue("@userName", username );
@@ -140,8 +207,16 @@ namespace WindowsFormsApp1.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    usuario = new Usuario(reader.GetInt64(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)
-                        , reader.GetString(4), reader.GetString(5), reader.GetBoolean(6), reader.GetBoolean(7), reader.GetString(8));
+                    usuario._id = reader.GetInt64(0);
+                    usuario.Name = reader.GetString(1);
+                    usuario.Apellido = reader.GetString(2);
+                    usuario.Dni = reader.GetString(3);
+                    usuario.UserName = reader.GetString(4);
+                    usuario.Contraseña = reader.GetString(5);
+                    usuario.Admin = reader.GetBoolean(6);
+                    usuario.Activo = reader.GetBoolean(7);
+                    byte[] imagenBytes = (byte[])reader["image"]; // Lee la imagen como bytes
+                    usuario.Imagen = imagenBytes;
 
                 }
                 reader.Close();
@@ -193,22 +268,41 @@ namespace WindowsFormsApp1.Controllers
             return true;
         }
     
-        public static List<Usuario> usuarios()
+        public static List<Usuario> usuarios(string text = null)
         {
             List<Usuario> usuarios = new List<Usuario>();
 
-            string query = "select * from dbo.usuario";
-            Usuario usuario = null;
-
-            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
             try
             {
                 DB_controller.connection.Open();
+
+                string query = "SELECT * FROM dbo.usuario";
+                SqlCommand cmd = new SqlCommand();
+
+                if(!string.IsNullOrEmpty(text))
+                {
+                    query += @" WHERE nombre LIKE @text 
+                                OR apellido LIKE @text 
+                                OR dni LIKE @text";
+
+                    cmd.Parameters.Add(new SqlParameter("@text", $"%{text}%"));
+                }
+
+                cmd.CommandText = query;
+                cmd.Connection = DB_controller.connection;
+                
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    usuario = new Usuario(reader.GetInt64(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)
-                        , reader.GetString(4), reader.GetString(5), reader.GetBoolean(6), reader.GetBoolean(7));
+                    Usuario usuario = new Usuario();
+                    usuario._id = reader.GetInt64(0);
+                    usuario.Name = reader.GetString(1);
+                    usuario.Apellido = reader.GetString(2);
+                    usuario.Dni = reader.GetString(3);
+                    usuario.UserName = reader.GetString(4);
+                    usuario.Contraseña = reader.GetString(5);
+                    usuario.Admin = reader.GetBoolean(6);
+                    usuario.Activo = reader.GetBoolean(7);
                     usuarios.Add(usuario);
                 }
                 reader.Close(); 
@@ -220,7 +314,6 @@ namespace WindowsFormsApp1.Controllers
             }
 
             return usuarios;
-
         }
 
         public static  bool cambiarContraseña(int dni, string contraseña)

@@ -45,7 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnGenerarVenta = new Guna.UI2.WinForms.Guna2Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelBuscarCliente = new System.Windows.Forms.Label();
             this.txtBoxDNIlVentas = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -73,8 +73,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.txtTotalConIVA1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSubTotal1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnBuscarCliente = new System.Windows.Forms.Button();
-            this.btnAgregarCliente = new System.Windows.Forms.Button();
+            this.labelBuscadorCliente = new System.Windows.Forms.Label();
+            this.btnAgregarCliente = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnDeleteSalesProduct)).BeginInit();
@@ -235,14 +235,14 @@
             this.btnGenerarVenta.Text = "Generar Venta";
             this.btnGenerarVenta.Click += new System.EventHandler(this.btnGenerarVenta_Click);
             // 
-            // label4
+            // labelBuscarCliente
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 130);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 20);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Buscar Cliente por DNI:";
+            this.labelBuscarCliente.AutoSize = true;
+            this.labelBuscarCliente.Location = new System.Drawing.Point(35, 103);
+            this.labelBuscarCliente.Name = "labelBuscarCliente";
+            this.labelBuscarCliente.Size = new System.Drawing.Size(175, 20);
+            this.labelBuscarCliente.TabIndex = 9;
+            this.labelBuscarCliente.Text = "Buscar Cliente por DNI:";
             // 
             // txtBoxDNIlVentas
             // 
@@ -255,7 +255,7 @@
             this.txtBoxDNIlVentas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtBoxDNIlVentas.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtBoxDNIlVentas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtBoxDNIlVentas.Location = new System.Drawing.Point(36, 153);
+            this.txtBoxDNIlVentas.Location = new System.Drawing.Point(36, 126);
             this.txtBoxDNIlVentas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtBoxDNIlVentas.Name = "txtBoxDNIlVentas";
             this.txtBoxDNIlVentas.PasswordChar = '\0';
@@ -263,6 +263,7 @@
             this.txtBoxDNIlVentas.SelectedText = "";
             this.txtBoxDNIlVentas.Size = new System.Drawing.Size(225, 45);
             this.txtBoxDNIlVentas.TabIndex = 8;
+            this.txtBoxDNIlVentas.TextChanged += new System.EventHandler(this.txtBoxDNIlVentas_TextChanged);
             // 
             // label5
             // 
@@ -607,30 +608,35 @@
             this.txtSubTotal1.Size = new System.Drawing.Size(225, 45);
             this.txtSubTotal1.TabIndex = 43;
             // 
-            // btnBuscarCliente
+            // labelBuscadorCliente
             // 
-            this.btnBuscarCliente.Location = new System.Drawing.Point(281, 153);
-            this.btnBuscarCliente.Name = "btnBuscarCliente";
-            this.btnBuscarCliente.Size = new System.Drawing.Size(146, 45);
-            this.btnBuscarCliente.TabIndex = 44;
-            this.btnBuscarCliente.Text = "Buscar Cliente";
-            this.btnBuscarCliente.UseVisualStyleBackColor = true;
+            this.labelBuscadorCliente.AutoSize = true;
+            this.labelBuscadorCliente.Location = new System.Drawing.Point(35, 176);
+            this.labelBuscadorCliente.Name = "labelBuscadorCliente";
+            this.labelBuscadorCliente.Size = new System.Drawing.Size(0, 20);
+            this.labelBuscadorCliente.TabIndex = 46;
             // 
             // btnAgregarCliente
             // 
-            this.btnAgregarCliente.Location = new System.Drawing.Point(444, 153);
+            this.btnAgregarCliente.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAgregarCliente.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAgregarCliente.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAgregarCliente.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAgregarCliente.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarCliente.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(286, 126);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
-            this.btnAgregarCliente.Size = new System.Drawing.Size(144, 44);
-            this.btnAgregarCliente.TabIndex = 45;
+            this.btnAgregarCliente.Size = new System.Drawing.Size(240, 44);
+            this.btnAgregarCliente.TabIndex = 47;
             this.btnAgregarCliente.Text = "Agregar Cliente";
-            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click_1);
             // 
             // UserControl_Ventas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnAgregarCliente);
-            this.Controls.Add(this.btnBuscarCliente);
+            this.Controls.Add(this.labelBuscadorCliente);
             this.Controls.Add(this.txtSubTotal1);
             this.Controls.Add(this.txtTotalConIVA1);
             this.Controls.Add(this.label16);
@@ -653,7 +659,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelBuscarCliente);
             this.Controls.Add(this.txtBoxDNIlVentas);
             this.Controls.Add(this.btnGenerarVenta);
             this.Controls.Add(this.label2);
@@ -663,7 +669,7 @@
             this.Controls.Add(this.tablaVenta);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserControl_Ventas";
-            this.Size = new System.Drawing.Size(1485, 1040);
+            this.Size = new System.Drawing.Size(990, 693);
             this.Load += new System.EventHandler(this.UserControl_Ventas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tablaVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidadProd)).EndInit();
@@ -682,7 +688,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button btnGenerarVenta;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelBuscarCliente;
         private Guna.UI2.WinForms.Guna2TextBox txtBoxDNIlVentas;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -715,7 +721,7 @@
         private System.Windows.Forms.Label label16;
         private Guna.UI2.WinForms.Guna2TextBox txtTotalConIVA1;
         private Guna.UI2.WinForms.Guna2TextBox txtSubTotal1;
-        private System.Windows.Forms.Button btnBuscarCliente;
-        private System.Windows.Forms.Button btnAgregarCliente;
+        private System.Windows.Forms.Label labelBuscadorCliente;
+        private Guna.UI2.WinForms.Guna2Button btnAgregarCliente;
     }
 }

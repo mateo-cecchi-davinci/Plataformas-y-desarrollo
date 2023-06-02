@@ -106,7 +106,6 @@
             this.tablaConfirmarVenta.ThemeStyle.RowsStyle.Height = 22;
             this.tablaConfirmarVenta.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.tablaConfirmarVenta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.tablaConfirmarVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
             // Codigo
             // 
@@ -148,7 +147,6 @@
             this.label1.Size = new System.Drawing.Size(315, 44);
             this.label1.TabIndex = 1;
             this.label1.Text = "Confirmar Venta";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtTotal
             // 
@@ -204,7 +202,6 @@
             this.txtTotalConIva.Name = "txtTotalConIva";
             this.txtTotalConIva.Size = new System.Drawing.Size(0, 20);
             this.txtTotalConIva.TabIndex = 11;
-            this.txtTotalConIva.Click += new System.EventHandler(this.label7_Click);
             // 
             // label2
             // 
