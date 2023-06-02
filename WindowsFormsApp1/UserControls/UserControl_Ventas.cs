@@ -80,7 +80,7 @@ namespace WindowsFormsApp1.UserControls
                 radioBtnEfectivo.Checked = true;
             }
 
-            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, _cliente, usuario, this);
+            ConfirmarVenta formConfirmarVenta = new ConfirmarVenta(venta, _cliente, usuario, this, txtSubTotal1.Text, txtTotalConIVA1.Text);
 
             DialogResult dialogResult = formConfirmarVenta.ShowDialog(this);
 
@@ -193,7 +193,12 @@ namespace WindowsFormsApp1.UserControls
         {
             Producto prod = Producto_Controller.findById(id);
             int cantidad = Int32.Parse(txtCantidadProd.Value.ToString());
-                
+
+            if(cantidad == 0)
+            {
+                return;
+            }
+
             ItemVenta productoExistenteEnVentas = venta.Items.Where(item => item.Producto.Id == prod.Id).FirstOrDefault();
 
             int nuevaCantidad = productoExistenteEnVentas != null 
@@ -210,6 +215,7 @@ namespace WindowsFormsApp1.UserControls
                 itemVenta.Producto = prod;
                 itemVenta.Cantidad = cantidad;
                 venta.Items.Add(itemVenta);
+                txtCantidadProd.Value = 0;
             }
             else
             {

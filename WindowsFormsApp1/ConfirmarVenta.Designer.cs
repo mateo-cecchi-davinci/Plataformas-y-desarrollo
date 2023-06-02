@@ -43,8 +43,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.Label();
             this.txtTotalConIva = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.totalConfirmarVenta = new System.Windows.Forms.Label();
+            this.subTotalConfirmarVenta = new System.Windows.Forms.Label();
             this.btnVolverConfirmarVenta = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.tablaConfirmarVenta)).BeginInit();
             this.SuspendLayout();
@@ -203,27 +203,27 @@
             this.txtTotalConIva.Size = new System.Drawing.Size(0, 20);
             this.txtTotalConIva.TabIndex = 11;
             // 
-            // label2
+            // totalConfirmarVenta
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(160, 697);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(202, 29);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Total (con IVA):";
+            this.totalConfirmarVenta.AutoSize = true;
+            this.totalConfirmarVenta.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalConfirmarVenta.Location = new System.Drawing.Point(160, 697);
+            this.totalConfirmarVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.totalConfirmarVenta.Name = "totalConfirmarVenta";
+            this.totalConfirmarVenta.Size = new System.Drawing.Size(202, 29);
+            this.totalConfirmarVenta.TabIndex = 2;
+            this.totalConfirmarVenta.Text = "Total (con IVA):";
             // 
-            // label5
+            // subTotalConfirmarVenta
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(160, 629);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 29);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Subtotal:";
+            this.subTotalConfirmarVenta.AutoSize = true;
+            this.subTotalConfirmarVenta.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subTotalConfirmarVenta.Location = new System.Drawing.Point(160, 629);
+            this.subTotalConfirmarVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.subTotalConfirmarVenta.Name = "subTotalConfirmarVenta";
+            this.subTotalConfirmarVenta.Size = new System.Drawing.Size(123, 29);
+            this.subTotalConfirmarVenta.TabIndex = 9;
+            this.subTotalConfirmarVenta.Text = "Subtotal:";
             // 
             // btnVolverConfirmarVenta
             // 
@@ -250,11 +250,11 @@
             this.Controls.Add(this.btnVolverConfirmarVenta);
             this.Controls.Add(this.txtTotalConIva);
             this.Controls.Add(this.txtSubtotal);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.subTotalConfirmarVenta);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtFinalizarVenta);
             this.Controls.Add(this.txtTotal);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.totalConfirmarVenta);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tablaConfirmarVenta);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -281,8 +281,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label txtSubtotal;
         private System.Windows.Forms.Label txtTotalConIva;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label totalConfirmarVenta;
+        private System.Windows.Forms.Label subTotalConfirmarVenta;
         private Guna.UI2.WinForms.Guna2Button btnVolverConfirmarVenta;
     }
 }

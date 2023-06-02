@@ -29,7 +29,7 @@ namespace WindowsFormsApp1
         private readonly UserControl_Ventas _userControl_Ventas;
         private readonly EmailService _emailService;
         decimal total;
-        public ConfirmarVenta(Venta venta, Cliente cliente, Usuario usuario, UserControl_Ventas userControl_Ventas)
+        public ConfirmarVenta(Venta venta, Cliente cliente, Usuario usuario, UserControl_Ventas userControl_Ventas, string subTotal, string totalIVA)
         {
             _emailService = new EmailService();
             InitializeComponent();
@@ -38,7 +38,11 @@ namespace WindowsFormsApp1
             _venta = venta;
             _usuario = usuario;
             _userControl_Ventas = userControl_Ventas;
-            
+            subTotalConfirmarVenta.Text += subTotal.ToString();
+            totalConfirmarVenta.Text += totalIVA.ToString();
+
+
+
         }
 
         public void llenarTabla(Venta venta)
@@ -82,7 +86,7 @@ namespace WindowsFormsApp1
             paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_CLIENTE", _cliente.Tipo == 1 ? "Consumidor Final" : "Responsable Inscripto");
             paginaHtml_texto = paginaHtml_texto.Replace("@DIRECCION", _cliente.Direccion);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-            paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_FACTURA", _cliente._id == 1 ? "A" : "B" );
+            paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_FACTURA", _cliente.Tipo == 1 ? "B" : "A" );
             paginaHtml_texto = paginaHtml_texto.Replace("@VENDEDOR", _usuario.UserName);
             paginaHtml_texto = paginaHtml_texto.Replace("@NUMERO_FACTURA", GenerarNumeroComprobante(Producto_Controller.obtenerTotalDeVentas()));
 
