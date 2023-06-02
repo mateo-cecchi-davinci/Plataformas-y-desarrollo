@@ -103,9 +103,13 @@ namespace WindowsFormsApp1
             string fileName = @"C:\HardHouse-Ventas\" + DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
 
             string paginaHtml_texto = Properties.Resources.plantilla.ToString();
-            paginaHtml_texto = paginaHtml_texto.Replace("@CLIENTE", _cliente.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@NOMBRE_CLIENTE", _cliente.Nombre);
+            paginaHtml_texto = paginaHtml_texto.Replace("@DNI_CLIENTE", _cliente.Dni);
+            paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_CLIENTE", _cliente.Tipo == 1 ? "Consumidor Final" : "Responsable Inscripto");
             paginaHtml_texto = paginaHtml_texto.Replace("@DOCUMENTO", _cliente.Dni);
             paginaHtml_texto = paginaHtml_texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+            paginaHtml_texto = paginaHtml_texto.Replace("@TIPO_FACTURA", _cliente._id == 1 ? "A" : "B" );
+            paginaHtml_texto = paginaHtml_texto.Replace("@NUMERO_FACTURA", GenerarNumeroComprobante(Producto_Controller.obtenerTotalDeVentas()));
 
             string filas = string.Empty;
              total = 0;
@@ -211,6 +215,14 @@ namespace WindowsFormsApp1
         private void btnVolverConfirmarVenta_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private string GenerarNumeroComprobante(int numeroActual)
+        {
+            String numeroVenta = _venta.Id.ToString();
+            
+            string formato = "{0:D" + (9 - numeroVenta.Length) + "}";
+            string numeroComprobante = string.Format(formato, numeroActual);
+            return numeroComprobante;
         }
     }
 }

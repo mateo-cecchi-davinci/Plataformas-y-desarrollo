@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.Controllers
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    cat =new Categoria();
+                    cat = new Categoria();
                     cat.Id = reader.GetInt64(0);
                     cat.Nombre = reader.GetString(1);
                     cat.Padre = reader.GetInt64(2);
@@ -87,9 +87,9 @@ namespace WindowsFormsApp1.Controllers
                     Categoria categoria = new Categoria();
                     categoria.Id = reader.GetInt64(0);
                     categoria.Nombre = reader.GetString(1);
-                    categoria.Padre =  reader.GetInt64(2);
+                    categoria.Padre = reader.GetInt64(2);
                     categoria.Activo = reader.GetBoolean(3);
-                    if( categoria.Padre == -1)
+                    if (categoria.Padre == -1)
                     {
                         listOrdenada.Add(categoria);
                     }
@@ -101,9 +101,9 @@ namespace WindowsFormsApp1.Controllers
                 reader.Close();
                 DB_controller.connection.Close();
 
-                foreach(Categoria cat in listOrdenada)
+                foreach (Categoria cat in listOrdenada)
                 {
-                    Categoria toResponse= new Categoria();
+                    Categoria toResponse = new Categoria();
                     toResponse.Id = cat.Id;
                     toResponse.Nombre = cat.Nombre;
                     toResponse.Padre = cat.Padre;
@@ -121,11 +121,11 @@ namespace WindowsFormsApp1.Controllers
         private static List<Categoria> ordenarCategorias(List<Categoria> list, Categoria catPadre)
         {
             List<Categoria> subcategorias = new List<Categoria>();
-            foreach(Categoria cat in list){
-                if(catPadre.Id == cat.Padre)
+            foreach (Categoria cat in list) {
+                if (catPadre.Id == cat.Padre)
                 {
                     subcategorias.Add(cat);
-                    if(list.Where(x => x.Padre == cat.Id).Count() > 0)
+                    if (list.Where(x => x.Padre == cat.Id).Count() > 0)
                     {
                         cat.subcategorias = ordenarCategorias(list, cat);
                     }
@@ -134,6 +134,82 @@ namespace WindowsFormsApp1.Controllers
             return subcategorias;
         }
 
-    }
+        public static bool addCategoria(Categoria cat)
+        {
+            string query = "INSERT INTO dbo.categoria (nombre, padre, activo) VALUES " +
+               "(@nombre, " +
+               "@padre, " +
+               "@activo " +
+               ");";
 
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@nombre", cat.Nombre);
+            cmd.Parameters.AddWithValue("@padre", cat.Padre);
+            cmd.Parameters.AddWithValue("@activo", cat.Activo);
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Hay un error en la query: " + ex.Message);
+                return false;
+            }
+        }
+
+
+
+
+        public static bool cambiarEstado(long id, bool activo)
+        {
+            string query = "update dbo.categoria set activo = @activo where id = @id;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.Parameters.AddWithValue("@activo", activo ? false : true);
+
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+        public static bool actualizarCategoria(long id, Categoria categoria)
+        {
+            string query = "update dbo.categoria  set nombre = @nombre, padre = @padre, activo = @activo where id = @id;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
+
+            cmd.Parameters.AddWithValue("@id", id); 
+            cmd.Parameters.AddWithValue("@nombre", categoria.Nombre);
+            cmd.Parameters.AddWithValue("@padre", categoria.Padre);
+            cmd.Parameters.AddWithValue("@activo", categoria.Activo);
+
+            try
+            {
+                DB_controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_controller.connection.Close();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+
+            }
+        }
+    } 
 }
+
+
+

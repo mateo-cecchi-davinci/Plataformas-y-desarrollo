@@ -116,8 +116,7 @@ namespace WindowsFormsApp1.UserControls
                 String celdaId = filaSeleccionada.Cells["idProducto"].Value.ToString();
 
                 long id = Int64.Parse(celdaId);
-
-                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
+                                FormAgregarProducto formAgregar = new FormAgregarProducto("EDIT", id);
 
                 DialogResult dialogResult = formAgregar.ShowDialog();
 

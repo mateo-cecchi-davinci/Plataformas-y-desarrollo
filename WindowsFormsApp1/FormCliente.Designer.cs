@@ -73,6 +73,61 @@ namespace WindowsFormsApp1
             this.txtDireccionCliente.Size = new System.Drawing.Size(319, 26);
             this.txtDireccionCliente.TabIndex = 3;
             // 
+            // btnConsumidorFinal
+            // 
+            this.btnConsumidorFinal.AutoSize = true;
+            this.btnConsumidorFinal.Location = new System.Drawing.Point(90, 345);
+            this.btnConsumidorFinal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnConsumidorFinal.Name = "btnConsumidorFinal";
+            this.btnConsumidorFinal.Size = new System.Drawing.Size(105, 17);
+            this.btnConsumidorFinal.TabIndex = 5;
+            this.btnConsumidorFinal.TabStop = true;
+            this.btnConsumidorFinal.Text = "Consumidor Final";
+            this.btnConsumidorFinal.UseVisualStyleBackColor = true;
+            // 
+            // btnResponsableInscripto
+            // 
+            this.btnResponsableInscripto.AutoSize = true;
+            this.btnResponsableInscripto.Location = new System.Drawing.Point(199, 345);
+            this.btnResponsableInscripto.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnResponsableInscripto.Name = "btnResponsableInscripto";
+            this.btnResponsableInscripto.Size = new System.Drawing.Size(130, 17);
+            this.btnResponsableInscripto.TabIndex = 6;
+            this.btnResponsableInscripto.TabStop = true;
+            this.btnResponsableInscripto.Text = "Responsable Inscripto";
+            this.btnResponsableInscripto.UseVisualStyleBackColor = true;
+            // 
+            // btnAgregarCliente
+            // 
+            this.btnAgregarCliente.Location = new System.Drawing.Point(90, 412);
+            this.btnAgregarCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(96, 46);
+            this.btnAgregarCliente.TabIndex = 7;
+            this.btnAgregarCliente.Text = "Agregar cliente";
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
+            // 
+            // btnVolverAtras
+            // 
+            this.btnVolverAtras.Location = new System.Drawing.Point(202, 412);
+            this.btnVolverAtras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnVolverAtras.Name = "btnVolverAtras";
+            this.btnVolverAtras.Size = new System.Drawing.Size(102, 46);
+            this.btnVolverAtras.TabIndex = 8;
+            this.btnVolverAtras.Text = "Volver atrás";
+            this.btnVolverAtras.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("JetBrains Mono", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(65, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(266, 31);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Agregar un Cliente";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -95,7 +150,7 @@ namespace WindowsFormsApp1
             this.btnConsumidorFinal.Text = "Consumidor Final";
             this.btnConsumidorFinal.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // label5
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(151, 496);
@@ -186,7 +241,7 @@ namespace WindowsFormsApp1
             // 
             // FormCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 769);
             this.Controls.Add(this.txtError);

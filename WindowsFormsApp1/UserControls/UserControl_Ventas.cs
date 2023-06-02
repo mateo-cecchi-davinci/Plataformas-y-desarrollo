@@ -42,6 +42,7 @@ namespace WindowsFormsApp1.UserControls
                     comboboxCategoria.Items.Add(subcat.Nombre);
                 }
             }
+            txtNombreCliente.Text = "Cliente: Consumidor Final";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -310,6 +311,41 @@ namespace WindowsFormsApp1.UserControls
             {
                 venta.Items.RemoveAt(i);
             }
+        }
+
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
+        {
+            if (txtBoxDNIlVentas.Text.Length > 0 && txtBoxDNIlVentas.Text.Length < 15)
+            {
+                Cliente cliente = Clientes_Controller.buscarCliente(txtBoxDNIlVentas.Text);
+              
+
+                if (String.IsNullOrEmpty(cliente.Dni))
+                {
+                    txtNombreCliente.Text = "Cliente: Consumidor Final";
+                }
+                else
+                {
+                    txtNombreCliente.Text = "Cliente: " + cliente.Nombre;
+                }
+            } else
+            {
+                MessageBox.Show("Debes ingresar un DNI válido.", "Error al buscar cliente");
+            }
+        }
+
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            FormCliente formAgregarCliente = new FormCliente();
+
+            DialogResult dialogResult = formAgregarCliente.ShowDialog();
+
+           
+        }
+
+        private void txtBoxDNIlVentas_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void txtBoxDNIlVentas_TextChanged(object sender, EventArgs e)
