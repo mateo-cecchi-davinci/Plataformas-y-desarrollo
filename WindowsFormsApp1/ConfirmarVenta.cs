@@ -147,12 +147,12 @@ namespace WindowsFormsApp1
         {
             Email email = new Email()
             {
-                apiKey = "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",
-                fromEmail = "franco.cicirelli@gds.ey.com",
+                apiKey = "SG.yl0REhTpQJiS_TftPOGphA.lZg6TJ3jlZ6fYjWtYSpNVNTkt47AZAgK6gPmSaTwYaY",
+                fromEmail = "leonel.pineiro@davinci.edu.ar",
                 toEmail = _cliente.Email,
                 subject = "Venta Generada con exito",
-                plainTextContent = $"Tu compra de en HardHouse ha sido realizada con exito.Muchas gracias",
-                htmlContent = "<p>La compra ha sido <strong>Exitosa</strong>.</p>"
+                plainTextContent = $"Tu compra de en HardHouse ha sido realizada con exito. Muchas gracias",
+                htmlContent = $"<p>La compra  ha sido <strong>Exitosa</strong>.</p>"
             };
             _emailService.SendEmail(email, attachmentFilePath, attachmentFileName);
         }
