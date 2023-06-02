@@ -17,6 +17,7 @@ using System.IO;
 using iTextSharp.tool.xml;
 using WindowsFormsApp1.UserControls;
 using WindowsFormsApp1.DTOs;
+using WindowsFormsApp1.Services;
 
 namespace WindowsFormsApp1
 {
@@ -26,9 +27,11 @@ namespace WindowsFormsApp1
         private readonly Venta _venta;
         private readonly Usuario _usuario;
         private readonly UserControl_Ventas _userControl_Ventas;
+        private readonly EmailService _emailService;
         decimal total;
         public ConfirmarVenta(Venta venta, Cliente cliente, Usuario usuario, UserControl_Ventas userControl_Ventas)
         {
+            _emailService = new EmailService();
             InitializeComponent();
             llenarTabla(venta);
             _cliente = cliente;
@@ -69,7 +72,9 @@ namespace WindowsFormsApp1
 
         private void txtFinalizarVenta_Click(object sender, EventArgs e)
         {  
-            string fileName = @"C:\HardHouse-Ventas\" + _cliente.Nombre +"-"+DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
+            string dateTimeNow = DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf";
+            string fileName = _cliente.Nombre + "-" + dateTimeNow;
+            string filePath = @"C:\HardHouse-Ventas\" + _cliente.Nombre +"-"+ dateTimeNow;
 
             string paginaHtml_texto = Properties.Resources.plantilla.ToString();
             paginaHtml_texto = paginaHtml_texto.Replace("@NOMBRE_CLIENTE", _cliente.Nombre);
@@ -101,7 +106,7 @@ namespace WindowsFormsApp1
             paginaHtml_texto = paginaHtml_texto.Replace("@TOTAL_COMPRA", total.ToString());
 
 
-            using (FileStream stream = new FileStream(fileName, FileMode.Create))
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
             {
                 Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
 
@@ -125,11 +130,27 @@ namespace WindowsFormsApp1
 
                 pdfDoc.Close();
                 stream.Close();
+
                 ValidatePDf(sender, e, pdfDoc);
+                EnviarEmailConPDf(filePath, fileName);
 
                 this.Close();
             }
 
+        }
+
+        private void EnviarEmailConPDf(string attachmentFilePath, string attachmentFileName)
+        {
+            Email email = new Email()
+            {
+                apiKey = "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",
+                fromEmail = "franco.cicirelli@gds.ey.com",
+                toEmail = _cliente.Email,
+                subject = "Venta Generada con exito",
+                plainTextContent = $"Tu compra de en HardHouse ha sido realizada con exito.Muchas gracias",
+                htmlContent = "<p>La compra ha sido <strong>Exitosa</strong>.</p>"
+            };
+            _emailService.SendEmail(email, attachmentFilePath, attachmentFileName);
         }
 
         private bool ValidatePDf(object sender, EventArgs e, Document pdfDoc)
@@ -176,6 +197,12 @@ namespace WindowsFormsApp1
                 if (MessageBox.Show("Venta generada con exito, Desea realizar otra venta ?", "Venta Generada", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     == DialogResult.Yes)
                 {
+                   
+                    //if(_emailService.SendEmail(email).Result)
+                    //{
+                    //    MessageBox.Show("Hemos enviado un mail a tu correo", "Mail enviado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+
                     _userControl_Ventas.CleanTable();
                 }
                 else
