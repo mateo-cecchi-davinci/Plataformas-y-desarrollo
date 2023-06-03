@@ -121,5 +121,10 @@ namespace WindowsFormsApp1
                 txtCategoriaError.Visible = true;
             }
         }
+
+        private void txtCategoriaPadre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
