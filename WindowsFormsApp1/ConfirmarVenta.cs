@@ -148,7 +148,7 @@ namespace WindowsFormsApp1
             Email email = new Email()
             {
                 apiKey = "",
-                fromEmail = "leonel.pineiro@davinci.edu.ar",
+                fromEmail = "",
                 toEmail = _cliente.Email,
                 subject = "Venta Generada con exito",
                 plainTextContent = $"Tu compra de en HardHouse ha sido realizada con exito. Muchas gracias",

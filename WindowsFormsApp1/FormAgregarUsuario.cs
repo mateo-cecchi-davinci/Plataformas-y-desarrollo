@@ -84,7 +84,6 @@ namespace WindowsFormsApp1
                 usuario.UserName = txtUserName.Text;
                 usuario.Activo = true;
                 usuario.Admin = true;
-
             }
             else
             {
@@ -117,8 +116,11 @@ namespace WindowsFormsApp1
 
             if (situacionState.Equals("EDIT"))
             {
-                if(usuario.Dni == _usarioToEdit.Dni)
+               
+                if (usuario.Dni == _usarioToEdit.Dni)
                 {
+                    usuario.Name = txtAgregarNombreUsuario.Text;
+                    usuario.Apellido = txtApellidoUsuario.Text;
                     if (Usuario_Controller.actualizarUsuario(idToEdit, usuario))
                     {
                         MessageBox.Show($"Usuario {usuario.UserName} actualizado correctamente", "Exito al actualizar");

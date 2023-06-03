@@ -82,13 +82,48 @@ namespace WindowsFormsApp1
 
         private void buttonAgregarProducto_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtNombre.Text))
+            {
+                txtErrorAgregarProducto.Visible = true;
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtDescripcion.Text))
+            {
+                txtErrorAgregarProducto.Visible = true;
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtPrecio.Text))
+            {
+                txtErrorAgregarProducto.Visible = true;
+                return;
+            }
+            if (txtCategoria.SelectedItem == null)
+            {
+                txtErrorAgregarProducto.Visible = true;
+                return;
+            }                 
+
+            if(imagenProducto.Image == null)
+            {
+                txtErrorAgregarProducto.Visible = true;
+                return;
+            }
+
+
+            txtErrorAgregarProducto.Visible = false;
+
             Producto producto = new Producto();
+
+           
             producto.Nombre = txtNombre.Text;
             producto.Descripcion = txtDescripcion.Text;
             producto.Stock = Int32.Parse(txtStock.Value.ToString());
             producto.Precio = Decimal.Parse(txtPrecio.Text);
             producto.Categoria = Categoria_Controller.findByName(txtCategoria.SelectedItem.ToString()).Id;
             producto.Activo = true;
+
             try
             {
                 producto.Image = ExtraerBytesFromImage();
@@ -103,7 +138,7 @@ namespace WindowsFormsApp1
             {
                 if (Producto_Controller.actualizarProducto(idToEdit, producto))
                 {
-                    MessageBox.Show("Producto agregado correctamente", "Exito al agregar");
+                    MessageBox.Show("Producto actualizado correctamente", "Exito al actualizado");
                     this.DialogResult = DialogResult.OK;
                 }
                 else

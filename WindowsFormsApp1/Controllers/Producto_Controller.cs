@@ -47,22 +47,6 @@ namespace WindowsFormsApp1.Controllers
             }
 
         }
-        //public static int obtenerTotalDeVentas()
-        //{
-        //    int total = 0;
-        //    try
-        //    {
-        //        DB_controller.connection.Open();
-
-        //        string query = "SELECT COUNT(*) FROM dbo.venta;";
-        //        SqlCommand cmd = new SqlCommand();
-
-
-
-        //        cmd.CommandText = query;
-        //        cmd.Connection = DB_controller.connection;
-        //    }
-        //}
 
 
         public static bool actualizarStock (int nuevoStock, long id)
@@ -312,7 +296,7 @@ namespace WindowsFormsApp1.Controllers
 
         public static bool actualizarProducto(long id, Producto producto)
         {
-            string query = "update dbo.producto set nombre = @nombre, descripcion = @descripcion, stock = @stock, precio = @precio, categoria = @categoria where id = @id;";
+            string query = "update dbo.producto set nombre = @nombre, descripcion = @descripcion, stock = @stock, precio = @precio, categoria = @categoria, image = @image where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_controller.connection);
 
@@ -322,6 +306,7 @@ namespace WindowsFormsApp1.Controllers
             cmd.Parameters.AddWithValue("@stock", producto.Stock);
             cmd.Parameters.AddWithValue("@precio", producto.Precio);
             cmd.Parameters.AddWithValue("@categoria", producto.Categoria);
+            cmd.Parameters.AddWithValue("@image", producto.Image);
 
             try
             {
